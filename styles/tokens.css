@@ -1,0 +1,30 @@
+/* DEVORY — FINAL COLOR SCHEMA (DARK THEME) */
+
+:root {
+  /* 🖤 BACKGROUND COLORS (FOUNDATION) */
+  --bg-main: #0B0F14;        /* Main background - page background */
+  --bg-surface: #111827;     /* Surface - cards, sections, panels */
+  --bg-elevated: #151C2C;    /* Elevated - modals, dropdowns, hover surfaces */
+
+  /* 🔵 PRIMARY BRAND COLOR (CORE IDENTITY) */
+  --primary: #6366F1;        /* Indigo - primary buttons, links, highlights */
+  --primary-soft: #4F46E5;   /* Softer indigo - hover states */
+  --primary-glow: rgba(99, 102, 241, 0.25); /* Glow effect */
+
+  /* 🔤 TEXT COLORS (READABILITY FIRST) */
+  --text-primary: #E5E7EB;   /* Primary text - headings, main content */
+  --text-secondary: #9CA3AF; /* Secondary text - descriptions, labels */
+  --text-muted: #6B7280;     /* Muted text - hints, placeholders, metadata */
+
+  /* 🧱 BORDERS & DIVIDERS */
+  --border-default: #1F2937; /* Default border - card outlines, dividers */
+  --border-soft: #374151;    /* Soft border - input borders, section separators */
+
+  /* ✨ SHADOWS & DEPTH */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+
+  /* 🟢🟡🔴 STATUS COLORS (SEMANTIC ONLY) */
+  --success: #22C55E;        /* Green - success states */
+  --warning: #F59E0B;        /* Amber - warnings */
+  --error: #EF4444;          /* Red - errors */
+}
