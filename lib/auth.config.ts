@@ -1,9 +1,14 @@
 import type { NextAuthConfig } from 'next-auth';
 import Google from 'next-auth/providers/google';
+import GitHub from 'next-auth/providers/github';
 import Credentials from 'next-auth/providers/credentials';
 
 export const authConfig: NextAuthConfig = {
   providers: [
+    GitHub({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    }),
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
@@ -15,7 +20,7 @@ export const authConfig: NextAuthConfig = {
       },
       async authorize(_credentials) {
         // Email/password auth will be implemented if needed
-        // For now, we focus on Google OAuth
+        // For now, we focus on OAuth
         return null;
       },
     }),
