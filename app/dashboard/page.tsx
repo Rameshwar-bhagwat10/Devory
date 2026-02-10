@@ -1,8 +1,8 @@
-import { requireAuth } from '@/lib/auth-helpers';
+import { requireOnboarding } from '@/lib/auth-helpers';
 import { signOut } from '@/lib/auth';
 
 export default async function DashboardPage() {
-  const session = await requireAuth();
+  const session = await requireOnboarding();
   
   return (
     <div className="min-h-screen bg-bg-main px-4 py-16">
