@@ -1,0 +1,420 @@
+# DEVORY — 22 PHASE DEVELOPMENT PLAN
+
+## 🔹 PHASE 1 — Project Foundation & Tooling
+
+**Goal:** Create a stable base
+
+### Implementation
+- [x] Initialize Next.js (App Router)
+- [x] TypeScript strict mode
+- [x] Tailwind CSS v3
+- [x] Dark theme tokens (globals.css, tokens.css)
+- [x] ESLint + Prettier
+- [x] Base folder structure
+
+### UI
+- Blank dark canvas
+- Typography baseline
+- No components yet
+
+**✅ Checkpoint:** App runs with dark theme
+
+---
+
+## 🔹 PHASE 2 — Global Layout & Providers
+
+**Goal:** App-wide consistency
+
+### Implementation
+- [ ] Root layout.tsx enhancement
+- [ ] Providers (Auth, Theme, Toaster)
+- [ ] Global metadata (SEO-ready)
+- [ ] Error boundary + not-found page
+
+### UI
+- App shell
+- Consistent spacing
+- No navbar yet
+
+**✅ Checkpoint:** Stable shell
+
+---
+
+## 🔹 PHASE 3 — Authentication System
+
+**Goal:** Secure login system
+
+### Implementation
+- [ ] Auth.js / Supabase auth
+- [ ] Email + Google login
+- [ ] Session handling
+- [ ] Logout flow
+
+### UI
+- Clean auth page
+- Minimal card layout
+- Loading & error states
+
+**✅ Checkpoint:** Login works
+
+---
+
+## 🔹 PHASE 4 — Middleware & Route Protection
+
+**Goal:** Security enforcement
+
+### Implementation
+- [ ] middleware.ts enhancement
+- [ ] Public vs protected routes
+- [ ] Admin guard logic
+- [ ] Redirect with return URL
+
+### UI
+- No visible UI
+- Smooth redirects
+
+**✅ Checkpoint:** Routes are secure
+
+---
+
+## 🔹 PHASE 5 — Dynamic Navbar System
+
+**Goal:** Context-aware navigation
+
+### Implementation
+- [ ] PublicNavbar
+- [ ] AuthNavbar
+- [ ] Navbar switch via session
+- [ ] Profile dropdown skeleton
+
+### UI
+- Dark navbar
+- Subtle borders
+- Hover & focus states
+
+**✅ Checkpoint:** Navbar adapts to auth state
+
+---
+
+## 🔹 PHASE 6 — Landing Page (Conversion UI)
+
+**Goal:** First impression
+
+### Implementation
+- [ ] Hero section
+- [ ] Problem → solution blocks
+- [ ] Feature highlights
+- [ ] CTA sections
+
+### UI
+- Premium dark hero
+- Soft indigo glow
+- Motion-based reveal
+
+**✅ Checkpoint:** Polished landing page
+
+---
+
+## 🔹 PHASE 7 — Onboarding Flow
+
+**Goal:** Personalization
+
+### Implementation
+- [ ] Onboarding page
+- [ ] 5-question form
+- [ ] Save preferences
+- [ ] Redirect logic
+
+### UI
+- Card-based selections
+- Progress indicator
+- Smooth transitions
+
+**✅ Checkpoint:** Users personalized
+
+---
+
+## 🔹 PHASE 8 — Dashboard (Workspace Feel)
+
+**Goal:** Home for logged-in users
+
+### Implementation
+- [ ] Dashboard page enhancement
+- [ ] Editor's picks
+- [ ] Continue where left off
+- [ ] Quick actions
+
+### UI
+- Calm cards
+- Empty states
+- Soft animations
+
+**✅ Checkpoint:** Dashboard usable
+
+---
+
+## 🔹 PHASE 9 — Project Explorer (Discovery Engine)
+
+**Goal:** Fast idea discovery
+
+### Implementation
+- [ ] Project list page enhancement
+- [ ] Filters (domain, difficulty, year)
+- [ ] Search functionality
+- [ ] Pagination
+
+### UI
+- Card grid
+- Sticky filters
+- Skeleton loaders
+
+**✅ Checkpoint:** Explore works fast
+
+---
+
+## 🔹 PHASE 10 — Project Detail Page (CORE PAGE)
+
+**🔥 MOST IMPORTANT PHASE**
+
+### Implementation
+- [ ] Full project detail
+- [ ] Info cards
+- [ ] Tabs/sections
+- [ ] Skill-fit logic
+
+### UI
+- Premium layout
+- Sticky action panel
+- Copy summary
+- Readability focus
+
+**✅ Checkpoint:** Best-in-class page
+
+---
+
+## 🔹 PHASE 11 — Save / Bookmark System
+
+**Goal:** Retention
+
+### Implementation
+- [ ] Save project API
+- [ ] Saved projects page
+- [ ] Remove save functionality
+
+### UI
+- Save icon animation
+- Empty saved state
+
+**✅ Checkpoint:** Projects can be saved
+
+---
+
+## 🔹 PHASE 12 — Community Feed (Read-Only)
+
+**Goal:** Inspiration
+
+### Implementation
+- [ ] Community ideas list
+- [ ] Sorting (latest, liked)
+- [ ] Visibility rules
+
+### UI
+- Clean feed
+- Like counts
+- Anonymous badge
+
+**✅ Checkpoint:** Community visible
+
+---
+
+## 🔹 PHASE 13 — Community Posting
+
+**Goal:** Student contribution
+
+### Implementation
+- [ ] Post idea form
+- [ ] Duplicate warning
+- [ ] Permissions check
+
+### UI
+- Simple form
+- Helper text
+- Success animation
+
+**✅ Checkpoint:** Ideas can be posted
+
+---
+
+## 🔹 PHASE 14 — Like / Dislike System
+
+**Goal:** Crowd moderation
+
+### Implementation
+- [ ] Reaction API
+- [ ] Toggle logic
+- [ ] Aggregation
+
+### UI
+- Interactive buttons
+- Feedback animation
+
+**✅ Checkpoint:** Engagement enabled
+
+---
+
+## 🔹 PHASE 15 — Admin Moderation Panel
+
+**Goal:** Content control
+
+### Implementation
+- [ ] Admin dashboard enhancement
+- [ ] Hide / approve ideas
+- [ ] Reports handling
+
+### UI
+- Functional tables
+- Fast actions
+- No clutter
+
+**✅ Checkpoint:** Admin control ready
+
+---
+
+## 🔹 PHASE 16 — AI Customization Engine
+
+**Goal:** Devory's USP
+
+### Implementation
+- [ ] OpenAI integration
+- [ ] Prompt templates
+- [ ] Usage tracking
+
+### UI
+- AI modal
+- Loading states
+- Clear output
+
+**✅ Checkpoint:** AI works safely
+
+---
+
+## 🔹 PHASE 17 — Roadmap Generator
+
+**Goal:** Execution confidence
+
+### Implementation
+- [ ] Week-wise roadmap logic
+- [ ] AI / rule-based hybrid
+
+### UI
+- Timeline-like layout
+- Clean text blocks
+
+**✅ Checkpoint:** Students know next steps
+
+---
+
+## 🔹 PHASE 18 — PDF Generation System
+
+**Goal:** College-ready output
+
+### Implementation
+- [ ] Server-side PDF
+- [ ] Academic format
+- [ ] Watermark logic
+
+### UI
+- Download button
+- Progress feedback
+
+**✅ Checkpoint:** PDFs downloadable
+
+---
+
+## 🔹 PHASE 19 — Usage Limits & Subscriptions
+
+**Goal:** Monetization
+
+### Implementation
+- [ ] Free vs Pro logic
+- [ ] Razorpay / Stripe integration
+- [ ] Limit enforcement
+
+### UI
+- Usage meters
+- Upgrade prompts
+
+**✅ Checkpoint:** Revenue-ready
+
+---
+
+## 🔹 PHASE 20 — Performance Optimization
+
+**Goal:** Speed & stability
+
+### Implementation
+- [ ] Query optimization
+- [ ] Index verification
+- [ ] Lazy loading
+- [ ] Caching
+
+### UI
+- Faster transitions
+- Reduced loading
+
+**✅ Checkpoint:** App feels fast
+
+---
+
+## 🔹 PHASE 21 — Error Handling & Edge Cases
+
+**Goal:** Professional UX
+
+### Implementation
+- [ ] Global error states
+- [ ] API error mapping
+- [ ] Retry logic
+
+### UI
+- Friendly error messages
+- Recovery options
+
+**✅ Checkpoint:** App is resilient
+
+---
+
+## 🔹 PHASE 22 — Final Polish & Launch Prep
+
+**Goal:** Production readiness
+
+### Implementation
+- [ ] SEO metadata
+- [ ] Analytics integration
+- [ ] Legal pages
+- [ ] README enhancement
+
+### UI
+- Final spacing pass
+- Consistency check
+- Visual polish
+
+**✅ Checkpoint:** Ready to launch 🚀
+
+---
+
+## Progress Tracker
+
+**Completed Phases:** 1/22 (4.5%)
+
+**Current Phase:** Phase 1 ✅ Complete
+
+**Next Phase:** Phase 2 - Global Layout & Providers
+
+---
+
+## Notes
+
+- Phase 10 (Project Detail Page) is marked as the **MOST IMPORTANT PHASE** 🔥
+- Each phase has clear checkpoints for validation
+- UI considerations are defined for each phase
+- The roadmap follows a logical progression from foundation to launch
