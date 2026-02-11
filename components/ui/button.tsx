@@ -6,7 +6,7 @@ const Button = React.forwardRef<
 >(({ className = '', ...props }, ref) => {
   return (
     <button
-      className={`px-4 py-2 rounded-lg font-medium bg-primary text-white hover:bg-primary-soft transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-main ${className}`}
+      className={`px-4 py-2 rounded-lg font-medium bg-gradient-primary text-white transition-all hover:scale-105 focus:outline-none ${className}`}
       ref={ref}
       {...props}
     />

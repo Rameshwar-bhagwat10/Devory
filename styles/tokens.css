@@ -1,30 +1,40 @@
-/* DEVORY — FINAL COLOR SCHEMA (DARK THEME) */
+/* DEVORY — DARK HIGH-INTENSITY ORANGE WITH PINK/RED GRADIENTS */
 
 :root {
-  /* 🖤 BACKGROUND COLORS (FOUNDATION) */
-  --bg-main: #0B0F14;        /* Main background - page background */
-  --bg-surface: #111827;     /* Surface - cards, sections, panels */
-  --bg-elevated: #151C2C;    /* Elevated - modals, dropdowns, hover surfaces */
-
-  /* 🔵 PRIMARY BRAND COLOR (CORE IDENTITY) */
-  --primary: #6366F1;        /* Indigo - primary buttons, links, highlights */
-  --primary-soft: #4F46E5;   /* Softer indigo - hover states */
-  --primary-glow: rgba(99, 102, 241, 0.25); /* Glow effect */
-
-  /* 🔤 TEXT COLORS (READABILITY FIRST) */
-  --text-primary: #E5E7EB;   /* Primary text - headings, main content */
-  --text-secondary: #9CA3AF; /* Secondary text - descriptions, labels */
-  --text-muted: #6B7280;     /* Muted text - hints, placeholders, metadata */
-
-  /* 🧱 BORDERS & DIVIDERS */
-  --border-default: #1F2937; /* Default border - card outlines, dividers */
-  --border-soft: #374151;    /* Soft border - input borders, section separators */
-
-  /* ✨ SHADOWS & DEPTH */
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
-
-  /* 🟢🟡🔴 STATUS COLORS (SEMANTIC ONLY) */
-  --success: #22C55E;        /* Green - success states */
-  --warning: #F59E0B;        /* Amber - warnings */
-  --error: #EF4444;          /* Red - errors */
+  /* 🖤 BACKGROUND COLORS */
+  --dark-base: #0a0a0a;              /* Primary background */
+  --bg-glass-5: rgba(255, 255, 255, 0);   /* Glassmorphism surface */
+  --bg-glass-10: rgba(255, 255, 255, 0.032);  /* Hover states, elevated surfaces */
+  
+  /* 🔥 HIGH-INTENSITY ORANGE & GRADIENT COLORS */
+  --accent-orange: #ff6600;          /* Dark high-intensity orange */
+  --accent-pink: #ff0080;            /* Hot pink accent */
+  --accent-red: #ff0011;             /* Red accent */
+  --accent-deep-orange: #ff7300;     /* Deep orange */
+  
+  /* 🌈 GRADIENT DEFINITIONS */
+  --gradient-primary: linear-gradient(135deg, #ff6b00 0%, #ff1aab 50%, #ff0040 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff4500 0%, #ff6b00 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(255, 107, 0, 0.3) 0%, rgba(255, 0, 110, 0.3) 50%, rgba(255, 0, 64, 0.3) 100%);
+  
+  /* 🔤 TEXT COLORS (White with opacity) */
+  --text-white: #ffffff;             /* Pure white */
+  --text-90: rgba(255, 255, 255, 0.90);  /* Headings */
+  --text-60: rgba(255, 255, 255, 0.60);  /* Body text */
+  --text-20: rgba(255, 255, 255, 0.20);  /* Subtle UI elements */
+  
+  /* 🧱 BORDERS (White with opacity) */
+  --border-10: rgba(255, 255, 255, 0.10);  /* Default borders */
+  --border-20: rgba(255, 255, 255, 0.20);  /* Hover/active borders */
+  
+  /* ✨ GLOW SHADOWS WITH GRADIENT COLORS */
+  --glow-sm: 0 0 12px rgba(255, 107, 0, 0.4);   /* Subtle hover */
+  --glow-md: 0 0 20px rgba(255, 107, 0, 0.5), 0 0 30px rgba(255, 0, 110, 0.3);  /* Active/focused */
+  --glow-lg: 0 0 30px rgba(255, 107, 0, 0.6), 0 0 50px rgba(255, 0, 110, 0.4), 0 0 70px rgba(255, 0, 64, 0.3);  /* Primary CTAs */
+  --glow-xl: 0 0 50px rgba(255, 107, 0, 0.5), 0 0 100px rgba(255, 0, 110, 0.4), 0 0 150px rgba(255, 0, 64, 0.3);  /* Hero glow */
+  
+  /* 🔴 STATUS COLORS */
+  --error: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
 }

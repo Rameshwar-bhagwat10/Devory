@@ -6,25 +6,38 @@ export async function POST(request: NextRequest) {
   return withAuth(async (session) => {
     try {
       const body = await request.json();
-      const { preferredDomains, skillLevel, academicYear, institution } = body;
+      const { degree, branch, academicYear, primaryInterest, experience, skillLevel, goal } = body;
       
       // Validate required fields
-      if (!preferredDomains || preferredDomains.length === 0) {
-        return apiError('At least one domain is required', 400);
+      if (!degree || !branch || !academicYear || !primaryInterest || !skillLevel) {
+        return apiError('All required fields must be provided', 400);
       }
       
-      if (!skillLevel) {
-        return apiError('Skill level is required', 400);
-      }
-      
-      // Update user profile
-      await prisma.userProfile.update({
+      // Update or create user profile
+      await prisma.userProfile.upsert({
         where: { userId: session.user!.id },
-        data: {
-          preferredDomains,
+        update: {
+          preferredDomains: [primaryInterest],
           skillLevel,
-          academicYear: academicYear || null,
-          institution: institution || null,
+          academicYear,
+          bio: JSON.stringify({
+            degree,
+            branch,
+            experience: experience || null,
+            goal: goal || null,
+          }),
+        },
+        create: {
+          userId: session.user!.id,
+          preferredDomains: [primaryInterest],
+          skillLevel,
+          academicYear,
+          bio: JSON.stringify({
+            degree,
+            branch,
+            experience: experience || null,
+            goal: goal || null,
+          }),
         },
       });
       
@@ -41,6 +54,15 @@ export async function POST(request: NextRequest) {
           action: 'onboarding_completed',
           resource: 'user',
           resourceId: session.user!.id,
+          metadata: JSON.stringify({
+            degree,
+            branch,
+            academicYear,
+            primaryInterest,
+            experience,
+            skillLevel,
+            goal,
+          }),
         },
       });
       

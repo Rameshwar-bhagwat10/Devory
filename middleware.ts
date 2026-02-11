@@ -12,49 +12,74 @@ const protectedRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
 const adminRoutes = ['/admin'];
 
 // Routes that require onboarding completion
-const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
+const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community/new', '/projects'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Allow public routes
-  if (publicRoutes.some(route => pathname === route || pathname.startsWith(`${route}/`))) {
+  // Allow API routes
+  if (pathname.startsWith('/api')) {
     return NextResponse.next();
   }
   
   // Get session
   const session = await auth();
   const isAuthenticated = !!session?.user;
+  const onboardingComplete = session?.user?.onboardingComplete ?? false;
   
-  // Check if route requires authentication
-  const requiresAuth = protectedRoutes.some(route => pathname.startsWith(route)) ||
-                       adminRoutes.some(route => pathname.startsWith(route));
-  
-  if (requiresAuth && !isAuthenticated) {
-    const url = new URL('/auth', request.url);
-    url.searchParams.set('callbackUrl', pathname);
-    return NextResponse.redirect(url);
-  }
-  
-  // Check admin routes
-  if (adminRoutes.some(route => pathname.startsWith(route))) {
-    if (session?.user?.role !== 'ADMIN') {
+  // ============================================
+  // AUTHENTICATED USER ROUTING
+  // ============================================
+  if (isAuthenticated) {
+    // 1. If user is on /auth page, redirect based on onboarding status
+    if (pathname === '/auth') {
+      if (!onboardingComplete) {
+        return NextResponse.redirect(new URL('/onboarding', request.url));
+      }
       return NextResponse.redirect(new URL('/dashboard', request.url));
     }
-  }
-  
-  // Check onboarding completion
-  if (isAuthenticated && pathname !== '/onboarding') {
-    if (onboardingRequiredRoutes.some(route => pathname.startsWith(route))) {
-      if (!session?.user?.onboardingComplete) {
+    
+    // 2. If user is on /onboarding and already completed, redirect to dashboard
+    if (pathname === '/onboarding' && onboardingComplete) {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+    }
+    
+    // 3. If onboarding not complete and trying to access protected routes, redirect to onboarding
+    if (!onboardingComplete && pathname !== '/onboarding') {
+      if (onboardingRequiredRoutes.some(route => pathname.startsWith(route))) {
         return NextResponse.redirect(new URL('/onboarding', request.url));
       }
     }
+    
+    // 4. Check admin routes - redirect non-admins to dashboard
+    if (adminRoutes.some(route => pathname.startsWith(route))) {
+      if (session?.user?.role !== 'ADMIN') {
+        return NextResponse.redirect(new URL('/dashboard', request.url));
+      }
+    }
+    
+    // Allow authenticated user to proceed
+    return NextResponse.next();
   }
   
-  // Redirect authenticated users away from auth page
-  if (pathname === '/auth' && isAuthenticated) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+  // ============================================
+  // NON-AUTHENTICATED USER ROUTING
+  // ============================================
+  
+  // Allow public routes
+  if (publicRoutes.some(route => pathname === route || pathname.startsWith(`${route}/`))) {
+    return NextResponse.next();
+  }
+  
+  // Check if route requires authentication
+  const requiresAuth = protectedRoutes.some(route => pathname.startsWith(route)) ||
+                       adminRoutes.some(route => pathname.startsWith(route)) ||
+                       pathname === '/onboarding';
+  
+  if (requiresAuth) {
+    const url = new URL('/auth', request.url);
+    url.searchParams.set('callbackUrl', pathname);
+    return NextResponse.redirect(url);
   }
   
   return NextResponse.next();

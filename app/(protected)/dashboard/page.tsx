@@ -5,27 +5,29 @@ export default async function DashboardPage() {
   const session = await requireAuth();
   
   return (
-    <div className="min-h-screen bg-bg-main px-4 py-16">
+    <div className="min-h-screen bg-dark-base px-4 py-16">
       <div className="max-w-2xl mx-auto">
-        <div className="bg-bg-surface border border-border-default rounded-lg p-8">
-          <h1 className="text-2xl font-bold text-text-primary mb-4">
-            Dashboard
+        <div className="bg-glass-5 border border-border-10 rounded-lg p-8">
+          <h1 className="text-2xl font-bold mb-4">
+            <span className="bg-gradient-primary bg-clip-text text-transparent">
+              Dashboard
+            </span>
           </h1>
           
           <div className="space-y-4">
-            <div className="bg-bg-elevated border border-border-default rounded-lg p-4">
-              <p className="text-text-secondary text-sm mb-1">Email</p>
-              <p className="text-text-primary font-medium">{session.user.email}</p>
+            <div className="bg-glass-10 border border-border-10 rounded-lg p-4 hover:border-border-20 transition-all">
+              <p className="text-text-60 text-sm mb-1">Email</p>
+              <p className="text-text-90 font-medium">{session.user.email}</p>
             </div>
             
-            <div className="bg-bg-elevated border border-border-default rounded-lg p-4">
-              <p className="text-text-secondary text-sm mb-1">Role</p>
-              <p className="text-text-primary font-medium">{session.user.role}</p>
+            <div className="bg-glass-10 border border-border-10 rounded-lg p-4 hover:border-border-20 transition-all">
+              <p className="text-text-60 text-sm mb-1">Role</p>
+              <p className="text-text-90 font-medium">{session.user.role}</p>
             </div>
             
-            <div className="bg-bg-elevated border border-border-default rounded-lg p-4">
-              <p className="text-text-secondary text-sm mb-1">Onboarding Status</p>
-              <p className="text-text-primary font-medium">
+            <div className="bg-glass-10 border border-border-10 rounded-lg p-4 hover:border-border-20 transition-all">
+              <p className="text-text-60 text-sm mb-1">Onboarding Status</p>
+              <p className="text-text-90 font-medium">
                 {session.user.onboardingComplete ? 'Completed' : 'Pending'}
               </p>
             </div>
@@ -40,7 +42,7 @@ export default async function DashboardPage() {
           >
             <button
               type="submit"
-              className="w-full px-4 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-400 font-medium transition-colors"
+              className="w-full px-4 py-3 bg-error/10 hover:bg-error/20 border border-error/20 rounded-lg text-error font-medium transition-all focus:outline-none"
             >
               Sign Out
             </button>

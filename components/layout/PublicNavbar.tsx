@@ -1,14 +1,106 @@
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function PublicNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <nav className="border-b border-border-default">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold text-text-primary">Devory</div>
-        <a
-          href="/auth"
-          className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-soft"
-        >
-          Login
-        </a>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:opacity-80 transition-opacity focus:outline-none focus:opacity-80"
+          >
+            Devory
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              href="/projects"
+              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
+            >
+              Projects
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link
+              href="/community"
+              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
+            >
+              Community
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link
+              href="/auth"
+              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange mr-4"
+            >
+              Login
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link
+              href="/auth"
+              className="px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 focus:outline-none"
+            >
+              Get Started
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-accent-orange focus:outline-none focus:ring-2 focus:ring-accent-orange rounded"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-border-10 pt-4">
+            <Link
+              href="/projects"
+              className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Projects
+            </Link>
+            <Link
+              href="/community"
+              className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Community
+            </Link>
+            <Link
+              href="/auth"
+              className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
+            <Link
+              href="/auth"
+              className="block px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 text-center focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

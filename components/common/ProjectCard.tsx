@@ -6,9 +6,9 @@ export default function ProjectCard({
   description: string;
 }) {
   return (
-    <div className="border border-border-default rounded-lg p-4 hover:shadow-soft transition">
-      <h3 className="text-xl font-semibold text-text-primary mb-2">{title}</h3>
-      <p className="text-text-secondary">{description}</p>
+    <div className="border border-border-10 rounded-lg p-4 bg-glass-5 hover:bg-glass-10 hover:border-border-20 transition-all">
+      <h3 className="text-xl font-semibold text-text-90 mb-2">{title}</h3>
+      <p className="text-text-60">{description}</p>
     </div>
   );
 }

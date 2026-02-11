@@ -9,14 +9,14 @@ export default function Toast({
 }) {
   const bgColor =
     type === 'success'
-      ? 'bg-green-600'
+      ? 'bg-success'
       : type === 'error'
-      ? 'bg-red-600'
-      : 'bg-primary';
+      ? 'bg-error'
+      : 'bg-accent-orange';
 
   return (
     <div
-      className={`fixed bottom-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-soft`}
+      className={`fixed bottom-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg`}
     >
       {message}
     </div>

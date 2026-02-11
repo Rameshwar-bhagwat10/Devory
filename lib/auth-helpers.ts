@@ -1,4 +1,4 @@
-import { auth } from './auth';
+import { auth, signOut } from './auth';
 import { redirect } from 'next/navigation';
 import type { Session } from 'next-auth';
 
@@ -42,4 +42,9 @@ export function isAdmin(session: Session | null) {
 
 export function hasCompletedOnboarding(session: Session | null) {
   return session?.user?.onboardingComplete === true;
+}
+
+export async function logout() {
+  'use server';
+  await signOut({ redirectTo: '/' });
 }
