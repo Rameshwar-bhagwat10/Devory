@@ -36,13 +36,20 @@ interface ProjectsClientProps {
 const DOMAIN_OPTIONS = [
   { value: 'WEB_DEVELOPMENT', label: 'Web Development' },
   { value: 'MOBILE_DEVELOPMENT', label: 'Mobile Development' },
+  { value: 'MOBILE', label: 'Mobile' },
   { value: 'DATA_SCIENCE', label: 'Data Science' },
   { value: 'MACHINE_LEARNING', label: 'Machine Learning' },
+  { value: 'AI_ML', label: 'AI & ML' },
   { value: 'BLOCKCHAIN', label: 'Blockchain' },
   { value: 'IOT', label: 'IoT' },
   { value: 'GAME_DEVELOPMENT', label: 'Game Development' },
   { value: 'CYBERSECURITY', label: 'Cybersecurity' },
   { value: 'CLOUD_COMPUTING', label: 'Cloud Computing' },
+  { value: 'FINTECH', label: 'FinTech' },
+  { value: 'DEVOPS', label: 'DevOps' },
+  { value: 'HEALTH_TECH', label: 'Health Tech' },
+  { value: 'ENTERPRISE_SYSTEM', label: 'Enterprise System' },
+  { value: 'EDTECH', label: 'EdTech' },
 ];
 
 const DIFFICULTY_OPTIONS = [
