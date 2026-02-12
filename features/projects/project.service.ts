@@ -34,6 +34,7 @@ export class ProjectService {
         OR?: Array<{
           title?: { contains: string; mode: 'insensitive' };
           shortDescription?: { contains: string; mode: 'insensitive' };
+          fullDescription?: { contains: string; mode: 'insensitive' };
         }>;
         domain?: { in: ProjectDomain[] };
         difficulty?: { in: ProjectDifficulty[] };
@@ -44,11 +45,12 @@ export class ProjectService {
         isPublished: true,
       };
 
-      // Add search conditions
+      // Add search conditions - search in title, short description, and full description
       if (search) {
         where.OR = [
           { title: { contains: search, mode: 'insensitive' as const } },
           { shortDescription: { contains: search, mode: 'insensitive' as const } },
+          { fullDescription: { contains: search, mode: 'insensitive' as const } },
         ];
       }
 
