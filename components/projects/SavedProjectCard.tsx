@@ -9,7 +9,7 @@ interface SavedProjectCardProps {
   slug: string;
   title: string;
   description: string;
-  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
   domain: string;
   techStack: string[];
   estimatedHours?: number;
@@ -20,6 +20,7 @@ const DIFFICULTY_STYLES = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
   INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
   ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
+  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
 };
 
 const DOMAIN_LABELS: Record<string, string> = {

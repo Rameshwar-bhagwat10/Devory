@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   slug: string;
   description: string;
-  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
   domain: string;
   techStack: string[];
   estimatedHours?: number;
@@ -16,6 +16,8 @@ export interface ProjectDetail extends Project {
   features: string[];
   learningOutcomes: string[];
   prerequisites: string[];
+  timeline?: Array<{ week: number; title: string; description: string }>;
+  architecture?: string;
   tags: string[];
 }
 

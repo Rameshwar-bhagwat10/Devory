@@ -223,7 +223,7 @@ interface OnboardingData {
   skillLevel: string;
 }
 
-export default function OnboardingFlow({ userId: _userId }: { userId: string }) {
+export default function OnboardingFlow({ userId: _userId, callbackUrl }: { userId: string; callbackUrl?: string }) {
   const { update } = useSession();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Partial<OnboardingData>>({});
@@ -315,9 +315,9 @@ export default function OnboardingFlow({ userId: _userId }: { userId: string }) 
 
       setShowSuccess(true);
       
-      // Redirect to dashboard after showing success message
+      // Redirect to callbackUrl or dashboard after showing success message
       setTimeout(() => {
-        window.location.href = '/dashboard';
+        window.location.href = callbackUrl || '/dashboard';
       }, 1500);
     } catch (error) {
       console.error('Onboarding error:', error);

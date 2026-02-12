@@ -1,0 +1,2764 @@
+[
+  {
+    "slug": "browser-based-llm",
+    "title": "Browser-Based LLM Inference Engine",
+    "shortDescription": "Run large language models directly in the browser using WebGPU and WASM",
+    "fullDescription": "Build a groundbreaking inference engine that runs LLMs entirely in the browser without server calls. Uses WebGPU for GPU acceleration, WASM for performance, and quantization techniques to reduce model size. Features streaming generation, temperature control, and system prompt customization. Includes model caching, offline support, and privacy-first architecture where user data never leaves the device.",
+    "domain": "AI",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["React", "Next.js 14", "Tailwind CSS"],
+      "ml": ["WebGPU", "WebAssembly", "TensorFlow.js"],
+      "optimization": ["ONNX Runtime Web", "GGML", "llama.cpp"],
+      "state": ["Zustand", "IndexedDB", "Cache API"],
+      "tools": ["Vite", "Biome", "Vitest"],
+      "monitoring": ["Sentry", "Web Vitals"]
+    },
+    "architecture": "Client-side only architecture with WebGPU compute shaders, WASM modules for tokenization, IndexedDB for model storage, Service Workers for offline support, and Web Workers for non-blocking inference",
+    "features": [
+      "WebGPU acceleration",
+      "4-bit/8-bit quantization",
+      "Streaming generation",
+      "Prompt templates",
+      "Model caching",
+      "Offline support",
+      "System prompt management",
+      "Conversation history",
+      "Export/import chats",
+      "Privacy-first design"
+    ],
+    "skillsRequired": [
+      "WebGPU/WebGL",
+      "WebAssembly",
+      "TypeScript",
+      "ML model optimization",
+      "Browser APIs",
+      "Performance profiling"
+    ],
+    "learningOutcomes": [
+      "Master WebGPU compute",
+      "Optimize models for browser",
+      "Build offline-first apps",
+      "Implement streaming responses",
+      "Design privacy-focused AI",
+      "Profile browser performance"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Research", "description": "WebGPU capabilities and model quantization" },
+      { "week": 2, "title": "Setup", "description": "WebGPU compute pipeline" },
+      { "week": 3, "title": "WASM", "description": "Tokenizer implementation in WASM" },
+      { "week": 4, "title": "Inference", "description": "Basic inference engine" },
+      { "week": 5, "title": "Optimization", "description": "4-bit quantization implementation" },
+      { "week": 6, "title": "Streaming", "description": "Token streaming with SSE" },
+      { "week": 7, "title": "Storage", "description": "IndexedDB model caching" },
+      { "week": 8, "title": "UI", "description": "Chat interface with markdown" },
+      { "week": 9, "title": "Offline", "description": "Service Worker integration" },
+      { "week": 10, "title": "Performance", "description": "Benchmarking and optimization" }
+    ]
+  },
+  {
+    "slug": "react-server-components-dashboard",
+    "title": "Next.js 14 Dashboard with RSC",
+    "shortDescription": "Enterprise dashboard leveraging React Server Components and Server Actions",
+    "fullDescription": "Create a modern enterprise dashboard that fully utilizes React Server Components, Server Actions, and the Next.js 14 App Router. Features streaming SSR, progressive enhancement, and zero client-side JavaScript where possible. Includes real-time data with server-sent events, optimistic updates, and partial prerendering. Demonstrates the future of full-stack React development.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "10-12 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Next.js 14", "React 18", "Tailwind CSS"],
+      "backend": ["Next.js API", "Server Actions", "tRPC"],
+      "database": ["PostgreSQL", "Prisma", "Neon DB"],
+      "auth": ["NextAuth.js", "Clerk"],
+      "caching": ["React Cache", "Vercel KV"],
+      "visualization": ["Tremor", "Recharts", "Mapbox"],
+      "testing": ["Playwright", "Vitest", "MSW"]
+    },
+    "architecture": "Full-stack Next.js with App Router, Server Components for data fetching, Client Components for interactivity, Server Actions for mutations, Streaming with Suspense, and Edge runtime where beneficial",
+    "features": [
+      "React Server Components",
+      "Server Actions mutations",
+      "Streaming SSR",
+      "Partial prerendering",
+      "Optimistic updates",
+      "Real-time SSE",
+      "Edge runtime APIs",
+      "Dynamic imports",
+      "Parallel routes",
+      "Intercepting routes"
+    ],
+    "skillsRequired": [
+      "Next.js 14",
+      "React Server Components",
+      "TypeScript",
+      "Prisma",
+      "Tailwind CSS",
+      "Web performance"
+    ],
+    "learningOutcomes": [
+      "Master React Server Components",
+      "Implement Server Actions",
+      "Build streaming SSR apps",
+      "Design zero-JS interfaces",
+      "Optimize Core Web Vitals",
+      "Architect Next.js 14 apps"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Architecture", "description": "Next.js 14 App Router setup" },
+      { "week": 2, "title": "Database", "description": "Prisma schema and Neon DB" },
+      { "week": 3, "title": "Auth", "description": "NextAuth.js with RSC support" },
+      { "week": 4, "title": "Server Components", "description": "Data fetching patterns" },
+      { "week": 5, "title": "Server Actions", "description": "Form mutations and validation" },
+      { "week": 6, "title": "Streaming", "description": "Suspense boundaries and loading UI" },
+      { "week": 7, "title": "Real-time", "description": "Server-sent events integration" },
+      { "week": 8, "title": "Visualization", "description": "Tremor dashboard components" },
+      { "week": 9, "title": "Optimization", "description": "Partial prerendering" },
+      { "week": 10, "title": "Deployment", "description": "Edge runtime and Vercel deploy" }
+    ]
+  },
+  {
+    "slug": "flutter-3d-product-viewer",
+    "title": "Flutter 3D Product Viewer",
+    "shortDescription": "Cross-platform 3D product visualization app with AR integration",
+    "fullDescription": "Develop a Flutter application that renders 3D product models with realistic materials, lighting, and animations. Supports GLTF/GLB formats, PBR materials, and skeletal animations. Includes AR placement using ARKit/ARCore, gesture controls, and real-time customization. Features cloud model streaming, memory optimization, and platform-specific performance tuning.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Dart",
+    "techStack": {
+      "frontend": ["Flutter 3", "Dart 3"],
+      "3d": ["Flutter Scene", "Model Viewer", "Three.dart"],
+      "ar": ["ARCore", "ARKit", "RealityKit"],
+      "state": ["Riverpod", "BLoC"],
+      "networking": ["GraphQL", "gRPC"],
+      "database": ["Isar", "SQLite"],
+      "tools": ["Blender", "Unity", "Adobe Substance"]
+    },
+    "architecture": "Flutter with platform channels for AR native modules, Isar for local model cache, GraphQL for model metadata, and custom 3D renderer optimizations for mobile GPUs",
+    "features": [
+      "GLTF/GLB rendering",
+      "PBR materials",
+      "Skeletal animations",
+      "AR placement",
+      "Gesture controls",
+      "Real-time customization",
+      "Cloud streaming",
+      "Offline caching",
+      "Memory optimization",
+      "Analytics tracking"
+    ],
+    "skillsRequired": [
+      "Flutter/Dart",
+      "3D graphics",
+      "AR development",
+      "Mobile optimization",
+      "State management",
+      "3D modeling basics"
+    ],
+    "learningOutcomes": [
+      "Build 3D Flutter apps",
+      "Integrate AR features",
+      "Optimize for mobile GPUs",
+      "Stream 3D assets",
+      "Implement custom gestures",
+      "Manage complex state"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Flutter 3D rendering pipeline" },
+      { "week": 2, "title": "GLTF", "description": "GLTF parser and renderer" },
+      { "week": 3, "title": "Materials", "description": "PBR shader implementation" },
+      { "week": 4, "title": "Animations", "description": "Skeletal animation system" },
+      { "week": 5, "title": "AR", "description": "ARKit/ARCore integration" },
+      { "week": 6, "title": "Gestures", "description": "Gesture recognition system" },
+      { "week": 7, "title": "Customization", "description": "Real-time color/material changes" },
+      { "week": 8, "title": "Streaming", "description": "Cloud asset streaming" },
+      { "week": 9, "title": "Cache", "description": "Offline caching strategy" },
+      { "week": 10, "title": "Optimization", "description": "Memory and FPS optimization" }
+    ]
+  },
+  {
+    "slug": "webrtc-video-editor",
+    "title": "WebRTC Collaborative Video Editor",
+    "shortDescription": "Browser-based collaborative video editor with real-time effects",
+    "fullDescription": "Build a professional video editing platform that runs entirely in the browser with WebRTC for collaboration. Features timeline editing, real-time effects using WebGL shaders, and peer-to-peer asset sharing. Includes video compositing, transitions, text overlays, and audio mixing. Supports WebCodecs for efficient encoding and MediaRecorder for export.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "18-20 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Vue 3", "Pinia", "Tailwind"],
+      "video": ["WebCodecs", "WebGL", "FFmpeg.wasm"],
+      "realtime": ["WebRTC", "CRDTs", "Yjs"],
+      "effects": ["GLSL", "Three.js", "Canvas API"],
+      "database": ["PostgreSQL", "Supabase"],
+      "storage": ["IPFS", "WebTorrent"],
+      "tools": ["Vite", "Windi CSS", "Vitest"]
+    },
+    "features": [
+      "Multi-track timeline",
+      "WebGL video effects",
+      "Real-time collaboration",
+      "P2P asset sharing",
+      "Keyframe animations",
+      "Audio waveform",
+      "Transitions library",
+      "Hardware encoding",
+      "Proxy editing",
+      "Cloud rendering"
+    ],
+    "skillsRequired": [
+      "WebCodecs/WebGL",
+      "Video processing",
+      "WebRTC",
+      "Vue.js",
+      "FFmpeg",
+      "CRDTs"
+    ],
+    "learningOutcomes": [
+      "Master browser video editing",
+      "Implement WebGL shaders",
+      "Build collaborative features",
+      "Optimize video encoding",
+      "Design timeline interfaces",
+      "Handle large media files"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Core", "description": "Video decoding with WebCodecs" },
+      { "week": 2, "title": "Timeline", "description": "Multi-track timeline component" },
+      { "week": 3, "title": "Effects", "description": "GLSL shader effects" },
+      { "week": 4, "title": "Audio", "description": "Audio processing and waveform" },
+      { "week": 5, "title": "WebRTC", "description": "P2P signaling and data channels" },
+      { "week": 6, "title": "CRDT", "description": "Collaborative timeline state" },
+      { "week": 7, "title": "Transitions", "description": "Video transition effects" },
+      { "week": 8, "title": "Export", "description": "Hardware-accelerated encoding" },
+      { "week": 9, "title": "Assets", "description": "P2P asset sharing with WebTorrent" },
+      { "week": 10, "title": "Rendering", "description": "Cloud rendering fallback" }
+    ]
+  },
+  {
+    "slug": "react-native-ai-chat",
+    "title": "React Native On-Device AI Chat",
+    "shortDescription": "Mobile chat app with on-device LLM using MLX and Core ML",
+    "fullDescription": "Create a privacy-focused mobile chat application that runs LLMs entirely on-device using Apple's MLX and Core ML for iOS, and TensorFlow Lite for Android. Features streaming responses, conversation memory, and RAG with on-device vector database. Includes voice input with on-device speech recognition and TTS. Zero data leaves the user's device.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "mobile": ["React Native", "Expo", "Native Modules"],
+      "ios": ["MLX", "Core ML", "Natural Language"],
+      "android": ["TensorFlow Lite", "ML Kit"],
+      "vector": ["LanceDB", "SQLite"],
+      "embeddings": ["MobileBERT", "TFLite"],
+      "ui": ["Shopify Restyle", "React Native Reanimated"],
+      "audio": ["React Native Voice", "Expo AV"]
+    },
+    "features": [
+      "On-device LLM",
+      "Streaming responses",
+      "Voice input/output",
+      "Conversation memory",
+      "RAG capabilities",
+      "Document Q&A",
+      "Offline first",
+      "Privacy by design",
+      "Model download",
+      "Multi-language"
+    ],
+    "skillsRequired": [
+      "React Native",
+      "Native modules",
+      "ML optimization",
+      "Core ML/MLX",
+      "Mobile AI",
+      "Vector databases"
+    ],
+    "learningOutcomes": [
+      "Deploy LLMs on mobile",
+      "Build native modules",
+      "Optimize for battery",
+      "Implement on-device RAG",
+      "Create privacy-first apps",
+      "Handle offline scenarios"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Research", "description": "On-device LLM options" },
+      { "week": 2, "title": "iOS", "description": "MLX/Core ML integration" },
+      { "week": 3, "title": "Android", "description": "TFLite delegate setup" },
+      { "week": 4, "title": "Inference", "description": "Streaming inference bridge" },
+      { "week": 5, "title": "Voice", "description": "On-device speech recognition" },
+      { "week": 6, "title": "Vector", "description": "LanceDB on-device storage" },
+      { "week": 7, "title": "RAG", "description": "Document indexing and retrieval" },
+      { "week": 8, "title": "UI", "description": "Chat interface with Reanimated" },
+      { "week": 9, "title": "Offline", "description": "Model and cache management" },
+      { "week": 10, "title": "Optimization", "description": "Battery and memory tuning" }
+    ]
+  },
+  {
+    "slug": "tauri-desktop-markdown",
+    "title": "Tauri Markdown Editor with AI",
+    "shortDescription": "Lightning-fast markdown editor built with Tauri and Rust",
+    "fullDescription": "Develop a high-performance markdown editor using Tauri for a tiny binary size and low memory footprint. Features real-time preview, custom theming, Vim mode, and local AI autocomplete. Uses Rust for file system operations and TypeScript for the UI. Includes Git integration, plugin system, and encrypted notes. Cross-platform with native feel.",
+    "domain": "DESKTOP_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Rust",
+    "techStack": {
+      "frontend": ["SolidJS", "Tailwind", "CodeMirror 6"],
+      "backend": ["Tauri", "Rust"],
+      "ai": ["Ollama", "Local LLM", "Transformers.js"],
+      "fs": ["Tokio", "Notify"],
+      "git": ["Git2-rs"],
+      "database": ["SQLite", "Diesel"],
+      "encryption": ["AES-GCM", "Argon2"]
+    },
+    "features": [
+      "Real-time markdown preview",
+      "Local AI autocomplete",
+      "Vim/Emacs modes",
+      "Git integration",
+      "Plugin system",
+      "Encrypted vaults",
+      "Custom themes",
+      "File system watching",
+      "PDF export",
+      "PWA support"
+    ],
+    "skillsRequired": [
+      "Rust",
+      "Tauri",
+      "SolidJS",
+      "Editor development",
+      "System programming",
+      "Local AI"
+    ],
+    "learningOutcomes": [
+      "Build Tauri apps",
+      "Write Rust systems",
+      "Create text editors",
+      "Integrate local AI",
+      "Implement plugins",
+      "Design native UIs"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Tauri + SolidJS project" },
+      { "week": 2, "title": "Editor", "description": "CodeMirror 6 integration" },
+      { "week": 3, "title": "Preview", "description": "Real-time markdown renderer" },
+      { "week": 4, "title": "Rust", "description": "File system operations" },
+      { "week": 5, "title": "AI", "description": "Ollama API integration" },
+      { "week": 6, "title": "Git", "description": "Git2-rs implementation" },
+      { "week": 7, "title": "Vault", "description": "Encrypted note storage" },
+      { "week": 8, "title": "Plugins", "description": "Plugin system architecture" },
+      { "week": 9, "title": "Themes", "description": "Custom theme engine" },
+      { "week": 10, "title": "Build", "description": "Cross-platform compilation" }
+    ]
+  },
+  {
+    "slug": "swiftui-health-analytics",
+    "title": "SwiftUI Health Analytics App",
+    "shortDescription": "Advanced health analytics with SwiftUI and HealthKit",
+    "fullDescription": "Build a sophisticated health analytics application for iOS using SwiftUI and HealthKit. Features advanced visualizations, trend analysis, and ML-based insights. Includes workout recommendations, sleep pattern analysis, and nutrition tracking. Uses Core ML for activity classification and Create ML for personalized insights. Privacy-first with on-device processing.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Swift",
+    "techStack": {
+      "mobile": ["SwiftUI", "UIKit", "Swift Charts"],
+      "health": ["HealthKit", "Core Motion", "SensorKit"],
+      "ml": ["Core ML", "Create ML", "Turi Create"],
+      "database": ["Core Data", "SwiftData"],
+      "visualization": ["Charts", "Metal"],
+      "concurrency": ["Swift Concurrency", "Combine"],
+      "architecture": ["TCA", "MVVM"]
+    },
+    "features": [
+      "HealthKit integration",
+      "Advanced visualizations",
+      "Activity classification",
+      "Sleep analysis",
+      "Nutrition tracking",
+      "ML insights",
+      "Trend detection",
+      "Goal setting",
+      "Export reports",
+      "Widgets & watchOS"
+    ],
+    "skillsRequired": [
+      "Swift/SwiftUI",
+      "HealthKit",
+      "Core ML",
+      "iOS development",
+      "Data visualization",
+      "Combine"
+    ],
+    "learningOutcomes": [
+      "Master HealthKit",
+      "Build SwiftUI apps",
+      "Deploy Core ML models",
+      "Design health visualizations",
+      "Implement watchOS apps",
+      "Process sensor data"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "SwiftUI + HealthKit setup" },
+      { "week": 2, "title": "Permissions", "description": "HealthKit authorization" },
+      { "week": 3, "title": "Data", "description": "Health data models with SwiftData" },
+      { "week": 4, "title": "Activity", "description": "Activity classification with Core ML" },
+      { "week": 5, "title": "Sleep", "description": "Sleep analysis algorithms" },
+      { "week": 6, "title": "Charts", "description": "Swift Charts visualizations" },
+      { "week": 7, "title": "ML", "description": "Create ML training pipeline" },
+      { "week": 8, "title": "Watch", "description": "watchOS companion app" },
+      { "week": 9, "title": "Widgets", "description": "iOS widgets" },
+      { "week": 10, "title": "Insights", "description": "Personalized insights engine" }
+    ]
+  },
+  {
+    "slug": "sveltekit-realtime-polls",
+    "title": "SvelteKit Real-time Polls Platform",
+    "shortDescription": "Lightning-fast polling platform with WebAssembly and WebSockets",
+    "fullDescription": "Create a high-performance real-time polling platform using SvelteKit and WebSockets. Features instant vote updates, complex poll types, and advanced analytics. Uses WebAssembly for client-side vote verification and fraud detection. Includes embedding capabilities, OAuth integration, and export features. Optimized for mobile and SEO with SvelteKit's server-side rendering.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "10-12 weeks",
+    "recommendedYear": "Second Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["SvelteKit", "Svelte 5", "Tailwind"],
+      "realtime": ["WebSocket", "Server-Sent Events", "Pusher"],
+      "wasm": ["Rust", "wasm-bindgen", "WebAssembly"],
+      "database": ["PostgreSQL", "Redis", "Prisma"],
+      "auth": ["Lucia", "OAuth"],
+      "analytics": ["ClickHouse", "DuckDB WASM"],
+      "testing": ["Playwright", "Vitest"]
+    },
+    "features": [
+      "Real-time vote updates",
+      "Multiple poll types",
+      "WASM vote verification",
+      "Fraud detection",
+      "Poll embedding",
+      "Social sharing",
+      "Advanced analytics",
+      "Export capabilities",
+      "User authentication",
+      "Accessibility first"
+    ],
+    "skillsRequired": [
+      "SvelteKit",
+      "WebSockets",
+      "WebAssembly",
+      "TypeScript",
+      "Prisma",
+      "Real-time systems"
+    ],
+    "learningOutcomes": [
+      "Master SvelteKit",
+      "Build real-time apps",
+      "Integrate WebAssembly",
+      "Implement fraud detection",
+      "Design embeddable widgets",
+      "Scale WebSocket connections"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "SvelteKit with Prisma" },
+      { "week": 2, "title": "Auth", "description": "Lucia authentication" },
+      { "week": 3, "title": "Polls", "description": "Poll creation interface" },
+      { "week": 4, "title": "Real-time", "description": "WebSocket server" },
+      { "week": 5, "title": "WASM", "description": "Rust vote verification module" },
+      { "week": 6, "title": "Fraud", "description": "Rate limiting and detection" },
+      { "week": 7, "title": "Embed", "description": "Embeddable widget system" },
+      { "week": 8, "title": "Analytics", "description": "ClickHouse integration" },
+      { "week": 9, "title": "Export", "description": "PDF/CSV export" },
+      { "week": 10, "title": "SEO", "description": "SvelteKit SSR optimization" }
+    ]
+  },
+  {
+    "slug": "jetpack-compose-material3",
+    "title": "Jetpack Compose Material 3 Design System",
+    "shortDescription": "Dynamic design system with Material 3 and Compose Multiplatform",
+    "fullDescription": "Build a comprehensive Material 3 design system for Compose Multiplatform that works on Android, iOS, and desktop. Features dynamic color theming from wallpapers, custom components, and accessibility support. Includes a component gallery, live preview, and theming playground. Demonstrates best practices for scalable Compose UI architecture.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "mobile": ["Jetpack Compose", "Compose Multiplatform"],
+      "ui": ["Material 3", "Accompanist"],
+      "theming": ["Dynamic Color", "Material You"],
+      "architecture": ["MVI", "Orbit"],
+      "database": ["Room", "SQLDelight"],
+      "testing": ["Compose UI Testing", "Turbine"],
+      "tools": ["Kotlin DSL", "Gradle"]
+    },
+    "features": [
+      "Material 3 components",
+      "Dynamic color theming",
+      "Dark/light mode",
+      "Accessibility",
+      "RTL support",
+      "Component gallery",
+      "Live preview",
+      "Theme editor",
+      "Animation system",
+      "Cross-platform"
+    ],
+    "skillsRequired": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material Design",
+      "UI/UX principles",
+      "Accessibility",
+      "Cross-platform"
+    ],
+    "learningOutcomes": [
+      "Master Compose UI",
+      "Implement Material 3",
+      "Build design systems",
+      "Create accessible apps",
+      "Support theming",
+      "Cross-platform development"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Foundation", "description": "Compose Multiplatform setup" },
+      { "week": 2, "title": "Typography", "description": "Material 3 typography system" },
+      { "week": 3, "title": "Color", "description": "Dynamic color schemes" },
+      { "week": 4, "title": "Components", "description": "Button and input components" },
+      { "week": 5, "title": "Navigation", "description": "Navigation components" },
+      { "week": 6, "title": "Surfaces", "description": "Cards, dialogs, sheets" },
+      { "week": 7, "title": "Animation", "description": "Motion system" },
+      { "week": 8, "title": "Accessibility", "description": "A11y implementation" },
+      { "week": 9, "title": "Gallery", "description": "Component showcase" },
+      { "week": 10, "title": "Editor", "description": "Theme customization playground" }
+    ]
+  },
+  {
+    "slug": "remix-saas-starter",
+    "title": "Remix SaaS Starter Kit",
+    "shortDescription": "Production-ready SaaS starter with Remix and Stripe",
+    "fullDescription": "Create a comprehensive SaaS starter kit using Remix for full-stack React applications. Features multi-tenancy, subscription billing with Stripe, team management, and role-based access control. Includes email automation, background jobs, and analytics. Built with best practices for SEO, performance, and developer experience.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Remix", "React", "Tailwind CSS"],
+      "backend": ["Remix", "Prisma", "PostgreSQL"],
+      "payments": ["Stripe", "Lemon Squeezy"],
+      "email": ["Resend", "React Email"],
+      "queue": ["BullMQ", "Redis"],
+      "analytics": ["PostHog", "Plausible"],
+      "monitoring": ["Sentry", "Logtail"]
+    },
+    "features": [
+      "Multi-tenancy",
+      "Subscription billing",
+      "Team management",
+      "RBAC",
+      "Email automation",
+      "Background jobs",
+      "Analytics dashboard",
+      "API keys",
+      "Webhook handling",
+      "SEO optimized"
+    ],
+    "skillsRequired": [
+      "Remix",
+      "TypeScript",
+      "Stripe API",
+      "Prisma",
+      "PostgreSQL",
+      "SaaS patterns"
+    ],
+    "learningOutcomes": [
+      "Build production SaaS",
+      "Implement subscriptions",
+      "Master Remix",
+      "Handle multi-tenancy",
+      "Design RBAC",
+      "Automate billing"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Remix + Prisma + PostgreSQL" },
+      { "week": 2, "title": "Auth", "description": "Authentication and sessions" },
+      { "week": 3, "title": "Multi-tenancy", "description": "Organization schema" },
+      { "week": 4, "title": "Stripe", "description": "Subscription integration" },
+      { "week": 5, "title": "RBAC", "description": "Role-based permissions" },
+      { "week": 6, "title": "Team", "description": "Team invitations and management" },
+      { "week": 7, "title": "Email", "description": "React Email templates" },
+      { "week": 8, "title": "Jobs", "description": "Background jobs with BullMQ" },
+      { "week": 9, "title": "Dashboard", "description": "Analytics dashboard" },
+      { "week": 10, "title": "Deployment", "description": "Fly.io/Vercel deployment" }
+    ]
+  },
+  {
+    "slug": "python-fastapi-graphql",
+    "title": "FastAPI GraphQL Federation Gateway",
+    "shortDescription": "Enterprise GraphQL federation gateway with FastAPI",
+    "fullDescription": "Build a production-ready GraphQL federation gateway using FastAPI that composes multiple subgraphs into a unified API. Implements Apollo Federation v2 specification, distributed tracing, and query cost analysis. Includes schema registry, persisted queries, and real-time subscriptions. Designed for microservices architecture with subgraphs in different languages.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Python",
+    "techStack": {
+      "backend": ["FastAPI", "Strawberry GraphQL", "Uvicorn"],
+      "federation": ["Apollo Federation", "Router"],
+      "database": ["PostgreSQL", "Redis", "MongoDB"],
+      "observability": ["OpenTelemetry", "Jaeger", "Prometheus"],
+      "caching": ["Redis", "Memcached"],
+      "message": ["Kafka", "RabbitMQ"],
+      "deployment": ["Docker", "Kubernetes", "Traefik"]
+    },
+    "features": [
+      "GraphQL federation",
+      "Query planning",
+      "Cost analysis",
+      "Persisted queries",
+      "Schema registry",
+      "Subscriptions",
+      "Distributed tracing",
+      "Rate limiting",
+      "Cache control",
+      "Fault tolerance"
+    ],
+    "skillsRequired": [
+      "GraphQL",
+      "FastAPI",
+      "Python",
+      "Microservices",
+      "Apollo Federation",
+      "Distributed systems"
+    ],
+    "learningOutcomes": [
+      "Master GraphQL federation",
+      "Build API gateways",
+      "Implement query planning",
+      "Design microservices",
+      "Optimize performance",
+      "Handle distributed tracing"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Architecture", "description": "Federation gateway design" },
+      { "week": 2, "title": "Core", "description": "Strawberry GraphQL setup" },
+      { "week": 3, "title": "Federation", "description": "Apollo Federation v2 implementation" },
+      { "week": 4, "title": "Subgraphs", "description": "Sample subgraph implementations" },
+      { "week": 5, "title": "Query", "description": "Query planner and execution" },
+      { "week": 6, "title": "Cost", "description": "Query cost analysis" },
+      { "week": 7, "title": "Subscriptions", "description": "WebSocket subscriptions" },
+      { "week": 8, "title": "Tracing", "description": "OpenTelemetry integration" },
+      { "week": 9, "title": "Caching", "description": "Response caching strategy" },
+      { "week": 10, "title": "Registry", "description": "Schema registry" }
+    ]
+  },
+  {
+    "slug": "solidjs-reactive-forms",
+    "title": "SolidJS Reactive Form Library",
+    "shortDescription": "High-performance form library with fine-grained reactivity",
+    "fullDescription": "Create a form management library for SolidJS that leverages fine-grained reactivity for optimal performance. Features schema validation, nested fields, arrays, and dynamic forms. Includes built-in accessibility, form state persistence, and integration with popular UI libraries. Demonstrates advanced SolidJS patterns for state management and rendering optimization.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["SolidJS", "TypeScript"],
+      "validation": ["Zod", "Valibot", "Yup"],
+      "ui": ["Tailwind CSS", "UnoCSS"],
+      "testing": ["Vitest", "Playwright"],
+      "build": ["Vite", "tsup"],
+      "docs": ["MDX", "VitePress"],
+      "monitoring": ["Bundlephobia", "Size Limit"]
+    },
+    "features": [
+      "Fine-grained reactivity",
+      "Schema validation",
+      "Nested fields",
+      "Dynamic form arrays",
+      "Form state persistence",
+      "Field arrays",
+      "Conditional fields",
+      "Async validation",
+      "Accessibility",
+      "DevTools"
+    ],
+    "skillsRequired": [
+      "SolidJS",
+      "TypeScript",
+      "Reactive programming",
+      "Form validation",
+      "Library development",
+      "Performance optimization"
+    ],
+    "learningOutcomes": [
+      "Master SolidJS reactivity",
+      "Build type-safe libraries",
+      "Implement form validation",
+      "Optimize renders",
+      "Create accessible forms",
+      "Publish npm packages"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Core", "description": "Reactive form store" },
+      { "week": 2, "title": "Validation", "description": "Zod schema integration" },
+      { "week": 3, "title": "Fields", "description": "Base field components" },
+      { "week": 4, "title": "Nested", "description": "Nested object support" },
+      { "week": 5, "title": "Arrays", "description": "Dynamic field arrays" },
+      { "week": 6, "title": "Async", "description": "Async validation" },
+      { "week": 7, "title": "Persistence", "description": "LocalStorage integration" },
+      { "week": 8, "title": "Accessibility", "description": "A11y features" },
+      { "week": 9, "title": "Docs", "description": "Documentation site" },
+      { "week": 10, "title": "Publish", "description": "npm release" }
+    ]
+  },
+  {
+    "slug": "go-temporal-workflow",
+    "title": "Go Temporal Workflow Orchestrator",
+    "shortDescription": "Distributed workflow engine using Temporal and Go",
+    "fullDescription": "Build a robust workflow orchestration platform using Temporal and Go for managing long-running, fault-tolerant business processes. Implements complex workflows with human intervention, saga patterns, and compensation transactions. Includes workflow visualization, metrics collection, and retry policies. Perfect for order processing, approval workflows, and ETL pipelines.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Go",
+    "techStack": {
+      "backend": ["Go", "Temporal", "Protocol Buffers"],
+      "database": ["PostgreSQL", "Cassandra", "Redis"],
+      "message": ["Kafka", "NATS"],
+      "api": ["gRPC", "Connect RPC", "REST"],
+      "observability": ["OpenTelemetry", "Prometheus", "Grafana"],
+      "testing": ["Testcontainers", "Mockery"],
+      "deployment": ["Kubernetes", "Helm"]
+    },
+    "features": [
+      "Long-running workflows",
+      "Human tasks",
+      "Saga pattern",
+      "Compensation",
+      "Workflow versioning",
+      "Activity retries",
+      "Cron workflows",
+      "Child workflows",
+      "Signal handling",
+      "Query API"
+    ],
+    "skillsRequired": [
+      "Go programming",
+      "Temporal",
+      "Distributed systems",
+      "Workflow engines",
+      "gRPC",
+      "Kubernetes"
+    ],
+    "learningOutcomes": [
+      "Master Temporal workflows",
+      "Build fault-tolerant systems",
+      "Implement saga patterns",
+      "Design workflow orchestration",
+      "Handle human-in-loop",
+      "Deploy on Kubernetes"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Temporal cluster setup" },
+      { "week": 2, "title": "Workflows", "description": "Basic workflow definitions" },
+      { "week": 3, "title": "Activities", "description": "Activity implementations" },
+      { "week": 4, "title": "Saga", "description": "Compensation transactions" },
+      { "week": 5, "title": "Human", "description": "Human task signals" },
+      { "week": 6, "title": "Versioning", "description": "Workflow versioning strategy" },
+      { "week": 7, "title": "API", "description": "gRPC API layer" },
+      { "week": 8, "title": "Monitoring", "description": "Metrics and tracing" },
+      { "week": 9, "title": "UI", "description": "Workflow visualization" },
+      { "week": 10, "title": "Deployment", "description": "Kubernetes deployment" }
+    ]
+  },
+  {
+    "slug": "astro-content-platform",
+    "title": "Astro Content Platform",
+    "shortDescription": "Blazing-fast content platform with Astro and islands architecture",
+    "fullDescription": "Create a modern content platform using Astro's islands architecture for optimal performance. Features MDX authoring, headless CMS integration, and dynamic content loading with partial hydration. Includes advanced search, comment system, newsletter integration, and analytics. Demonstrates content collections, image optimization, and hybrid rendering strategies.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "10-12 weeks",
+    "recommendedYear": "Second Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Astro", "SolidJS", "Preact"],
+      "content": ["MDX", "Content Collections", "Decap CMS"],
+      "search": ["Pagefind", "Algolia"],
+      "database": ["LibSQL", "Drizzle ORM"],
+      "comments": ["Giscus", "Webmentions"],
+      "analytics": ["Umami", "Plausible"],
+      "deployment": ["Netlify", "Cloudflare Pages"]
+    },
+    "features": [
+      "Islands architecture",
+      "MDX authoring",
+      "Visual editing",
+      "Full-text search",
+      "Comment system",
+      "Newsletter",
+      "Image optimization",
+      "RSS feeds",
+      "SEO optimized",
+      "View transitions"
+    ],
+    "skillsRequired": [
+      "Astro",
+      "MDX",
+      "TypeScript",
+      "Static sites",
+      "Performance",
+      "Headless CMS"
+    ],
+    "learningOutcomes": [
+      "Master Astro islands",
+      "Build content platforms",
+      "Optimize Core Web Vitals",
+      "Implement hybrid rendering",
+      "Design MDX workflows",
+      "Create interactive islands"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Astro project with content collections" },
+      { "week": 2, "title": "Design", "description": "Tailwind CSS theming" },
+      { "week": 3, "title": "Content", "description": "MDX components and layouts" },
+      { "week": 4, "title": "CMS", "description": "Decap CMS integration" },
+      { "week": 5, "title": "Islands", "description": "Interactive islands with SolidJS" },
+      { "week": 6, "title": "Search", "description": "Pagefind search implementation" },
+      { "week": 7, "title": "Comments", "description": "Giscus comment system" },
+      { "week": 8, "title": "Newsletter", "description": "Email subscription" },
+      { "week": 9, "title": "Images", "description": "Image optimization pipeline" },
+      { "week": 10, "title": "Deploy", "description": "Netlify deployment" }
+    ]
+  },
+  {
+    "slug": "flutter-rust-ffi",
+    "title": "Flutter Rust Performance Engine",
+    "shortDescription": "High-performance Flutter app with Rust FFI for compute-intensive tasks",
+    "fullDescription": "Build a Flutter application that offloads performance-critical operations to Rust via FFI for maximum performance and memory safety. Implements image processing, cryptographic operations, and complex calculations in Rust. Features seamless bidirectional communication, hot reload support, and platform-specific optimizations. Includes benchmarking and profiling tools.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Dart",
+    "techStack": {
+      "mobile": ["Flutter", "Dart FFI"],
+      "rust": ["Rust", "Cargo", "cbindgen"],
+      "processing": ["Image", "Rayon", "Crypto"],
+      "build": ["flutter_rust_bridge", "Cross"],
+      "profiling": ["Perf", "Flamegraph"],
+      "database": ["SQLite", "Isar"],
+      "testing": ["Integration test", "Benchmark"]
+    },
+    "features": [
+      "Rust FFI bridge",
+      "Image processing",
+      "Cryptography",
+      "JSON parsing",
+      "Data compression",
+      "SIMD optimization",
+      "Thread pooling",
+      "Memory safety",
+      "Hot reload support",
+      "Cross-compilation"
+    ],
+    "skillsRequired": [
+      "Flutter/Dart",
+      "Rust",
+      "FFI",
+      "Performance optimization",
+      "Systems programming",
+      "Mobile development"
+    ],
+    "learningOutcomes": [
+      "Master Rust FFI",
+      "Optimize mobile performance",
+      "Bridge languages safely",
+      "Implement SIMD operations",
+      "Profile Rust code",
+      "Cross-compile for mobile"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Flutter Rust bridge configuration" },
+      { "week": 2, "title": "FFI", "description": "Basic FFI function calls" },
+      { "week": 3, "title": "Memory", "description": "Memory management strategy" },
+      { "week": 4, "title": "Image", "description": "Image processing in Rust" },
+      { "week": 5, "title": "Crypto", "description": "Cryptographic operations" },
+      { "week": 6, "title": "Threads", "description": "Rayon parallel processing" },
+      { "week": 7, "title": "SIMD", "description": "SIMD optimization" },
+      { "week": 8, "title": "UI", "description": "Flutter UI with Rust backend" },
+      { "week": 9, "title": "Benchmark", "description": "Performance benchmarking" },
+      { "week": 10, "title": "Cross", "description": "Cross-platform compilation" }
+    ]
+  },
+  {
+    "slug": "react-three-fiber-archviz",
+    "title": "React Three Fiber Architectural Visualizer",
+    "shortDescription": "Browser-based architectural visualization with React Three Fiber",
+    "fullDescription": "Develop a sophisticated architectural visualization platform using React Three Fiber and Drei. Features realistic PBR materials, global illumination, and post-processing effects. Includes floor plan navigation, material swapping, and furniture placement. Supports glTF/glB models, real-time lighting updates, and VR viewing with WebXR.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["React", "Three.js", "React Three Fiber"],
+      "3d": ["Drei", "Rapier", "Post-processing"],
+      "physics": ["Cannon.js", "Rapier"],
+      "state": ["Zustand", "XState"],
+      "file": ["glTF", "glTF Transform"],
+      "xr": ["WebXR", "react-three/xr"],
+      "optimization": ["Compressed textures", "Instancing"]
+    },
+    "features": [
+      "Realistic PBR materials",
+      "Global illumination",
+      "Post-processing",
+      "Floor plan navigation",
+      "Material swapping",
+      "Furniture placement",
+      "glTF/glB loading",
+      "Real-time lighting",
+      "WebXR VR support",
+      "Performance optimization"
+    ],
+    "skillsRequired": [
+      "React",
+      "Three.js",
+      "WebGL",
+      "3D graphics",
+      "Shader programming",
+      "WebXR"
+    ],
+    "learningOutcomes": [
+      "Master React Three Fiber",
+      "Build 3D web apps",
+      "Implement PBR rendering",
+      "Optimize WebGL performance",
+      "Create VR experiences",
+      "Design spatial UIs"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "React Three Fiber environment" },
+      { "week": 2, "title": "Scene", "description": "Basic scene and camera controls" },
+      { "week": 3, "title": "Models", "description": "glTF model loading" },
+      { "week": 4, "title": "Materials", "description": "PBR material system" },
+      { "week": 5, "title": "Lighting", "description": "Real-time GI implementation" },
+      { "week": 6, "title": "Post", "description": "Post-processing effects" },
+      { "week": 7, "title": "Physics", "description": "Rapier physics integration" },
+      { "week": 8, "title": "Interaction", "description": "Object placement and manipulation" },
+      { "week": 9, "title": "VR", "description": "WebXR VR implementation" },
+      { "week": 10, "title": "Optimization", "description": "Performance tuning" }
+    ]
+  },
+  {
+    "slug": "kotlin-spring-boot-webflux",
+    "title": "Kotlin Spring Boot Reactive API",
+    "shortDescription": "High-performance reactive API with Kotlin and Spring WebFlux",
+    "fullDescription": "Build a fully reactive REST API using Kotlin, Spring WebFlux, and R2DBC for non-blocking database access. Features functional endpoints, coroutines support, and reactive security. Implements event streaming with SSE and WebFlux's reactive types. Includes comprehensive testing with StepVerifier and TestPublisher.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "backend": ["Kotlin", "Spring Boot 3", "Spring WebFlux"],
+      "database": ["R2DBC", "PostgreSQL", "MongoDB Reactive"],
+      "reactive": ["Reactor", "Coroutines"],
+      "security": ["Spring Security Reactive", "JWT"],
+      "api": ["RSocket", "gRPC"],
+      "testing": ["StepVerifier", "TestPublisher", "Kotest"],
+      "deployment": ["GraalVM", "Native Image"]
+    },
+    "features": [
+      "Non-blocking I/O",
+      "Functional endpoints",
+      "Coroutine support",
+      "Reactive repositories",
+      "Event streaming",
+      "Backpressure handling",
+      "Reactive security",
+      "Native compilation",
+      "Metrics and tracing",
+      "Resilience patterns"
+    ],
+    "skillsRequired": [
+      "Kotlin",
+      "Spring WebFlux",
+      "Reactive programming",
+      "R2DBC",
+      "Coroutines",
+      "Project Reactor"
+    ],
+    "learningOutcomes": [
+      "Master reactive programming",
+      "Build non-blocking APIs",
+      "Implement R2DBC",
+      "Handle backpressure",
+      "Use Kotlin coroutines",
+      "Compile to native"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Spring WebFlux with Kotlin" },
+      { "week": 2, "title": "Reactive", "description": "Flux/Mono operators" },
+      { "week": 3, "title": "Database", "description": "R2DBC repositories" },
+      { "week": 4, "title": "Endpoints", "description": "Functional routing DSL" },
+      { "week": 5, "title": "Coroutines", "description": "Suspend functions integration" },
+      { "week": 6, "title": "Streaming", "description": "Server-Sent Events" },
+      { "week": 7, "title": "Security", "description": "Reactive JWT authentication" },
+      { "week": 8, "title": "RSocket", "description": "RSocket endpoints" },
+      { "week": 9, "title": "Testing", "description": "StepVerifier tests" },
+      { "week": 10, "title": "Native", "description": "GraalVM native image" }
+    ]
+  },
+  {
+    "slug": "react-native-skia-graphics",
+    "title": "React Native Skia Graphics Engine",
+    "shortDescription": "High-performance 2D graphics engine with React Native Skia",
+    "fullDescription": "Create a powerful 2D graphics and animation engine using React Native Skia. Implements custom drawing, vector graphics, and complex animations with 60fps performance. Features image filters, path operations, and text layout. Includes a declarative API similar to SVG, state-driven animations, and gesture interactions.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "mobile": ["React Native", "Skia", "Reanimated 3"],
+      "graphics": ["@shopify/react-native-skia"],
+      "state": ["Zustand", "Legend-State"],
+      "gestures": ["React Native Gesture Handler"],
+      "navigation": ["Expo Router"],
+      "testing": ["Detox", "Jest"],
+      "profiling": ["Flipper", "Flashlight"]
+    },
+    "features": [
+      "Declarative drawing",
+      "Vector graphics",
+      "Image filters",
+      "Path operations",
+      "Text layout",
+      "Physics animations",
+      "Gesture interaction",
+      "Export to SVG/PDF",
+      "Memory optimization",
+      "GPU acceleration"
+    ],
+    "skillsRequired": [
+      "React Native",
+      "Skia",
+      "2D graphics",
+      "Animation",
+      "TypeScript",
+      "Mobile performance"
+    ],
+    "learningOutcomes": [
+      "Master React Native Skia",
+      "Build graphics engines",
+      "Implement vector drawing",
+      "Optimize 60fps animations",
+      "Create creative tools",
+      "Handle complex gestures"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "React Native Skia environment" },
+      { "week": 2, "title": "Shapes", "description": "Basic shape primitives" },
+      { "week": 3, "title": "Paths", "description": "Path drawing and operations" },
+      { "week": 4, "title": "Text", "description": "Advanced text layout" },
+      { "week": 5, "title": "Filters", "description": "Image filters and effects" },
+      { "week": 6, "title": "Animation", "description": "Reanimated 3 integration" },
+      { "week": 7, "title": "Gestures", "description": "Gesture handlers" },
+      { "week": 8, "title": "Export", "description": "SVG/PDF export" },
+      { "week": 9, "title": "Performance", "description": "GPU optimization" },
+      { "week": 10, "title": "Editor", "description": "Interactive canvas editor" }
+    ]
+  },
+  {
+    "slug": "django-ninja-graphql",
+    "title": "Django Ninja GraphQL Platform",
+    "shortDescription": "Modern GraphQL API with Django Ninja and Strawberry",
+    "fullDescription": "Build a high-performance GraphQL API using Django Ninja for REST endpoints and Strawberry for GraphQL. Features schema federation, dataloader optimization, and real-time subscriptions. Includes advanced filtering, pagination, and query optimization. Demonstrates best practices for modern Django development with type hints and async support.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Python",
+    "techStack": {
+      "backend": ["Django", "Django Ninja", "Strawberry GraphQL"],
+      "database": ["PostgreSQL", "Django ORM", "Redis"],
+      "optimization": ["Dataloaders", "select_related", "prefetch_related"],
+      "caching": ["Redis", "Memcached"],
+      "tasks": ["Celery", "Django Q2"],
+      "async": ["ASGI", "Channels", "WebSockets"],
+      "deployment": ["Docker", "AWS", "nginx"]
+    },
+    "features": [
+      "GraphQL federation",
+      "Dataloader optimization",
+      "Real-time subscriptions",
+      "N+1 query prevention",
+      "Advanced filtering",
+      "Cursor pagination",
+      "File uploads",
+      "Async views",
+      "API versioning",
+      "OpenAPI documentation"
+    ],
+    "skillsRequired": [
+      "Django",
+      "GraphQL",
+      "Python",
+      "Database optimization",
+      "Async Python",
+      "API design"
+    ],
+    "learningOutcomes": [
+      "Master Django Ninja",
+      "Build GraphQL APIs",
+      "Optimize database queries",
+      "Implement dataloaders",
+      "Handle real-time data",
+      "Scale Django apps"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Django Ninja + Strawberry project" },
+      { "week": 2, "title": "Models", "description": "Django models with type hints" },
+      { "week": 3, "title": "REST", "description": "Django Ninja REST endpoints" },
+      { "week": 4, "title": "GraphQL", "description": "Strawberry schema" },
+      { "week": 5, "title": "Optimization", "description": "Dataloader implementation" },
+      { "week": 6, "title": "Subscriptions", "description": "WebSocket subscriptions" },
+      { "week": 7, "title": "Async", "description": "ASGI and async views" },
+      { "week": 8, "title": "Filtering", "description": "Advanced query filtering" },
+      { "week": 9, "title": "Caching", "description": "Redis caching strategy" },
+      { "week": 10, "title": "Deployment", "description": "Docker + AWS deployment" }
+    ]
+  },
+  {
+    "slug": "qwik-microfrontends",
+    "title": "Qwik Microfrontend Orchestrator",
+    "shortDescription": "Resumable microfrontends with Qwik and Module Federation",
+    "fullDescription": "Create a microfrontend architecture using Qwik's resumability and Webpack Module Federation. Features instant loading, progressive hydration, and shared dependencies. Implements cross-application state management, routing integration, and performance budgets. Demonstrates enterprise-scale frontend architecture with optimal Core Web Vitals.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Qwik", "Partytown", "Qwik City"],
+      "microfrontends": ["Module Federation", "Import Maps"],
+      "state": ["Qwik Signals", "Zustand"],
+      "bundler": ["Webpack 5", "Vite"],
+      "monorepo": ["Turborepo", "pnpm"],
+      "testing": ["Vitest", "Playwright"],
+      "monitoring": ["Lighthouse CI", "Web Vitals"]
+    },
+    "features": [
+      "Resumable hydration",
+      "Module Federation",
+      "Shared dependencies",
+      "Cross-app routing",
+      "State synchronization",
+      "Lazy loading",
+      "Performance budgets",
+      "Version management",
+      "Deployment isolation",
+      "Runtime integration"
+    ],
+    "skillsRequired": [
+      "Qwik",
+      "Microfrontends",
+      "Module Federation",
+      "TypeScript",
+      "Build tooling",
+      "Web performance"
+    ],
+    "learningOutcomes": [
+      "Master Qwik resumability",
+      "Architect microfrontends",
+      "Implement Module Federation",
+      "Optimize Core Web Vitals",
+      "Design shared state",
+      "Scale frontend teams"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Architecture", "description": "Microfrontend design patterns" },
+      { "week": 2, "title": "Host", "description": "Qwik host application" },
+      { "week": 3, "title": "Remote", "description": "Remote Qwik applications" },
+      { "week": 4, "title": "Federation", "description": "Module Federation configuration" },
+      { "week": 5, "title": "Routing", "description": "Cross-app routing" },
+      { "week": 6, "title": "State", "description": "Shared state management" },
+      { "week": 7, "title": "Dependencies", "description": "Shared dependency resolution" },
+      { "week": 8, "title": "Resumability", "description": "Progressive hydration" },
+      { "week": 9, "title": "Performance", "description": "Bundle optimization" },
+      { "week": 10, "title": "Deployment", "description": "Independent deployments" }
+    ]
+  },
+  {
+    "slug": "android-ktor-client",
+    "title": "Android Ktor Multiplatform Client",
+    "shortDescription": "Kotlin Multiplatform app with Ktor client and SQLDelight",
+    "fullDescription": "Build a Kotlin Multiplatform application sharing networking and database code across Android, iOS, and desktop. Uses Ktor client for HTTP requests and SQLDelight for type-safe SQL. Implements offline-first architecture with cache invalidation and conflict resolution. Features reactive UI with Compose Multiplatform and platform-specific optimizations.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "mobile": ["Kotlin Multiplatform", "Compose Multiplatform"],
+      "networking": ["Ktor Client", "kotlinx.serialization"],
+      "database": ["SQLDelight", "SQLite"],
+      "async": ["Coroutines", "Flow"],
+      "injection": ["Koin", "Kodein"],
+      "testing": ["Kotest", "Mockative"],
+      "build": ["Gradle", "Kotlin DSL"]
+    },
+    "features": [
+      "Cross-platform networking",
+      "Type-safe SQL",
+      "Offline-first",
+      "Cache strategy",
+      "Conflict resolution",
+      "Reactive UI",
+      "Platform-specific UI",
+      "Shared ViewModels",
+      "Dependency injection",
+      "Multiplatform testing"
+    ],
+    "skillsRequired": [
+      "Kotlin Multiplatform",
+      "Ktor",
+      "SQLDelight",
+      "Compose Multiplatform",
+      "Coroutines",
+      "Mobile development"
+    ],
+    "learningOutcomes": [
+      "Master Kotlin Multiplatform",
+      "Build shared business logic",
+      "Implement offline-first",
+      "Design cross-platform APIs",
+      "Optimize for each platform",
+      "Share code effectively"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "KMM project configuration" },
+      { "week": 2, "title": "Networking", "description": "Ktor client setup" },
+      { "week": 3, "title": "Serialization", "description": "kotlinx.serialization" },
+      { "week": 4, "title": "Database", "description": "SQLDelight schema" },
+      { "week": 5, "title": "Repository", "description": "Shared repository pattern" },
+      { "week": 6, "title": "Cache", "description": "Offline cache strategy" },
+      { "week": 7, "title": "State", "description": "Shared ViewModels" },
+      { "week": 8, "title": "Android", "description": "Compose Android UI" },
+      { "week": 9, "title": "iOS", "description": "Compose iOS UI" },
+      { "week": 10, "title": "Desktop", "description": "Compose Desktop UI" }
+    ]
+  },
+  {
+    "slug": "elysia-bunjs-api",
+    "title": "ElysiaJS Bun Runtime API",
+    "shortDescription": "High-performance API with ElysiaJS running on Bun",
+    "fullDescription": "Build a blazing-fast REST and GraphQL API using ElysiaJS, a Bun-first web framework. Features end-to-end type safety with Eden Treaty, built-in validation with Zod, and super-fast startup times. Implements JWT authentication, file uploads, and WebSocket real-time features. Demonstrates Bun's speed for development and production.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "8-10 weeks",
+    "recommendedYear": "Second Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "backend": ["Bun", "ElysiaJS", "TypeScript"],
+      "database": ["Bun SQLite", "PostgreSQL", "Drizzle ORM"],
+      "validation": ["Zod", "Elysia Validation"],
+      "auth": ["JWT", "Bun Password"],
+      "realtime": ["WebSocket", "SSE"],
+      "testing": ["Bun Test", "Supertest"],
+      "deployment": ["Docker", "Fly.io"]
+    },
+    "features": [
+      "End-to-end type safety",
+      "Built-in validation",
+      "JWT authentication",
+      "File uploads",
+      "WebSocket support",
+      "Eden Treaty client",
+      "OpenAPI documentation",
+      "Rate limiting",
+      "Bun SQLite",
+      "Fast startup"
+    ],
+    "skillsRequired": [
+      "TypeScript",
+      "Bun",
+      "ElysiaJS",
+      "REST APIs",
+      "WebSockets",
+      "SQL"
+    ],
+    "learningOutcomes": [
+      "Master Bun runtime",
+      "Build ElysiaJS APIs",
+      "Implement type-safe clients",
+      "Deploy Bun apps",
+      "Handle WebSockets",
+      "Optimize performance"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Bun + ElysiaJS project" },
+      { "week": 2, "title": "Routes", "description": "REST endpoints with validation" },
+      { "week": 3, "title": "Database", "description": "Drizzle ORM with PostgreSQL" },
+      { "week": 4, "title": "Auth", "description": "JWT authentication" },
+      { "week": 5, "title": "Eden", "description": "Type-safe Eden Treaty client" },
+      { "week": 6, "title": "WebSocket", "description": "Real-time WebSocket handlers" },
+      { "week": 7, "title": "Uploads", "description": "File upload processing" },
+      { "week": 8, "title": "Docs", "description": "OpenAPI documentation" },
+      { "week": 9, "title": "Testing", "description": "Bun test suite" },
+      { "week": 10, "title": "Deploy", "description": "Fly.io deployment" }
+    ]
+  },
+  {
+    "slug": "pwa-wallet-connect",
+    "title": "PWA Wallet Connect Bridge",
+    "shortDescription": "Progressive Web App with WalletConnect v2 and WebAuthn",
+    "fullDescription": "Develop a cutting-edge PWA that acts as a Web3 wallet using WalletConnect v2 for dApp connections and WebAuthn for biometric authentication. Features passkey support, secure enclave key storage, and transaction simulation. Works completely offline for transaction signing and syncs across devices with end-to-end encryption.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["React", "Vite", "Tailwind"],
+      "pwa": ["Workbox", "Service Workers", "Manifest"],
+      "blockchain": ["WalletConnect v2", "Ethers.js", "Viem"],
+      "auth": ["WebAuthn", "Passkeys"],
+      "crypto": ["Web Crypto API", "IndexedDB"],
+      "sync": ["WebRTC", "Signal"],
+      "testing": ["Playwright", "Vitest"]
+    },
+    "features": [
+      "WalletConnect v2",
+      "WebAuthn passkeys",
+      "Biometric auth",
+      "Offline signing",
+      "Cross-device sync",
+      "Transaction simulation",
+      "Secure enclave",
+      "Push notifications",
+      "Installable PWA",
+      "ENS resolution"
+    ],
+    "skillsRequired": [
+      "PWA development",
+      "WebAuthn",
+      "WalletConnect",
+      "Web3",
+      "Cryptography",
+      "IndexedDB"
+    ],
+    "learningOutcomes": [
+      "Build secure PWAs",
+      "Implement WebAuthn",
+      "Master WalletConnect",
+      "Design offline-first",
+      "Handle private keys",
+      "Create cross-device sync"
+    ],
+    "timeline": [
+      { "week": 1, "title": "PWA", "description": "Vite PWA configuration" },
+      { "week": 2, "title": "Auth", "description": "WebAuthn registration/login" },
+      { "week": 3, "title": "Keys", "description": "Secure key generation and storage" },
+      { "week": 4, "title": "WalletConnect", "description": "WalletConnect v2 pairing" },
+      { "week": 5, "title": "Signing", "description": "Transaction signing flows" },
+      { "week": 6, "title": "Offline", "description": "Service Worker caching" },
+      { "week": 7, "title": "Sync", "description": "WebRTC peer-to-peer sync" },
+      { "week": 8, "title": "Simulation", "description": "Transaction simulation" },
+      { "week": 9, "title": "Notifications", "description": "Push notifications" },
+      { "week": 10, "title": "ENS", "description": "ENS name resolution" }
+    ]
+  },
+  {
+    "slug": "swift-vision-pro",
+    "title": "SwiftUI Vision Pro Spatial App",
+    "shortDescription": "Immersive spatial computing app for Apple Vision Pro",
+    "fullDescription": "Create a spatial computing application for Apple Vision Pro using SwiftUI and RealityKit. Features volumetric windows, 3D object manipulation, and spatial gestures. Implements immersive spaces, hand tracking, and audio spatialization. Includes shared spaces for multi-user collaboration and integrates with ARKit for environment understanding.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "18-20 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Swift",
+    "techStack": {
+      "platform": ["visionOS", "SwiftUI", "RealityKit"],
+      "3d": ["Reality Composer Pro", "USDZ", "Metal"],
+      "spatial": ["ARKit", "Hand Tracking", "Room Tracking"],
+      "audio": ["Spatial Audio", "AVFoundation"],
+      "collaboration": ["Group Activities", "SharePlay"],
+      "ai": ["Core ML", "Create ML"],
+      "testing": ["XCTest", "RealityKit Simulator"]
+    },
+    "features": [
+      "Volumetric windows",
+      "3D object manipulation",
+      "Spatial gestures",
+      "Immersive spaces",
+      "Hand tracking",
+      "Environment understanding",
+      "Spatial audio",
+      "Multi-user collaboration",
+      "Occlusion handling",
+      "Dynamic lighting"
+    ],
+    "skillsRequired": [
+      "visionOS",
+      "SwiftUI",
+      "RealityKit",
+      "ARKit",
+      "3D mathematics",
+      "Spatial design"
+    ],
+    "learningOutcomes": [
+      "Master visionOS development",
+      "Build spatial apps",
+      "Implement hand tracking",
+      "Design immersive experiences",
+      "Create collaborative spaces",
+      "Optimize for visionOS"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "visionOS development environment" },
+      { "week": 2, "title": "Windows", "description": "Volumetric window design" },
+      { "week": 3, "title": "3D", "description": "RealityKit entity system" },
+      { "week": 4, "title": "Gestures", "description": "Spatial gesture recognition" },
+      { "week": 5, "title": "Hands", "description": "Hand tracking integration" },
+      { "week": 6, "title": "Environment", "description": "Room and scene understanding" },
+      { "week": 7, "title": "Audio", "description": "Spatial audio positioning" },
+      { "week": 8, "title": "Immersive", "description": "Full immersion spaces" },
+      { "week": 9, "title": "Collaboration", "description": "SharePlay integration" },
+      { "week": 10, "title": "Optimization", "description": "Performance tuning" }
+    ]
+  },
+  {
+    "slug": "trpc-nestjs-backend",
+    "title": "tRPC with NestJS Backend",
+    "shortDescription": "End-to-end type-safe APIs with tRPC and NestJS",
+    "fullDescription": "Build a full-stack application with tRPC providing end-to-end type safety between NestJS backend and React/Next.js frontend. Features automatic TypeScript inference, real-time subscriptions, and middleware support. Implements authentication, file uploads, and batch requests. Demonstrates tRPC as a modern alternative to REST/GraphQL.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "backend": ["NestJS", "tRPC", "Prisma"],
+      "frontend": ["Next.js 14", "React", "TanStack Query"],
+      "database": ["PostgreSQL", "Redis"],
+      "validation": ["Zod", "Class Validator"],
+      "auth": ["NextAuth.js", "JWT"],
+      "realtime": ["WebSockets", "SSE"],
+      "testing": ["Jest", "Testing Library"]
+    },
+    "features": [
+      "End-to-end type safety",
+      "Real-time subscriptions",
+      "Automatic inference",
+      "Middleware system",
+      "Batch requests",
+      "File handling",
+      "Error formatting",
+      "Context creation",
+      "Meta procedures",
+      "Merged routers"
+    ],
+    "skillsRequired": [
+      "TypeScript",
+      "tRPC",
+      "NestJS",
+      "Prisma",
+      "React/Next.js",
+      "Zod"
+    ],
+    "learningOutcomes": [
+      "Master tRPC",
+      "Build type-safe full-stack",
+      "Implement NestJS with tRPC",
+      "Design real-time features",
+      "Share types automatically",
+      "Eliminate API contracts"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "NestJS + tRPC integration" },
+      { "week": 2, "title": "Routers", "description": "Procedure definitions" },
+      { "week": 3, "title": "Validation", "description": "Zod input validation" },
+      { "week": 4, "title": "Database", "description": "Prisma with tRPC" },
+      { "week": 5, "title": "Auth", "description": "Authentication middleware" },
+      { "week": 6, "title": "Frontend", "description": "Next.js tRPC client" },
+      { "week": 7, "title": "Subscriptions", "description": "WebSocket subscriptions" },
+      { "week": 8, "title": "Uploads", "description": "File upload handling" },
+      { "week": 9, "title": "Batching", "description": "Request batching" },
+      { "week": 10, "title": "Optimization", "description": "Performance and caching" }
+    ]
+  },
+  {
+    "slug": "react-native-vision-camera",
+    "title": "React Native Vision Camera AI",
+    "shortDescription": "Real-time camera app with on-device ML using Vision Camera",
+    "fullDescription": "Develop a powerful camera application using React Native Vision Camera with real-time AI processing. Implements object detection, text recognition, and face analysis entirely on-device. Features custom frame processors, QR/barcode scanning, and document detection. Includes gesture controls, filters, and video recording with ML enhancement.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "mobile": ["React Native", "Vision Camera", "Reanimated 3"],
+      "ml": ["TensorFlow Lite", "ML Kit", "MediaPipe"],
+      "vision": ["Frame Processors", "Skia", "OpenCV"],
+      "ui": ["React Native Gesture Handler"],
+      "storage": ["MMKV", "FastImage"],
+      "navigation": ["Expo Router"],
+      "profiling": ["Flipper", "Flashlight"]
+    },
+    "features": [
+      "Real-time object detection",
+      "Text recognition (OCR)",
+      "Face analysis",
+      "QR/barcode scanning",
+      "Document detection",
+      "Custom frame processors",
+      "Video recording",
+      "AI filters",
+      "Gesture controls",
+      "Performance optimization"
+    ],
+    "skillsRequired": [
+      "React Native",
+      "Vision Camera",
+      "On-device ML",
+      "Frame processing",
+      "Mobile optimization",
+      "Computer Vision"
+    ],
+    "learningOutcomes": [
+      "Master Vision Camera",
+      "Implement frame processors",
+      "Deploy on-device ML",
+      "Build real-time CV apps",
+      "Optimize for 60fps",
+      "Handle camera hardware"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Vision Camera integration" },
+      { "week": 2, "title": "Camera", "description": "Basic camera controls" },
+      { "week": 3, "title": "Frame", "description": "Frame processor pipeline" },
+      { "week": 4, "title": "Object", "description": "TFLite object detection" },
+      { "week": 5, "title": "OCR", "description": "Text recognition" },
+      { "week": 6, "title": "Face", "description": "Face detection and landmarks" },
+      { "week": 7, "title": "QR", "description": "QR/barcode scanning" },
+      { "week": 8, "title": "Filters", "description": "Skia real-time filters" },
+      { "week": 9, "title": "Video", "description": "Video recording with effects" },
+      { "week": 10, "title": "Optimization", "description": "Performance tuning" }
+    ]
+  },
+  {
+    "slug": "htmx-django-todo",
+    "title": "HTMX + Django Real-time App",
+    "shortDescription": "Modern web app with HTMX and Django without JavaScript frameworks",
+    "fullDescription": "Build a reactive web application using HTMX with Django backend, eliminating the need for complex JavaScript frameworks. Features real-time updates, server-sent events, and optimistic UI. Implements infinite scroll, inline editing, and form validation. Demonstrates how HTMX can create SPAs with minimal JavaScript and maximum simplicity.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "8-10 weeks",
+    "recommendedYear": "Second Year",
+    "primaryTechnology": "Python",
+    "techStack": {
+      "backend": ["Django", "Django REST Framework"],
+      "frontend": ["HTMX", "Alpine.js", "Tailwind CSS"],
+      "realtime": ["Django Channels", "Server-Sent Events"],
+      "database": ["PostgreSQL", "Redis"],
+      "templates": ["Django Templates", "Jinja2"],
+      "testing": ["pytest", "Playwright"],
+      "deployment": ["Docker", "Fly.io"]
+    },
+    "features": [
+      "HTMX partial updates",
+      "Server-sent events",
+      "Optimistic UI",
+      "Infinite scroll",
+      "Inline editing",
+      "Form validation",
+      "Real-time notifications",
+      "Search with debounce",
+      "Modal dialogs",
+      "CSRF protection"
+    ],
+    "skillsRequired": [
+      "Django",
+      "HTMX",
+      "Python",
+      "HTML/CSS",
+      "Alpine.js",
+      "WebSockets"
+    ],
+    "learningOutcomes": [
+      "Master HTMX patterns",
+      "Build reactive Django",
+      "Minimize JavaScript",
+      "Implement real-time features",
+      "Create dynamic UIs",
+      "Simplify web development"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Django + HTMX configuration" },
+      { "week": 2, "title": "CRUD", "description": "Basic CRUD with HTMX" },
+      { "week": 3, "title": "Validation", "description": "Form validation with HTMX" },
+      { "week": 4, "title": "Search", "description": "Debounced search" },
+      { "week": 5, "title": "Inline", "description": "Inline editing" },
+      { "week": 6, "title": "Infinite", "description": "Infinite scroll" },
+      { "week": 7, "title": "Real-time", "description": "Django Channels + SSE" },
+      { "week": 8, "title": "Alpine", "description": "Alpine.js enhancements" },
+      { "week": 9, "title": "Modals", "description": "Modal dialogs" },
+      { "week": 10, "title": "Deploy", "description": "Docker + Fly.io deployment" }
+    ]
+  },
+  {
+    "slug": "compose-multiplatform-desktop",
+    "title": "Compose Multiplatform IDE-like App",
+    "shortDescription": "Feature-rich desktop application with Compose Multiplatform",
+    "fullDescription": "Create a complex desktop application using Compose Multiplatform that runs on Windows, macOS, and Linux. Implements MDI interface, custom text editor with syntax highlighting, and file system browser. Features plugin system, theming engine, and native file dialogs. Demonstrates Compose's capabilities for professional desktop software.",
+    "domain": "DESKTOP_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "desktop": ["Compose Multiplatform", "Kotlin"],
+      "ui": ["Material 3", "Compose Desktop"],
+      "editor": ["Compose Syntax Highlighter"],
+      "fs": ["Okio", "kotlinx.coroutines"],
+      "plugins": ["Java Scripting", "Kotlin Scripting"],
+      "database": ["SQLDelight", "SQLite"],
+      "build": ["Gradle", "Compose Compiler"]
+    },
+    "features": [
+      "MDI interface",
+      "Syntax highlighting",
+      "File browser",
+      "Plugin system",
+      "Theme engine",
+      "Native menus",
+      "File watchers",
+      "Undo/redo",
+      "Search/Replace",
+      "Native packaging"
+    ],
+    "skillsRequired": [
+      "Kotlin",
+      "Compose Multiplatform",
+      "Desktop development",
+      "File systems",
+      "Plugin architectures",
+      "UI/UX design"
+    ],
+    "learningOutcomes": [
+      "Build desktop apps with Compose",
+      "Implement MDI patterns",
+      "Design plugin systems",
+      "Create text editors",
+      "Handle native integrations",
+      "Package for all platforms"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Compose Desktop project" },
+      { "week": 2, "title": "Window", "description": "MDI window management" },
+      { "week": 3, "title": "Editor", "description": "Text editor foundation" },
+      { "week": 4, "title": "Syntax", "description": "Syntax highlighting engine" },
+      { "week": 5, "title": "Files", "description": "File system browser" },
+      { "week": 6, "title": "Plugins", "description": "Plugin architecture" },
+      { "week": 7, "title": "Themes", "description": "Dynamic theming" },
+      { "week": 8, "title": "Menus", "description": "Native menu bars" },
+      { "week": 9, "title": "Undo", "description": "Undo/redo system" },
+      { "week": 10, "title": "Packaging", "description": "Native installers" }
+    ]
+  },
+  {
+    "slug": "python-rust-ml-service",
+    "title": "Python + Rust ML Inference Service",
+    "shortDescription": "High-performance ML inference service with Python bindings to Rust",
+    "fullDescription": "Build a hybrid ML inference service where performance-critical components are written in Rust and exposed to Python via PyO3. Implements fast tokenization, tensor operations, and post-processing in Rust while using Python for model loading and orchestration. Features SIMD optimizations, memory pooling, and zero-copy serialization.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Rust",
+    "techStack": {
+      "rust": ["PyO3", "Rayon", "ndarray", "tokenizers"],
+      "python": ["FastAPI", "PyTorch", "Transformers"],
+      "ml": ["ONNX Runtime", "Candle"],
+      "api": ["gRPC", "REST"],
+      "optimization": ["SIMD", "Memory pooling"],
+      "profiling": ["perf", "Flamegraph"],
+      "deployment": ["Docker", "Kubernetes"]
+    },
+    "features": [
+      "PyO3 bindings",
+      "Fast tokenization",
+      "SIMD tensor ops",
+      "Zero-copy serialization",
+      "Memory pooling",
+      "Parallel processing",
+      "ONNX inference",
+      "Dynamic batching",
+      "Model versioning",
+      "Performance metrics"
+    ],
+    "skillsRequired": [
+      "Rust",
+      "Python",
+      "PyO3",
+      "ML systems",
+      "Performance optimization",
+      "SIMD"
+    ],
+    "learningOutcomes": [
+      "Master PyO3 bindings",
+      "Optimize Rust-Python FFI",
+      "Build high-performance ML",
+      "Implement SIMD in Rust",
+      "Design zero-copy APIs",
+      "Profile mixed-language systems"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "PyO3 + maturin configuration" },
+      { "week": 2, "title": "Tokenization", "description": "Fast tokenizer in Rust" },
+      { "week": 3, "title": "Tensors", "description": "ndarray tensor operations" },
+      { "week": 4, "title": "Parallel", "description": "Rayon parallel processing" },
+      { "week": 5, "title": "Python", "description": "Python bindings API" },
+      { "week": 6, "title": "Optimization", "description": "SIMD acceleration" },
+      { "week": 7, "title": "Memory", "description": "Memory pooling strategy" },
+      { "week": 8, "title": "Serialization", "description": "Zero-copy serialization" },
+      { "week": 9, "title": "Service", "description": "FastAPI inference service" },
+      { "week": 10, "title": "Batching", "description": "Dynamic batching" }
+    ]
+  },
+  {
+    "slug": "lit-element-wc-library",
+    "title": "Lit Element Web Component Library",
+    "shortDescription": "Framework-agnostic UI library with Lit and Web Components",
+    "fullDescription": "Build a comprehensive UI component library using Lit and Web Components that works with any framework (React, Vue, Angular, or vanilla JS). Features reactive properties, shadow DOM encapsulation, and CSS custom properties for theming. Includes 20+ accessible components, documentation site, and interactive playground.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "web": ["Lit", "Web Components", "TypeScript"],
+      "build": ["Vite", "Rollup", "Web Components Bundle"],
+      "testing": ["Web Test Runner", "Playwright", "axe-core"],
+      "docs": ["11ty", "Storybook", "VitePress"],
+      "a11y": ["WCAG", "ARIA"],
+      "theming": ["CSS Custom Properties", "CSS Parts"],
+      "monitoring": ["Web Vitals", "Lighthouse CI"]
+    },
+    "features": [
+      "20+ accessible components",
+      "Shadow DOM encapsulation",
+      "CSS custom properties theming",
+      "Framework agnostic",
+      "Reactive properties",
+      "Event handling",
+      "Form-associated elements",
+      "RTL support",
+      "Interactive playground",
+      "Comprehensive docs"
+    ],
+    "skillsRequired": [
+      "Lit",
+      "Web Components",
+      "TypeScript",
+      "Accessibility",
+      "Component design",
+      "Build tooling"
+    ],
+    "learningOutcomes": [
+      "Master Lit",
+      "Build Web Components",
+      "Create framework-agnostic UIs",
+      "Implement accessibility",
+      "Design component APIs",
+      "Publish to npm"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Lit + TypeScript environment" },
+      { "week": 2, "title": "Core", "description": "Base component class" },
+      { "week": 3, "title": "Button", "description": "Button component family" },
+      { "week": 4, "title": "Inputs", "description": "Form input components" },
+      { "week": 5, "title": "Overlays", "description": "Modal, tooltip, popover" },
+      { "week": 6, "title": "Navigation", "description": "Tabs, menu, pagination" },
+      { "week": 7, "title": "Theming", "description": "CSS custom properties system" },
+      { "week": 8, "title": "Accessibility", "description": "WCAG compliance" },
+      { "week": 9, "title": "Docs", "description": "Documentation site" },
+      { "week": 10, "title": "Playground", "description": "Interactive playground" }
+    ]
+  },
+  {
+    "slug": "android-jetpack-room-paging",
+    "title": "Jetpack Paging 3 Offline-First App",
+    "shortDescription": "Offline-first Android app with Paging 3 and Room",
+    "fullDescription": "Create a sophisticated offline-first Android application using Jetpack Paging 3 for efficient data loading and Room for local storage. Implements remote mediator for network-local synchronization, efficient database queries, and reactive UI with Flow. Features infinite scrolling, search, and content filtering with offline capabilities.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "android": ["Kotlin", "Jetpack Compose", "Material 3"],
+      "database": ["Room", "SQLite"],
+      "paging": ["Paging 3", "RemoteMediator"],
+      "network": ["Retrofit", "Moshi"],
+      "async": ["Coroutines", "Flow"],
+      "architecture": ["MVVM", "Clean Architecture"],
+      "testing": ["JUnit", "Espresso", "MockK"]
+    },
+    "features": [
+      "Offline-first",
+      "Paging 3 integration",
+      "RemoteMediator sync",
+      "Infinite scrolling",
+      "Search and filter",
+      "Reactive UI",
+      "Database pagination",
+      "Network status",
+      "Error handling",
+      "Data refresh"
+    ],
+    "skillsRequired": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Room",
+      "Paging 3",
+      "Coroutines",
+      "Clean Architecture"
+    ],
+    "learningOutcomes": [
+      "Master Paging 3",
+      "Build offline-first apps",
+      "Implement RemoteMediator",
+      "Design reactive UIs",
+      "Handle complex queries",
+      "Optimize database"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Architecture", "description": "Clean Architecture setup" },
+      { "week": 2, "title": "Database", "description": "Room entities and DAOs" },
+      { "week": 3, "title": "Network", "description": "Retrofit API service" },
+      { "week": 4, "title": "Repository", "description": "Repository pattern" },
+      { "week": 5, "title": "Paging", "description": "Paging 3 configuration" },
+      { "week": 6, "title": "RemoteMediator", "description": "Network-local sync" },
+      { "week": 7, "title": "UI", "description": "Compose LazyColumn with paging" },
+      { "week": 8, "title": "Search", "description": "Offline search implementation" },
+      { "week": 9, "title": "States", "description": "Loading/error states" },
+      { "week": 10, "title": "Testing", "description": "Unit and integration tests" }
+    ]
+  },
+  {
+    "slug": "vue3-nuxt3-ecommerce",
+    "title": "Nuxt 3 E-commerce Platform",
+    "shortDescription": "Modern e-commerce platform with Nuxt 3 and Stripe",
+    "fullDescription": "Build a feature-rich e-commerce platform using Nuxt 3 with server-side rendering, hybrid rendering, and edge-side rendering capabilities. Features product catalog, shopping cart, secure checkout with Stripe, and order management. Implements advanced SEO strategies, image optimization, and personalized recommendations.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Nuxt 3", "Vue 3", "Pinia"],
+      "backend": ["Nuxt Server", "Prisma", "PostgreSQL"],
+      "payments": ["Stripe", "Lemon Squeezy"],
+      "search": ["Algolia", "Meilisearch"],
+      "cms": ["Storyblok", "Sanity"],
+      "cache": ["Nuxt Cache", "Redis"],
+      "analytics": ["Plausible", "Google Analytics 4"]
+    },
+    "features": [
+      "SSR/SSG hybrid",
+      "Product catalog",
+      "Shopping cart",
+      "Secure checkout",
+      "Order management",
+      "User accounts",
+      "Wishlists",
+      "Product reviews",
+      "Advanced search",
+      "Personalization"
+    ],
+    "skillsRequired": [
+      "Nuxt 3",
+      "Vue 3",
+      "TypeScript",
+      "Stripe",
+      "Prisma",
+      "E-commerce patterns"
+    ],
+    "learningOutcomes": [
+      "Master Nuxt 3",
+      "Build e-commerce systems",
+      "Implement payment processing",
+      "Optimize for SEO",
+      "Handle complex state",
+      "Design checkout flows"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Nuxt 3 + Prisma setup" },
+      { "week": 2, "title": "Auth", "description": "User authentication" },
+      { "week": 3, "title": "Products", "description": "Product catalog" },
+      { "week": 4, "title": "Cart", "description": "Shopping cart with Pinia" },
+      { "week": 5, "title": "Checkout", "description": "Stripe integration" },
+      { "week": 6, "title": "Orders", "description": "Order management" },
+      { "week": 7, "title": "Search", "description": "Algolia search" },
+      { "week": 8, "title": "Reviews", "description": "Product reviews" },
+      { "week": 9, "title": "SEO", "description": "SEO optimization" },
+      { "week": 10, "title": "Performance", "description": "Core Web Vitals" }
+    ]
+  },
+  {
+    "slug": "flutter-wearos-companion",
+    "title": "Flutter Wear OS Companion App",
+    "shortDescription": "Cross-platform wearable app with Flutter for Wear OS",
+    "fullDescription": "Develop a wearable application using Flutter targeting Wear OS with round/rectangular screen support. Features heart rate monitoring, step counting, and workout tracking. Implements tile system, complications API, and data sync with companion phone app. Demonstrates Flutter's capabilities for modern wearables development.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Dart",
+    "techStack": {
+      "mobile": ["Flutter", "Wear OS"],
+      "sensors": ["Health", "Sensor", "Activity Recognition"],
+      "ui": ["Curved design", "Ambient mode"],
+      "communication": ["Bluetooth LE", "Wearable Data Layer"],
+      "database": ["Isar", "SQLite"],
+      "state": ["Riverpod", "BLoC"],
+      "deployment": ["Google Play", "Samsung Store"]
+    },
+    "features": [
+      "Round/rectangular UI",
+      "Heart rate monitoring",
+      "Step counting",
+      "Workout tracking",
+      "Tile system",
+      "Complications",
+      "Ambient mode",
+      "Data sync",
+      "Voice input",
+      "Battery optimization"
+    ],
+    "skillsRequired": [
+      "Flutter",
+      "Wear OS",
+      "Sensor integration",
+      "Bluetooth LE",
+      "Mobile health",
+      "UI/UX for wearables"
+    ],
+    "learningOutcomes": [
+      "Build Wear OS apps",
+      "Handle wearable sensors",
+      "Design for small screens",
+      "Implement ambient mode",
+      "Sync with companion apps",
+      "Optimize battery life"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Flutter Wear OS environment" },
+      { "week": 2, "title": "UI", "description": "Round/rectangular adaptive layouts" },
+      { "week": 3, "title": "Sensors", "description": "Heart rate and step sensors" },
+      { "week": 4, "title": "Tracking", "description": "Workout tracking service" },
+      { "week": 5, "title": "Tiles", "description": "Wear OS tiles" },
+      { "week": 6, "title": "Complications", "description": "Watch face complications" },
+      { "week": 7, "title": "Companion", "description": "Phone companion app" },
+      { "week": 8, "title": "Sync", "description": "Bluetooth LE data sync" },
+      { "week": 9, "title": "Ambient", "description": "Ambient mode UI" },
+      { "week": 10, "title": "Optimization", "description": "Battery performance" }
+    ]
+  },
+  {
+    "slug": "rust-axum-api",
+    "title": "Rust Axum Production API",
+    "shortDescription": "Production-ready REST API with Axum and SQLx",
+    "fullDescription": "Build a high-performance, production-ready REST API using Axum web framework in Rust. Features async database access with SQLx, OpenAPI documentation, and comprehensive error handling. Implements JWT authentication, rate limiting, and request tracing. Demonstrates Rust's safety and performance for backend services.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Rust",
+    "techStack": {
+      "backend": ["Rust", "Axum", "Tokio"],
+      "database": ["SQLx", "PostgreSQL", "Redis"],
+      "api": ["OpenAPI", "utoipa", "axum-valid"],
+      "auth": ["JSON Web Tokens", "Argon2"],
+      "observability": ["Tracing", "OpenTelemetry", "Prometheus"],
+      "validation": ["validator", "serde"],
+      "deployment": ["Docker", "Shuttle", "Fly.io"]
+    },
+    "features": [
+      "Async request handling",
+      "Type-safe SQL with SQLx",
+      "JWT authentication",
+      "OpenAPI documentation",
+      "Request validation",
+      "Error handling",
+      "Rate limiting",
+      "Structured logging",
+      "Metrics collection",
+      "Database migrations"
+    ],
+    "skillsRequired": [
+      "Rust",
+      "Axum",
+      "SQLx",
+      "Async programming",
+      "API design",
+      "Database optimization"
+    ],
+    "learningOutcomes": [
+      "Master Rust web development",
+      "Build type-safe APIs",
+      "Implement async database access",
+      "Design error handling",
+      "Add observability",
+      "Deploy Rust services"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Axum + SQLx project" },
+      { "week": 2, "title": "Models", "description": "Database schema and models" },
+      { "week": 3, "title": "Handlers", "description": "Request handlers" },
+      { "week": 4, "title": "Auth", "description": "JWT authentication" },
+      { "week": 5, "title": "Validation", "description": "Request validation" },
+      { "week": 6, "title": "Errors", "description": "Error handling middleware" },
+      { "week": 7, "title": "OpenAPI", "description": "utoipa documentation" },
+      { "week": 8, "title": "Observability", "description": "Tracing and metrics" },
+      { "week": 9, "title": "Middleware", "description": "Rate limiting and CORS" },
+      { "week": 10, "title": "Deployment", "description": "Shuttle/Fly.io deployment" }
+    ]
+  },
+  {
+    "slug": "svelte-5-runes-dashboard",
+    "title": "Svelte 5 Runes Dashboard",
+    "shortDescription": "Next-gen Svelte dashboard with Runes reactivity system",
+    "fullDescription": "Create a cutting-edge dashboard application using Svelte 5's new Runes reactivity system. Features signals-based state management, derived state, and effects with automatic dependency tracking. Implements complex data visualizations, real-time updates, and dynamic theming. Demonstrates the future of Svelte development.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Svelte 5", "Runes", "SvelteKit"],
+      "ui": ["Skeleton UI", "Tailwind CSS"],
+      "visualization": ["LayerChart", "D3.js"],
+      "state": ["Runes", "Svelte 5 stores"],
+      "realtime": ["WebSocket", "Server-Sent Events"],
+      "database": ["Supabase", "PostgreSQL"],
+      "testing": ["Playwright", "Vitest"]
+    },
+    "features": [
+      "Runes reactivity",
+      "Signals-based state",
+      "Derived state",
+      "Effects system",
+      "Real-time updates",
+      "Data visualizations",
+      "Dynamic theming",
+      "Responsive layout",
+      "Accessibility",
+      "Performance profiling"
+    ],
+    "skillsRequired": [
+      "Svelte 5",
+      "Runes",
+      "TypeScript",
+      "Data visualization",
+      "WebSockets",
+      "Tailwind CSS"
+    ],
+    "learningOutcomes": [
+      "Master Svelte 5 Runes",
+      "Build reactive dashboards",
+      "Implement signals pattern",
+      "Create real-time features",
+      "Optimize rendering",
+      "Design accessible UIs"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Svelte 5 + SvelteKit project" },
+      { "week": 2, "title": "Runes", "description": "Understanding Runes ($state, $derived)" },
+      { "week": 3, "title": "Layout", "description": "Responsive dashboard layout" },
+      { "week": 4, "title": "Components", "description": "Reusable dashboard components" },
+      { "week": 5, "title": "State", "description": "Global state with Runes" },
+      { "week": 6, "title": "Charts", "description": "LayerChart integration" },
+      { "week": 7, "title": "Real-time", "description": "WebSocket data streaming" },
+      { "week": 8, "title": "Theming", "description": "Dynamic theme switching" },
+      { "week": 9, "title": "Auth", "description": "Supabase authentication" },
+      { "week": 10, "title": "Deploy", "description": "Vercel deployment" }
+    ]
+  },
+  {
+    "slug": "react-native-tv-app",
+    "title": "React Native TV App",
+    "shortDescription": "Android TV and Apple TV app with React Native",
+    "fullDescription": "Build a streaming application for Android TV and Apple TV using React Native TV. Features 10-foot UI design, remote control navigation, and adaptive bitrate streaming. Implements search, continue watching, and personalized recommendations. Supports DRM content, offline downloads, and voice search.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "mobile": ["React Native TV", "TypeScript"],
+      "video": ["React Native Video", "Bitmovin", "Shaka Player"],
+      "drm": ["Widevine", "FairPlay"],
+      "navigation": ["React Navigation", "TV focus management"],
+      "ui": ["Reanimated 3", "Gesture Handler"],
+      "state": ["Zustand", "TanStack Query"],
+      "analytics": ["Segment", "Mixpanel"]
+    },
+    "features": [
+      "10-foot UI",
+      "Remote control navigation",
+      "Adaptive bitrate",
+      "DRM support",
+      "Search functionality",
+      "Continue watching",
+      "Personalization",
+      "Offline downloads",
+      "Voice search",
+      "Profiles"
+    ],
+    "skillsRequired": [
+      "React Native",
+      "TV app development",
+      "Video streaming",
+      "DRM",
+      "Focus management",
+      "UI/UX for TV"
+    ],
+    "learningOutcomes": [
+      "Build TV apps with RN",
+      "Implement 10-foot UI",
+      "Handle remote navigation",
+      "Integrate DRM",
+      "Optimize video playback",
+      "Design for large screens"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "React Native TV environment" },
+      { "week": 2, "title": "Navigation", "description": "TV focus management" },
+      { "week": 3, "title": "UI", "description": "10-foot interface components" },
+      { "week": 4, "title": "Video", "description": "Video player integration" },
+      { "week": 5, "title": "DRM", "description": "Widevine/FairPlay setup" },
+      { "week": 6, "title": "Catalog", "description": "Content browsing" },
+      { "week": 7, "title": "Search", "description": "Search and discovery" },
+      { "week": 8, "title": "Downloads", "description": "Offline downloads" },
+      { "week": 9, "title": "Recommendations", "description": "Personalization engine" },
+      { "week": 10, "title": "Analytics", "description": "Analytics integration" }
+    ]
+  },
+  {
+    "slug": "python-fastapi-dlt-pipeline",
+    "title": "FastAPI + dlt Data Pipeline",
+    "shortDescription": "Modern data pipeline with FastAPI and data load tool",
+    "fullDescription": "Create a robust data ingestion pipeline using FastAPI and dlt (data load tool) for extracting, normalizing, and loading data from various sources. Features schema evolution, incremental loading, and data validation. Implements REST API for data ingestion, transformation pipelines, and data quality monitoring.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "12-14 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Python",
+    "techStack": {
+      "backend": ["FastAPI", "Python 3.12"],
+      "pipeline": ["dlt", "DuckDB", "Polars"],
+      "database": ["PostgreSQL", "BigQuery", "Snowflake"],
+      "validation": ["Pydantic", "Great Expectations"],
+      "monitoring": ["Prometheus", "Grafana"],
+      "orchestration": ["Dagster", "Prefect"],
+      "deployment": ["Docker", "Kubernetes"]
+    },
+    "features": [
+      "REST ingestion API",
+      "Schema evolution",
+      "Incremental loading",
+      "Data validation",
+      "Multiple destinations",
+      "Transformations",
+      "Data quality checks",
+      "Pipeline monitoring",
+      "Error handling",
+      "Backfill support"
+    ],
+    "skillsRequired": [
+      "Python",
+      "FastAPI",
+      "dlt",
+      "Data engineering",
+      "ETL pipelines",
+      "SQL"
+    ],
+    "learningOutcomes": [
+      "Master dlt framework",
+      "Build data pipelines",
+      "Implement schema evolution",
+      "Design ingestion APIs",
+      "Monitor data quality",
+      "Orchestrate pipelines"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Architecture", "description": "Pipeline architecture design" },
+      { "week": 2, "title": "dlt", "description": "dlt pipeline setup" },
+      { "week": 3, "title": "API", "description": "FastAPI ingestion endpoints" },
+      { "week": 4, "title": "Sources", "description": "Multiple source connectors" },
+      { "week": 5, "title": "Normalization", "description": "Data normalization" },
+      { "week": 6, "title": "Destinations", "description": "Multiple destination support" },
+      { "week": 7, "title": "Validation", "description": "Pydantic + Great Expectations" },
+      { "week": 8, "title": "Incremental", "description": "Incremental loading" },
+      { "week": 9, "title": "Monitoring", "description": "Pipeline observability" },
+      { "week": 10, "title": "Orchestration", "description": "Dagster integration" }
+    ]
+  },
+  {
+    "slug": "ios-swiftui-core-data",
+    "title": "SwiftUI Core Data Sync Engine",
+    "shortDescription": "iCloud sync engine for SwiftUI + Core Data apps",
+    "fullDescription": "Develop a sophisticated synchronization engine for SwiftUI apps using Core Data with CloudKit. Implements conflict resolution, background sync, and offline support. Features real-time updates across devices, shared containers, and custom merge policies. Includes sync status visualization and manual conflict resolution UI.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "16-18 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Swift",
+    "techStack": {
+      "mobile": ["SwiftUI", "Core Data", "CloudKit"],
+      "sync": ["NSPersistentCloudKitContainer"],
+      "concurrency": ["Swift Concurrency", "Background Tasks"],
+      "ui": ["SwiftUI Charts", "WidgetKit"],
+      "testing": ["XCTest", "CloudKit Console"],
+      "analytics": ["TelemetryDeck"],
+      "deployment": ["TestFlight", "App Store"]
+    },
+    "features": [
+      "iCloud sync",
+      "Conflict resolution",
+      "Background sync",
+      "Offline support",
+      "Real-time updates",
+      "Shared containers",
+      "Custom merge policies",
+      "Sync status UI",
+      "Manual resolution",
+      "Migration handling"
+    ],
+    "skillsRequired": [
+      "SwiftUI",
+      "Core Data",
+      "CloudKit",
+      "iCloud",
+      "Data synchronization",
+      "Conflict resolution"
+    ],
+    "learningOutcomes": [
+      "Master Core Data sync",
+      "Implement CloudKit integration",
+      "Handle merge conflicts",
+      "Design offline-first",
+      "Optimize background sync",
+      "Build collaborative features"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Core Data + CloudKit configuration" },
+      { "week": 2, "title": "Models", "description": "Sync-compatible data models" },
+      { "week": 3, "title": "Container", "description": "NSPersistentCloudKitContainer setup" },
+      { "week": 4, "title": "Sync", "description": "Basic sync implementation" },
+      { "week": 5, "title": "Conflicts", "description": "Conflict detection and resolution" },
+      { "week": 6, "title": "Background", "description": "Background sync tasks" },
+      { "week": 7, "title": "UI", "description": "Sync status visualization" },
+      { "week": 8, "title": "Resolution", "description": "Manual conflict resolution UI" },
+      { "week": 9, "title": "Sharing", "description": "Shared Core Data containers" },
+      { "week": 10, "title": "Testing", "description": "Sync testing and debugging" }
+    ]
+  },
+  {
+    "slug": "angular-17-signals-app",
+    "title": "Angular 17 Signals CRM",
+    "fullDescription": "Build a modern CRM application using Angular 17's new signals-based reactivity system. Features fine-grained change detection, computed signals, and effect management. Implements complex data tables, dynamic forms, and real-time notifications. Demonstrates Angular's evolution towards more efficient rendering and simpler state management.",
+    "shortDescription": "Modern CRM with Angular 17 signals and fine-grained reactivity",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Angular 17", "Signals", "RxJS"],
+      "ui": ["Angular Material", "Tailwind CSS"],
+      "state": ["Signal Store", "NgRx Signals"],
+      "database": ["Firebase", "Supabase"],
+      "realtime": ["WebSocket", "SSE"],
+      "testing": ["Jasmine", "Playwright"],
+      "deployment": ["Firebase Hosting", "Vercel"]
+    },
+    "features": [
+      "Signals reactivity",
+      "Computed signals",
+      "Effect management",
+      "Fine-grained updates",
+      "Data tables",
+      "Dynamic forms",
+      "Real-time updates",
+      "Role-based access",
+      "Dashboard widgets",
+      "Export capabilities"
+    ],
+    "skillsRequired": [
+      "Angular 17",
+      "Signals API",
+      "TypeScript",
+      "RxJS",
+      "Angular Material",
+      "State management"
+    ],
+    "learningOutcomes": [
+      "Master Angular signals",
+      "Build reactive CRMs",
+      "Optimize change detection",
+      "Implement signal stores",
+      "Design complex forms",
+      "Handle real-time data"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Angular 17 + Signals project" },
+      { "week": 2, "title": "Signals", "description": "Understanding writable/computed signals" },
+      { "week": 3, "title": "Store", "description": "Signal Store implementation" },
+      { "week": 4, "title": "Auth", "description": "Authentication with signals" },
+      { "week": 5, "title": "Contacts", "description": "Contact management CRUD" },
+      { "week": 6, "title": "Tables", "description": "Data tables with sorting/filtering" },
+      { "week": 7, "title": "Forms", "description": "Dynamic form builder" },
+      { "week": 8, "title": "Real-time", "description": "WebSocket updates with signals" },
+      { "week": 9, "title": "Dashboard", "description": "Analytics dashboard" },
+      { "week": 10, "title": "Optimization", "description": "Fine-grained change detection" }
+    ]
+  },
+  {
+    "slug": "flutter-bluetooth-iot",
+    "title": "Flutter BLE IoT Controller",
+    "shortDescription": "Cross-platform BLE device controller with Flutter",
+    "fullDescription": "Create a universal Bluetooth Low Energy (BLE) device controller app using Flutter. Scans for nearby BLE devices, connects, and interacts with custom GATT services. Features device discovery, characteristic read/write/notify operations, and OTA firmware updates. Includes device profiles for common IoT devices like sensors, lights, and locks.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Dart",
+    "techStack": {
+      "mobile": ["Flutter", "flutter_blue_plus"],
+      "ble": ["GATT", "Bluetooth 5.0"],
+      "state": ["BLoC", "Riverpod"],
+      "database": ["Hive", "Isar"],
+      "ota": ["DFU", "Nordic DFU"],
+      "ui": ["Flutter Material 3", "Custom animations"],
+      "testing": ["Real BLE devices", "Simulator"]
+    },
+    "features": [
+      "BLE device scanning",
+      "Connection management",
+      "GATT service explorer",
+      "Characteristic operations",
+      "Notifications/Indications",
+      "OTA firmware updates",
+      "Device profiles",
+      "Favorite devices",
+      "History logging",
+      "Export diagnostics"
+    ],
+    "skillsRequired": [
+      "Flutter",
+      "BLE/GATT",
+      "IoT protocols",
+      "State management",
+      "Mobile Bluetooth",
+      "Firmware updates"
+    ],
+    "learningOutcomes": [
+      "Master BLE on Flutter",
+      "Handle GATT services",
+      "Implement OTA updates",
+      "Build IoT controllers",
+      "Manage connections",
+      "Parse manufacturer data"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Flutter BLE permissions" },
+      { "week": 2, "title": "Scanning", "description": "Device discovery UI" },
+      { "week": 3, "title": "Connection", "description": "Connection management" },
+      { "week": 4, "title": "GATT", "description": "Service/characteristic explorer" },
+      { "week": 5, "title": "Operations", "description": "Read/write/notify" },
+      { "week": 6, "title": "Profiles", "description": "Device profile system" },
+      { "week": 7, "title": "OTA", "description": "Firmware update implementation" },
+      { "week": 8, "title": "Persistence", "description": "Hive local storage" },
+      { "week": 9, "title": "UI", "description": "Polished device controls" },
+      { "week": 10, "title": "Testing", "description": "Real device testing" }
+    ]
+  },
+  {
+    "slug": "golang-graphql-gateway",
+    "title": "Go GraphQL Federation Gateway",
+    "shortDescription": "GraphQL federation gateway with Go and gqlgen",
+    "fullDescription": "Build a high-performance GraphQL federation gateway using Go and gqlgen that composes multiple subgraphs. Implements Apollo Federation v2 specification, entity resolution, and query planning. Features distributed tracing, persisted queries, and subscription support. Designed for microservices architecture with subgraphs in any language.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "Go",
+    "techStack": {
+      "backend": ["Go", "gqlgen", "graphql-go"],
+      "federation": ["Apollo Federation", "Entity resolution"],
+      "database": ["PostgreSQL", "Redis", "MongoDB"],
+      "observability": ["OpenTelemetry", "Jaeger"],
+      "cache": ["Redis", "Dataloader"],
+      "realtime": ["WebSocket", "graphql-transport-ws"],
+      "deployment": ["Docker", "Kubernetes"]
+    },
+    "features": [
+      "Federation v2",
+      "Entity resolution",
+      "Query planning",
+      "Persisted queries",
+      "Subscriptions",
+      "Dataloader pattern",
+      "Distributed tracing",
+      "Cost analysis",
+      "Cache control",
+      "Schema registry"
+    ],
+    "skillsRequired": [
+      "Go",
+      "GraphQL",
+      "gqlgen",
+      "Federation",
+      "Distributed systems",
+      "Performance optimization"
+    ],
+    "learningOutcomes": [
+      "Master Go GraphQL",
+      "Build federation gateways",
+      "Implement query planning",
+      "Optimize resolvers",
+      "Handle distributed tracing",
+      "Design scalable APIs"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Go + gqlgen project" },
+      { "week": 2, "title": "Schema", "description": "Federation schema design" },
+      { "week": 3, "title": "Entities", "description": "Entity resolution" },
+      { "week": 4, "title": "Resolvers", "description": "Efficient resolver patterns" },
+      { "week": 5, "title": "Planning", "description": "Query planning engine" },
+      { "week": 6, "title": "Dataloader", "description": "N+1 problem solution" },
+      { "week": 7, "title": "Subscriptions", "description": "WebSocket subscriptions" },
+      { "week": 8, "title": "Tracing", "description": "OpenTelemetry integration" },
+      { "week": 9, "title": "Subgraphs", "description": "Multiple subgraph composition" },
+      { "week": 10, "title": "Performance", "description": "Benchmarking and optimization" }
+    ]
+  },
+  {
+    "slug": "astro-starlight-docs",
+    "title": "Astro Starlight Documentation Portal",
+    "shortDescription": "Beautiful documentation portal with Astro Starlight",
+    "fullDescription": "Create a comprehensive documentation portal using Astro Starlight, the new documentation theme from the Astro team. Features MDX support, full-text search, versioning, and dark mode. Implements automated API documentation generation, interactive code examples, and multi-language support. Perfect for open-source projects and product documentation.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "8-10 weeks",
+    "recommendedYear": "Second Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "frontend": ["Astro", "Starlight", "TypeScript"],
+      "content": ["MDX", "Content Collections"],
+      "search": ["Pagefind", "Algolia"],
+      "api": ["OpenAPI", "Swagger"],
+      "versioning": ["Git", "Document versioning"],
+      "deployment": ["Netlify", "Cloudflare Pages"],
+      "analytics": ["Plausible", "Umami"]
+    },
+    "features": [
+      "MDX content",
+      "Full-text search",
+      "Versioned docs",
+      "Dark/light mode",
+      "API documentation",
+      "Interactive examples",
+      "i18n support",
+      "Sidebar navigation",
+      "Edit on GitHub",
+      "SEO optimized"
+    ],
+    "skillsRequired": [
+      "Astro",
+      "Starlight",
+      "MDX",
+      "Technical writing",
+      "TypeScript",
+      "API documentation"
+    ],
+    "learningOutcomes": [
+      "Master Astro Starlight",
+      "Build documentation sites",
+      "Create interactive docs",
+      "Implement versioning",
+      "Generate API docs",
+      "Optimize search"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Astro Starlight project" },
+      { "week": 2, "title": "Structure", "description": "Documentation structure" },
+      { "week": 3, "title": "Content", "description": "MDX content creation" },
+      { "week": 4, "title": "Components", "description": "Custom Starlight components" },
+      { "week": 5, "title": "API", "description": "OpenAPI integration" },
+      { "week": 6, "title": "Search", "description": "Pagefind implementation" },
+      { "week": 7, "title": "Versioning", "description": "Document versioning system" },
+      { "week": 8, "title": "i18n", "description": "Multi-language support" },
+      { "week": 9, "title": "Examples", "description": "Interactive code examples" },
+      { "week": 10, "title": "Deploy", "description": "Netlify/Cloudflare deployment" }
+    ]
+  },
+  {
+    "slug": "react-native-visionos",
+    "title": "React Native visionOS Spatial App",
+    "shortDescription": "Spatial computing app with React Native for visionOS",
+    "fullDescription": "Pioneer spatial computing development by building a visionOS application using React Native's new visionOS support. Features volumetric windows, 3D object rendering with Reality Composer Pro, and spatial gestures. Implements hand tracking, immersive spaces, and audio spatialization. Demonstrates React Native's expansion into Apple's spatial computing platform.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "EXPERT",
+    "estimatedDuration": "18-20 weeks",
+    "recommendedYear": "Final Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "mobile": ["React Native", "visionOS", "Expo"],
+      "3d": ["Reality Composer Pro", "USDZ", "Metal"],
+      "spatial": ["ARKit", "Hand Tracking"],
+      "gestures": ["Spatial Gestures"],
+      "audio": ["Spatial Audio"],
+      "state": ["Zustand", "Redux"],
+      "deployment": ["App Store", "TestFlight"]
+    },
+    "features": [
+      "Volumetric windows",
+      "3D object rendering",
+      "Spatial gestures",
+      "Hand tracking",
+      "Immersive spaces",
+      "Spatial audio",
+      "Reality Composer Pro",
+      "USDZ models",
+      "Environment understanding",
+      "Multi-window support"
+    ],
+    "skillsRequired": [
+      "React Native",
+      "visionOS",
+      "3D graphics",
+      "Spatial computing",
+      "Reality Composer",
+      "ARKit"
+    ],
+    "learningOutcomes": [
+      "Pioneer visionOS with RN",
+      "Build spatial apps",
+      "Implement Reality Composer",
+      "Handle hand tracking",
+      "Design immersive UIs",
+      "Optimize for Vision Pro"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "React Native visionOS environment" },
+      { "week": 2, "title": "Windows", "description": "Volumetric window system" },
+      { "week": 3, "title": "3D", "description": "USDZ model loading" },
+      { "week": 4, "title": "Reality", "description": "Reality Composer Pro integration" },
+      { "week": 5, "title": "Gestures", "description": "Spatial gesture recognition" },
+      { "week": 6, "title": "Hands", "description": "Hand tracking implementation" },
+      { "week": 7, "title": "Immersive", "description": "Immersive space scenes" },
+      { "week": 8, "title": "Audio", "description": "Spatial audio positioning" },
+      { "week": 9, "title": "Multi-window", "description": "Multi-window management" },
+      { "week": 10, "title": "Performance", "description": "Spatial performance optimization" }
+    ]
+  },
+  {
+    "slug": "hono-cloudflare-api",
+    "title": "Hono Cloudflare Workers API",
+    "shortDescription": "Edge-native API with Hono and Cloudflare Workers",
+    "fullDescription": "Build a blazing-fast edge API using Hono, a ultrafast web framework designed for Cloudflare Workers. Features zero-dependency, TypeScript-first design, and middleware system. Implements JWT authentication, D1 database integration, and R2 object storage. Demonstrates the power of edge computing with near-zero cold starts.",
+    "domain": "BACKEND_DEVELOPMENT",
+    "difficulty": "INTERMEDIATE",
+    "estimatedDuration": "10-12 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "TypeScript",
+    "techStack": {
+      "backend": ["Hono", "TypeScript", "Cloudflare Workers"],
+      "database": ["D1", "KV", "Durable Objects"],
+      "storage": ["R2", "S3-compatible"],
+      "auth": ["JWT", "Cloudflare Access"],
+      "email": ["Resend", "MailChannels"],
+      "testing": ["Vitest", "Wrangler"],
+      "deployment": ["Cloudflare Pages", "Workers"]
+    },
+    "features": [
+      "Edge runtime",
+      "Zero cold starts",
+      "D1 SQL database",
+      "KV storage",
+      "R2 object storage",
+      "JWT authentication",
+      "File uploads",
+      "WebSocket support",
+      "Cron triggers",
+      "Queue processing"
+    ],
+    "skillsRequired": [
+      "TypeScript",
+      "Hono",
+      "Cloudflare Workers",
+      "Edge computing",
+      "Serverless",
+      "SQL"
+    ],
+    "learningOutcomes": [
+      "Master Cloudflare Workers",
+      "Build edge APIs",
+      "Use D1 and R2",
+      "Deploy globally",
+      "Optimize for edge",
+      "Handle serverless"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Hono + Cloudflare Workers" },
+      { "week": 2, "title": "Routes", "description": "REST endpoints with Hono" },
+      { "week": 3, "title": "D1", "description": "SQL database integration" },
+      { "week": 4, "title": "Auth", "description": "JWT authentication" },
+      { "week": 5, "title": "KV", "description": "KV storage for sessions" },
+      { "week": 6, "title": "R2", "description": "File uploads to R2" },
+      { "week": 7, "title": "WebSocket", "description": "Durable Objects WebSocket" },
+      { "week": 8, "title": "Cron", "description": "Scheduled workers" },
+      { "week": 9, "title": "Queues", "description": "Message queue processing" },
+      { "week": 10, "title": "Deploy", "description": "Global deployment" }
+    ]
+  },
+  {
+    "slug": "jetpack-compose-wear",
+    "title": "Jetpack Compose Wear OS App",
+    "shortDescription": "Modern Wear OS app with Jetpack Compose for Wear",
+    "fullDescription": "Develop a feature-rich Wear OS application using Jetpack Compose for Wear. Implements curved layouts, position indicators, and wearable-optimized components. Features health tracking, workout coaching, and watch face complications. Demonstrates Google's modern approach to wearable development with declarative UI.",
+    "domain": "MOBILE_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Kotlin",
+    "techStack": {
+      "mobile": ["Kotlin", "Jetpack Compose for Wear"],
+      "wear": ["Horologist", "Wear Material"],
+      "health": ["Health Services", "Sensor"],
+      "ui": ["Curved Layout", "Position Indicator"],
+      "complications": ["Complication API", "Tile Service"],
+      "sync": ["Data Layer API"],
+      "testing": ["Wear Emulator", "Physical device"]
+    },
+    "features": [
+      "Curved layouts",
+      "Position indicators",
+      "Health sensors",
+      "Workout tracking",
+      "Complications API",
+      "Tile service",
+      "Ambient mode",
+      "Voice input",
+      "Phone companion",
+      "Material You"
+    ],
+    "skillsRequired": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Wear OS",
+      "Health Services",
+      "Material Design",
+      "Mobile development"
+    ],
+    "learningOutcomes": [
+      "Build Wear OS with Compose",
+      "Implement curved UIs",
+      "Use Health Services API",
+      "Create complications",
+      "Design for round screens",
+      "Optimize for wearables"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Compose for Wear project" },
+      { "week": 2, "title": "Layout", "description": "Curved layout system" },
+      { "week": 3, "title": "Navigation", "description": "Wear-optimized navigation" },
+      { "week": 4, "title": "Health", "description": "Health Services integration" },
+      { "week": 5, "title": "Tracking", "description": "Workout tracking service" },
+      { "week": 6, "title": "Complications", "description": "Watch face complications" },
+      { "week": 7, "title": "Tiles", "description": "Tile service implementation" },
+      { "week": 8, "title": "Ambient", "description": "Ambient mode UI" },
+      { "week": 9, "title": "Companion", "description": "Phone companion app" },
+      { "week": 10, "title": "Deployment", "description": "Google Play release" }
+    ]
+  },
+  {
+    "slug": "phoenix-liveview-realtime",
+    "title": "Phoenix LiveView Realtime App",
+    "shortDescription": "Real-time web app with Phoenix LiveView and Elixir",
+    "fullDescription": "Build a real-time web application using Phoenix LiveView with Elixir, where UI updates happen over WebSocket without custom JavaScript. Features collaborative editing, live dashboard, and real-time notifications. Implements PubSub, presence tracking, and fault-tolerant design. Demonstrates the power of the actor model for web development.",
+    "domain": "WEB_DEVELOPMENT",
+    "difficulty": "ADVANCED",
+    "estimatedDuration": "14-16 weeks",
+    "recommendedYear": "Third Year",
+    "primaryTechnology": "Elixir",
+    "techStack": {
+      "backend": ["Elixir", "Phoenix", "LiveView"],
+      "database": ["PostgreSQL", "Ecto"],
+      "realtime": ["Phoenix PubSub", "Presence"],
+      "ui": ["Tailwind CSS", "Alpine.js"],
+      "testing": ["ExUnit", "Wallaby"],
+      "deployment": ["Gigalixir", "Fly.io"],
+      "monitoring": ["Telemetry", "Observer"]
+    },
+    "features": [
+      "Real-time UI updates",
+      "Collaborative editing",
+      "Presence tracking",
+      "Live dashboard",
+      "Form validation",
+      "File uploads",
+      "Push notifications",
+      "Offline support",
+      "Performance metrics",
+      "Fault tolerance"
+    ],
+    "skillsRequired": [
+      "Elixir",
+      "Phoenix",
+      "LiveView",
+      "Functional programming",
+      "WebSockets",
+      "PostgreSQL"
+    ],
+    "learningOutcomes": [
+      "Master Phoenix LiveView",
+      "Build real-time apps",
+      "Implement Presence",
+      "Handle WebSocket connections",
+      "Design actor-based systems",
+      "Deploy Elixir apps"
+    ],
+    "timeline": [
+      { "week": 1, "title": "Setup", "description": "Phoenix + LiveView project" },
+      { "week": 2, "title": "LiveView", "description": "First LiveView implementation" },
+      { "week": 3, "title": "Auth", "description": "LiveView authentication" },
+      { "week": 4, "title": "Forms", "description": "Live form validation" },
+      { "week": 5, "title": "PubSub", "description": "Phoenix PubSub integration" },
+      { "week": 6, "title": "Presence", "description": "User presence tracking" },
+      { "week": 7, "title": "Collaboration", "description": "Collaborative features" },
+      { "week": 8, "title": "Uploads", "description": "Live file uploads" },
+      { "week": 9, "title": "Dashboard", "description": "Real-time dashboard" },
+      { "week": 10, "title": "Deploy", "description": "Gigalixir deployment" }
+    ]
+  }
+]

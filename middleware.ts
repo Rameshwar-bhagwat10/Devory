@@ -33,21 +33,32 @@ export async function middleware(request: NextRequest) {
   if (isAuthenticated) {
     // 1. If user is on /auth page, redirect based on onboarding status
     if (pathname === '/auth') {
+      const callbackUrl = request.nextUrl.searchParams.get('callbackUrl');
+      
       if (!onboardingComplete) {
-        return NextResponse.redirect(new URL('/onboarding', request.url));
+        const url = new URL('/onboarding', request.url);
+        if (callbackUrl) {
+          url.searchParams.set('callbackUrl', callbackUrl);
+        }
+        return NextResponse.redirect(url);
       }
-      return NextResponse.redirect(new URL('/dashboard', request.url));
+      
+      // If onboarding complete, redirect to callbackUrl or dashboard
+      return NextResponse.redirect(new URL(callbackUrl || '/dashboard', request.url));
     }
     
-    // 2. If user is on /onboarding and already completed, redirect to dashboard
+    // 2. If user is on /onboarding and already completed, redirect to dashboard or callbackUrl
     if (pathname === '/onboarding' && onboardingComplete) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
+      const callbackUrl = request.nextUrl.searchParams.get('callbackUrl');
+      return NextResponse.redirect(new URL(callbackUrl || '/dashboard', request.url));
     }
     
     // 3. If onboarding not complete and trying to access protected routes, redirect to onboarding
     if (!onboardingComplete && pathname !== '/onboarding') {
       if (onboardingRequiredRoutes.some(route => pathname.startsWith(route))) {
-        return NextResponse.redirect(new URL('/onboarding', request.url));
+        const url = new URL('/onboarding', request.url);
+        url.searchParams.set('callbackUrl', pathname);
+        return NextResponse.redirect(url);
       }
     }
     

@@ -14,7 +14,11 @@ export default async function AuthPage({
   if (session?.user) {
     // Check onboarding status
     if (!session.user.onboardingComplete) {
-      redirect('/onboarding');
+      // Preserve callbackUrl for after onboarding
+      const onboardingUrl = params.callbackUrl 
+        ? `/onboarding?callbackUrl=${encodeURIComponent(params.callbackUrl)}`
+        : '/onboarding';
+      redirect(onboardingUrl);
     }
     
     // Use callback URL or default to dashboard page

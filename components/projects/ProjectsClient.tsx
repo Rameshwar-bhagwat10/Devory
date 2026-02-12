@@ -36,10 +36,13 @@ interface ProjectsClientProps {
 const DOMAIN_OPTIONS = [
   { value: 'WEB_DEVELOPMENT', label: 'Web Development' },
   { value: 'MOBILE_DEVELOPMENT', label: 'Mobile Development' },
+  { value: 'BACKEND_DEVELOPMENT', label: 'Backend Development' },
+  { value: 'DESKTOP_DEVELOPMENT', label: 'Desktop Development' },
   { value: 'MOBILE', label: 'Mobile' },
   { value: 'DATA_SCIENCE', label: 'Data Science' },
   { value: 'MACHINE_LEARNING', label: 'Machine Learning' },
   { value: 'AI_ML', label: 'AI & ML' },
+  { value: 'AI', label: 'AI' },
   { value: 'BLOCKCHAIN', label: 'Blockchain' },
   { value: 'IOT', label: 'IoT' },
   { value: 'GAME_DEVELOPMENT', label: 'Game Development' },
@@ -50,12 +53,21 @@ const DOMAIN_OPTIONS = [
   { value: 'HEALTH_TECH', label: 'Health Tech' },
   { value: 'ENTERPRISE_SYSTEM', label: 'Enterprise System' },
   { value: 'EDTECH', label: 'EdTech' },
+  { value: 'DEVELOPER_TOOLS', label: 'Developer Tools' },
+  { value: 'AR_VR', label: 'AR/VR' },
+  { value: 'ROBOTICS', label: 'Robotics' },
+  { value: 'COMPUTER_VISION', label: 'Computer Vision' },
+  { value: 'ENERGY', label: 'Energy' },
+  { value: 'QUANTUM', label: 'Quantum' },
+  { value: 'BIOINFORMATICS', label: 'Bioinformatics' },
+  { value: 'ENVIRONMENTAL', label: 'Environmental' },
 ];
 
 const DIFFICULTY_OPTIONS = [
   { value: 'BEGINNER', label: 'Beginner' },
   { value: 'INTERMEDIATE', label: 'Intermediate' },
   { value: 'ADVANCED', label: 'Advanced' },
+  { value: 'EXPERT', label: 'Expert' },
 ];
 
 const TECH_STACK_OPTIONS = [

@@ -201,6 +201,8 @@ export class ProjectService {
             features: project.features as string[],
             learningOutcomes: project.learningOutcomes as string[],
             prerequisites: project.skillsRequired as string[],
+            timeline: project.timeline as Array<{ week: number; title: string; description: string }>,
+            architecture: project.architecture,
             tags: [project.domain, project.difficulty, project.primaryTechnology],
             estimatedHours,
           };

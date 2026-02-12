@@ -44,23 +44,26 @@ import {
   SiRuby,
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
+import SaveButton from '@/components/projects/SaveButton';
 
 interface ProjectCardProps {
   id: string;
   slug: string;
   title: string;
   description: string;
-  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
+  difficulty: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'EXPERT';
   domain: string;
   techStack: string[];
   estimatedHours?: number;
   primaryTechnology?: string;
+  isSaved?: boolean;
 }
 
 const DIFFICULTY_STYLES = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
   INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
   ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
+  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
 };
 
 const DOMAIN_LABELS: Record<string, string> = {
@@ -151,6 +154,7 @@ const getTechIcon = (tech?: string): { Icon: IconType; color: string } => {
 };
 
 export default function ProjectCard({
+  id,
   slug,
   title,
   description,
@@ -159,20 +163,31 @@ export default function ProjectCard({
   techStack,
   estimatedHours,
   primaryTechnology,
+  isSaved = false,
 }: ProjectCardProps) {
   const { Icon: TechIcon, color: iconColor } = getTechIcon(primaryTechnology);
 
   return (
-    <Link
-      href={`/projects/${slug}`}
-      scroll={false}
-      onClick={() => {
-        // Save current URL and scroll position before navigation
-        sessionStorage.setItem('projectListUrl', window.location.href);
-        sessionStorage.setItem('projectListScrollY', window.scrollY.toString());
-      }}
-      className="group block h-full bg-glass-10 border border-border-10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-orange/50 hover:shadow-lg hover:shadow-accent-orange/10 active:scale-[0.98] cursor-pointer"
-    >
+    <div className="group relative h-full">
+      {/* Save Button - Top Right */}
+      <div className="absolute top-4 right-4 z-20">
+        <SaveButton
+          projectId={id}
+          initialSaved={isSaved}
+          variant="compact"
+        />
+      </div>
+
+      <Link
+        href={`/projects/${slug}`}
+        scroll={false}
+        onClick={() => {
+          // Save current URL and scroll position before navigation
+          sessionStorage.setItem('projectListUrl', window.location.href);
+          sessionStorage.setItem('projectListScrollY', window.scrollY.toString());
+        }}
+        className="block h-full bg-glass-10 border border-border-10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-orange/50 hover:shadow-lg hover:shadow-accent-orange/10 active:scale-[0.98] cursor-pointer"
+      >
       {/* Content - Flex container to manage spacing */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Title with gradient on hover */}
@@ -244,6 +259,7 @@ export default function ProjectCard({
           </div>
         )}
       </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

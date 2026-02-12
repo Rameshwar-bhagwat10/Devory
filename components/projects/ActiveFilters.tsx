@@ -15,10 +15,13 @@ interface ActiveFiltersProps {
 const FILTER_LABELS: Record<string, string> = {
   WEB_DEVELOPMENT: 'Web Development',
   MOBILE_DEVELOPMENT: 'Mobile Development',
+  BACKEND_DEVELOPMENT: 'Backend Development',
+  DESKTOP_DEVELOPMENT: 'Desktop Development',
   MOBILE: 'Mobile',
   DATA_SCIENCE: 'Data Science',
   MACHINE_LEARNING: 'Machine Learning',
   AI_ML: 'AI & ML',
+  AI: 'AI',
   BLOCKCHAIN: 'Blockchain',
   IOT: 'IoT',
   GAME_DEVELOPMENT: 'Game Development',
@@ -29,9 +32,18 @@ const FILTER_LABELS: Record<string, string> = {
   HEALTH_TECH: 'Health Tech',
   ENTERPRISE_SYSTEM: 'Enterprise System',
   EDTECH: 'EdTech',
+  DEVELOPER_TOOLS: 'Developer Tools',
+  AR_VR: 'AR/VR',
+  ROBOTICS: 'Robotics',
+  COMPUTER_VISION: 'Computer Vision',
+  ENERGY: 'Energy',
+  QUANTUM: 'Quantum',
+  BIOINFORMATICS: 'Bioinformatics',
+  ENVIRONMENTAL: 'Environmental',
   BEGINNER: 'Beginner',
   INTERMEDIATE: 'Intermediate',
   ADVANCED: 'Advanced',
+  EXPERT: 'Expert',
 };
 
 export default function ActiveFilters({ filters, onRemoveFilter, onClearAll }: ActiveFiltersProps) {

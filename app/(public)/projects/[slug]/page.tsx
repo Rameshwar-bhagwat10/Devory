@@ -10,6 +10,7 @@ import SaveButton from '@/components/projects/SaveButton';
 import ShareButton from '@/components/projects/ShareButton';
 import CopySummaryButton from '@/components/projects/CopySummaryButton';
 import BackButton from '@/components/projects/BackButton';
+import StickyActionPanel from '@/components/projects/StickyActionPanel';
 import { getTechIcon, TechBadge } from '@/components/projects/TechIcon';
 
 // OPTIMAL ISR STRATEGY FOR FAST FIRST LOAD:
@@ -97,11 +98,14 @@ const DIFFICULTY_STYLES = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
   INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
   ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
+  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
 };
 
 const DOMAIN_LABELS: Record<string, string> = {
   WEB_DEVELOPMENT: 'Web Development',
   MOBILE_DEVELOPMENT: 'Mobile Development',
+  BACKEND_DEVELOPMENT: 'Backend Development',
+  DESKTOP_DEVELOPMENT: 'Desktop Development',
   DATA_SCIENCE: 'Data Science',
   MACHINE_LEARNING: 'Machine Learning',
   BLOCKCHAIN: 'Blockchain',
@@ -109,40 +113,24 @@ const DOMAIN_LABELS: Record<string, string> = {
   GAME_DEVELOPMENT: 'Game Development',
   CYBERSECURITY: 'Cybersecurity',
   CLOUD_COMPUTING: 'Cloud Computing',
+  FINTECH: 'FinTech',
+  DEVOPS: 'DevOps',
+  HEALTH_TECH: 'Health Tech',
+  ENTERPRISE_SYSTEM: 'Enterprise System',
+  AI_ML: 'AI & ML',
+  EDTECH: 'EdTech',
+  MOBILE: 'Mobile',
+  DEVELOPER_TOOLS: 'Developer Tools',
+  AI: 'AI',
+  AR_VR: 'AR/VR',
+  ROBOTICS: 'Robotics',
+  COMPUTER_VISION: 'Computer Vision',
+  ENERGY: 'Energy',
+  QUANTUM: 'Quantum',
+  BIOINFORMATICS: 'Bioinformatics',
+  ENVIRONMENTAL: 'Environmental',
   OTHER: 'Other',
 };
-
-// Mock timeline data - will be dynamic in future phases
-const TIMELINE_WEEKS = [
-  {
-    week: 1,
-    title: 'Planning & Setup',
-    description: 'Define requirements, set up development environment, and create project structure',
-  },
-  {
-    week: 2,
-    title: 'Core Development',
-    description: 'Build main features and implement core functionality',
-  },
-  {
-    week: 3,
-    title: 'Integration & Testing',
-    description: 'Integrate components, write tests, and fix bugs',
-  },
-  {
-    week: 4,
-    title: 'Polish & Deployment',
-    description: 'Refine UI/UX, optimize performance, and deploy to production',
-  },
-];
-
-// Mock architecture steps - will be dynamic in future phases
-const ARCHITECTURE_STEPS = [
-  'User interacts with the frontend interface',
-  'Frontend sends requests to the backend API',
-  'Backend processes data and communicates with database',
-  'Results are returned and displayed to the user',
-];
 
 export default async function ProjectDetailPage({
   params,
@@ -309,8 +297,11 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+      {/* Main Content - Two Column Layout */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Left Column - Main Content */}
+          <div className="lg:col-span-3 space-y-16">
         
         {/* Overview Section */}
         {project.longDescription && (
@@ -417,22 +408,17 @@ export default async function ProjectDetailPage({
         </section>
 
         {/* Architecture Section */}
-        <section className="opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-1 h-8 bg-gradient-primary rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-90">System Flow</h2>
-          </div>
-          <div className="space-y-4">
-            {ARCHITECTURE_STEPS.map((step, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-accent-orange/10 border-2 border-accent-orange flex items-center justify-center flex-shrink-0">
-                  <span className="text-sm font-bold text-accent-orange">{index + 1}</span>
-                </div>
-                <p className="text-text-60 leading-relaxed pt-1">{step}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {project.architecture && (
+          <section className="opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-1 h-8 bg-gradient-primary rounded-full"></div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Architecture</h2>
+            </div>
+            <div className="bg-glass-5 border border-border-10 rounded-xl p-6">
+              <p className="text-text-60 leading-relaxed whitespace-pre-line">{project.architecture}</p>
+            </div>
+          </section>
+        )}
 
         {/* Skills Required Section */}
         {project.prerequisites.length > 0 && (
@@ -479,48 +465,65 @@ export default async function ProjectDetailPage({
         )}
 
         {/* Timeline Section */}
-        <section className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-1 h-8 bg-gradient-primary rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Project Timeline</h2>
-          </div>
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-border-10"></div>
-            
-            <div className="space-y-8">
-              {TIMELINE_WEEKS.map((item, index) => (
-                <div key={index} className="relative pl-12">
-                  {/* Dot */}
-                  <div className="absolute left-0 w-8 h-8 rounded-full bg-accent-orange/10 border-2 border-accent-orange flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-bold text-text-90 mb-2">Week {item.week}: {item.title}</h3>
-                    <p className="text-text-60 leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Projects Section */}
-        {relatedProjects.length > 0 && (
-          <section className="opacity-0 animate-fade-in" style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}>
+        {project.timeline && project.timeline.length > 0 && (
+          <section className="opacity-0 animate-fade-in" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
             <div className="flex items-center gap-4 mb-6">
               <div className="w-1 h-8 bg-gradient-primary rounded-full"></div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Related Projects</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Project Timeline</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedProjects.map((relatedProject) => (
-                <ProjectCard key={relatedProject.id} {...relatedProject} />
-              ))}
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-4 top-0 bottom-0 w-px bg-border-10"></div>
+              
+              <div className="space-y-8">
+                {project.timeline.map((item, index) => (
+                  <div key={index} className="relative pl-12">
+                    {/* Dot */}
+                    <div className="absolute left-0 w-8 h-8 rounded-full bg-accent-orange/10 border-2 border-accent-orange flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-bold text-text-90 mb-2">Week {item.week}: {item.title}</h3>
+                      <p className="text-text-60 leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}
 
+          </div>
+
+          {/* Right Column - Sticky Action Panel */}
+          <div className="lg:col-span-1">
+            <StickyActionPanel
+              projectId={project.id}
+              projectSlug={project.slug}
+              difficulty={project.difficulty}
+              isSaved={isSaved}
+            />
+          </div>
+        </div>
+
+        {/* Full Width Sections Below */}
+        <div className="space-y-16 mt-16">
+          {/* Related Projects Section */}
+          {relatedProjects.length > 0 && (
+            <section className="opacity-0 animate-fade-in" style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-1 h-8 bg-gradient-primary rounded-full"></div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Related Projects</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedProjects.map((relatedProject) => (
+                  <ProjectCard key={relatedProject.id} {...relatedProject} />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       </div>
     </div>
     </>
