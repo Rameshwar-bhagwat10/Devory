@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { auth } from './lib/auth';
+import { getSession } from './lib/auth-middleware';
 
 // Public routes that don't require authentication
 const publicRoutes = ['/', '/auth', '/projects', '/community'];
@@ -12,7 +12,7 @@ const protectedRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
 const adminRoutes = ['/admin'];
 
 // Routes that require onboarding completion
-const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community/new', '/projects'];
+const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,8 +22,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   
-  // Get session
-  const session = await auth();
+  // Get session using edge-compatible method
+  const session = await getSession(request);
   const isAuthenticated = !!session?.user;
   const onboardingComplete = session?.user?.onboardingComplete ?? false;
   

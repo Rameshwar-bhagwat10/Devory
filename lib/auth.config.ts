@@ -31,22 +31,17 @@ export const authConfig: NextAuthConfig = {
     error: '/auth',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const isOnAuth = nextUrl.pathname.startsWith('/auth');
-      
-      if (isOnAuth) {
-        if (isLoggedIn) return Response.redirect(new URL('/dashboard', nextUrl));
-        return true;
+    async jwt({ token, user, trigger, session }) {
+      // On sign in, set initial values
+      if (user) {
+        token.id = user.id || '';
+        token.role = user.role || 'STUDENT';
+        token.onboardingComplete = user.onboardingComplete || false;
       }
       
-      return isLoggedIn;
-    },
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.role = user.role;
-        token.onboardingComplete = user.onboardingComplete;
+      // Handle session updates (when update() is called from client)
+      if (trigger === 'update' && session) {
+        return { ...token, ...session };
       }
       
       return token;

@@ -1,0 +1,65 @@
+
+> devory@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local, .env
+- Experiments (use with caution):
+  ┬╖ cpus: 4
+  ┬╖ serverActions
+
+ΓÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.8s
+  Running TypeScript ...
+  Collecting page data using 4 workers ...
+Pre-rendering 50 project pages at build time...
+  Generating static pages using 4 workers (0/77) ...
+  Generating static pages using 4 workers (19/77) 
+  Generating static pages using 4 workers (38/77) 
+  Generating static pages using 4 workers (57/77) 
+Γ£ô Generating static pages using 4 workers (77/77) in 470.3ms
+  Finalizing page optimization ...
+
+Route (app)                          Revalidate  Expire
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ ╞Æ /admin
+Γö£ Γùï /admin/ideas
+Γö£ Γùï /admin/reports
+Γö£ ╞Æ /admin/test
+Γö£ ╞Æ /api/admin/ideas
+Γö£ ╞Æ /api/admin/reports
+Γö£ ╞Æ /api/ai
+Γö£ ╞Æ /api/auth
+Γö£ ╞Æ /api/auth/[...nextauth]
+Γö£ ╞Æ /api/community
+Γö£ ╞Æ /api/community/post
+Γö£ ╞Æ /api/community/react
+Γö£ ╞Æ /api/community/report
+Γö£ ╞Æ /api/onboarding
+Γö£ ╞Æ /api/pdf
+Γö£ ╞Æ /api/projects
+Γö£ ╞Æ /api/projects/[id]
+Γö£ ╞Æ /api/projects/save
+Γö£ ╞Æ /auth
+Γö£ Γùï /community
+Γö£ Γùï /community/new
+Γö£ ╞Æ /dashboard
+Γö£ ╞Æ /onboarding
+Γö£ Γùï /profile
+Γö£ Γùï /projects                                1h      1y
+Γö£ ΓùÅ /projects/[slug]                         1h      1y
+Γöé Γö£ /projects/turborepo-monorepo             1h      1y
+Γöé Γö£ /projects/trpc-typesafe-api              1h      1y
+Γöé Γö£ /projects/remix-progressive-app          1h      1y
+Γöé Γöö [+47 more paths]
+Γöö ╞Æ /saved
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+ΓùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+╞Æ  (Dynamic)  server-rendered on demand
+

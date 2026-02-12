@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 interface Option {
   value: string;
@@ -224,7 +224,7 @@ interface OnboardingData {
 }
 
 export default function OnboardingFlow({ userId: _userId }: { userId: string }) {
-  const router = useRouter();
+  const { update } = useSession();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Partial<OnboardingData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -308,12 +308,16 @@ export default function OnboardingFlow({ userId: _userId }: { userId: string }) 
         throw new Error('Failed to complete onboarding');
       }
 
+      // Update the session with new onboardingComplete status
+      await update({
+        onboardingComplete: true,
+      });
+
       setShowSuccess(true);
       
-      // Redirect after short delay
+      // Redirect to dashboard after showing success message
       setTimeout(() => {
-        router.push('/dashboard');
-        router.refresh();
+        window.location.href = '/dashboard';
       }, 1500);
     } catch (error) {
       console.error('Onboarding error:', error);

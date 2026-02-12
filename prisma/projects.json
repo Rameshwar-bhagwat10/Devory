@@ -1,0 +1,1561 @@
+[
+{
+  "slug": "ai-powered-fraud-detection-platform",
+  "title": "AI Powered Financial Fraud Detection Platform",
+  "shortDescription": "Real-time fraud detection system for banking and fintech transactions",
+  "fullDescription": "Develop a real-time fraud detection platform that analyzes financial transactions using anomaly detection and supervised learning models. The system evaluates transaction behavior, device fingerprints, geolocation anomalies, and historical spending patterns to prevent fraud before settlement.",
+  "domain": "FINTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js", "TypeScript"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL", "Redis"],
+    "tools": ["Kafka", "Scikit-learn", "Docker"]
+  },
+  "architecture": "Event-driven architecture using Kafka, FastAPI ML service, Redis caching layer, PostgreSQL for transaction storage.",
+  "features": [
+    "Real-time transaction scoring",
+    "Anomaly detection engine",
+    "Risk scoring dashboard",
+    "Device fingerprint tracking",
+    "Fraud alert notifications",
+    "Admin monitoring panel"
+  ],
+  "skillsRequired": ["Machine learning", "Event streaming", "API development"],
+  "learningOutcomes": ["Deploy ML models in production", "Design fintech security systems"],
+  "timeline": [
+    { "week": 1, "title": "Architecture Design", "description": "System architecture and data flow" },
+    { "week": 2, "title": "Data Pipeline", "description": "Kafka event ingestion setup" },
+    { "week": 3, "title": "Model Training", "description": "Fraud classification model" },
+    { "week": 4, "title": "API Integration", "description": "Transaction scoring API" },
+    { "week": 5, "title": "Dashboard", "description": "Admin analytics UI" }
+  ]
+},
+{
+  "slug": "cloud-native-devops-automation-platform",
+  "title": "Cloud Native DevOps Automation Platform",
+  "shortDescription": "CI/CD automation and infrastructure orchestration system",
+  "fullDescription": "Build a DevOps automation platform that manages CI/CD pipelines, container orchestration, and infrastructure provisioning using Infrastructure as Code principles.",
+  "domain": "DEVOPS",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["Docker", "Kubernetes", "Terraform"]
+  },
+  "architecture": "Go backend controlling CI/CD pipelines, Kubernetes cluster management, PostgreSQL for state storage.",
+  "features": [
+    "Pipeline builder UI",
+    "Container deployment",
+    "Infrastructure provisioning",
+    "Cluster monitoring",
+    "Rollback management"
+  ],
+  "skillsRequired": ["Docker", "Kubernetes", "CI/CD"],
+  "learningOutcomes": ["Design DevOps systems", "Automate infrastructure"],
+  "timeline": [
+    { "week": 1, "title": "System Planning", "description": "Define CI/CD workflow" },
+    { "week": 2, "title": "Pipeline Engine", "description": "Build job execution logic" },
+    { "week": 3, "title": "Kubernetes Integration", "description": "Cluster management" },
+    { "week": 4, "title": "Frontend UI", "description": "Pipeline dashboard" }
+  ]
+},
+{
+  "slug": "ai-medical-diagnosis-assistant",
+  "title": "AI Medical Diagnosis Assistant",
+  "shortDescription": "Predict disease probability using patient symptoms",
+  "fullDescription": "Develop a healthcare AI system that predicts possible diseases based on symptoms, lab results, and medical history using classification models.",
+  "domain": "HEALTH_TECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["TensorFlow", "Pandas"]
+  },
+  "architecture": "ML prediction service integrated with healthcare dashboard.",
+  "features": [
+    "Symptom input form",
+    "Disease probability output",
+    "Medical history tracking",
+    "Risk scoring",
+    "Doctor admin panel"
+  ],
+  "skillsRequired": ["Machine learning", "Healthcare data processing"],
+  "learningOutcomes": ["Deploy healthcare ML systems"],
+  "timeline": [
+    { "week": 1, "title": "Dataset Preparation", "description": "Medical dataset cleaning" },
+    { "week": 2, "title": "Model Training", "description": "Classification model" },
+    { "week": 3, "title": "API Deployment", "description": "Prediction API" }
+  ]
+},
+{
+  "slug": "blockchain-supply-chain-verification",
+  "title": "Blockchain Based Supply Chain Verification",
+  "shortDescription": "Track product authenticity using blockchain",
+  "fullDescription": "Build a decentralized supply chain system that records product journey from manufacturer to customer using smart contracts.",
+  "domain": "BLOCKCHAIN",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Solidity",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Node.js"],
+    "database": ["IPFS"],
+    "tools": ["Ethereum", "Hardhat"]
+  },
+  "architecture": "Smart contracts on Ethereum, React frontend, IPFS storage.",
+  "features": [
+    "Product verification",
+    "Immutable transaction log",
+    "QR tracking system",
+    "Admin panel"
+  ],
+  "skillsRequired": ["Smart contracts", "Blockchain basics"],
+  "learningOutcomes": ["Build decentralized apps"],
+  "timeline": [
+    { "week": 1, "title": "Contract Design", "description": "Smart contract structure" },
+    { "week": 2, "title": "Blockchain Deployment", "description": "Deploy to testnet" }
+  ]
+},
+{
+  "slug": "enterprise-erp-system",
+  "title": "Enterprise ERP Management System",
+  "shortDescription": "Integrated ERP system for business operations",
+  "fullDescription": "Develop a modular ERP system covering HR, finance, inventory, and CRM for enterprises.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Docker"]
+  },
+  "architecture": "Modular microservices architecture with REST APIs.",
+  "features": [
+    "HR management",
+    "Finance module",
+    "Inventory tracking",
+    "CRM integration"
+  ],
+  "skillsRequired": ["Enterprise architecture", "Spring Boot"],
+  "learningOutcomes": ["Design large-scale systems"],
+  "timeline": [
+    { "week": 1, "title": "Module Planning", "description": "ERP modules design" }
+  ]
+},
+{
+  "slug": "ai-powered-recruitment-screening-system",
+  "title": "AI Powered Recruitment Screening System",
+  "shortDescription": "Automated resume screening and candidate ranking using NLP models",
+  "fullDescription": "Build an intelligent recruitment screening system that analyzes resumes, extracts skills, matches candidates to job descriptions, and ranks applicants using NLP similarity models and scoring algorithms. Designed for HR departments to reduce hiring time and bias.",
+  "domain": "AI_ML",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js", "TypeScript"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Transformers", "SpaCy", "Docker"]
+  },
+  "architecture": "FastAPI backend with NLP processing pipeline, PostgreSQL candidate storage, Next.js dashboard for recruiters.",
+  "features": [
+    "Resume parsing",
+    "Skill extraction",
+    "Candidate ranking algorithm",
+    "Job description matching",
+    "Admin analytics dashboard",
+    "Bias detection metrics"
+  ],
+  "skillsRequired": ["NLP", "Machine learning", "Backend APIs"],
+  "learningOutcomes": ["Deploy NLP systems", "Design intelligent scoring engines"],
+  "timeline": [
+    { "week": 1, "title": "Dataset Preparation", "description": "Collect and preprocess resumes" },
+    { "week": 2, "title": "NLP Model", "description": "Skill extraction model" },
+    { "week": 3, "title": "Ranking Engine", "description": "Similarity scoring system" },
+    { "week": 4, "title": "Dashboard", "description": "Recruiter UI implementation" }
+  ]
+},
+{
+  "slug": "cloud-cost-optimization-platform",
+  "title": "Cloud Cost Optimization & Monitoring Platform",
+  "shortDescription": "Analyze and optimize cloud infrastructure costs across providers",
+  "fullDescription": "Develop a SaaS platform that integrates with AWS, Azure, and GCP APIs to analyze cloud usage, detect inefficiencies, suggest cost-saving strategies, and generate monthly optimization reports.",
+  "domain": "CLOUD_COMPUTING",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["AWS SDK", "Azure SDK", "Docker", "Kubernetes"]
+  },
+  "architecture": "Go microservices fetching cloud metrics via SDKs, React analytics dashboard, PostgreSQL cost data store.",
+  "features": [
+    "Multi-cloud integration",
+    "Cost anomaly detection",
+    "Usage analytics dashboard",
+    "Savings recommendations",
+    "Monthly cost reports"
+  ],
+  "skillsRequired": ["Cloud APIs", "Microservices", "Cost analysis"],
+  "learningOutcomes": ["Build SaaS monitoring tools", "Design scalable cloud systems"],
+  "timeline": [
+    { "week": 1, "title": "API Integration", "description": "Connect cloud provider APIs" },
+    { "week": 2, "title": "Cost Analyzer", "description": "Usage and billing parser" },
+    { "week": 3, "title": "Optimization Engine", "description": "Savings recommendation logic" },
+    { "week": 4, "title": "Dashboard", "description": "Cost analytics UI" }
+  ]
+},
+{
+  "slug": "cybersecurity-threat-intelligence-platform",
+  "title": "Cybersecurity Threat Intelligence Platform",
+  "shortDescription": "Real-time threat detection and risk scoring system",
+  "fullDescription": "Build a threat intelligence system that aggregates security feeds, monitors suspicious activities, analyzes vulnerabilities, and generates real-time risk alerts for enterprises.",
+  "domain": "CYBERSECURITY",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["Elasticsearch"],
+    "tools": ["Kafka", "Docker", "Kibana"]
+  },
+  "architecture": "FastAPI backend ingesting security logs via Kafka, Elasticsearch indexing, React monitoring dashboard.",
+  "features": [
+    "Threat feed aggregation",
+    "Anomaly detection engine",
+    "Risk scoring",
+    "Real-time alerting",
+    "Incident history dashboard"
+  ],
+  "skillsRequired": ["Log analysis", "Security fundamentals"],
+  "learningOutcomes": ["Build monitoring systems", "Implement security analytics"],
+  "timeline": [
+    { "week": 1, "title": "Log Pipeline", "description": "Security log ingestion setup" },
+    { "week": 2, "title": "Detection Engine", "description": "Threat analysis logic" },
+    { "week": 3, "title": "Alert System", "description": "Notification framework" }
+  ]
+},
+{
+  "slug": "edtech-adaptive-learning-platform",
+  "title": "AI Adaptive Learning Platform",
+  "shortDescription": "Personalized learning system that adapts to student performance",
+  "fullDescription": "Develop an adaptive learning system that tracks student performance, analyzes weaknesses, and dynamically adjusts learning materials using AI models.",
+  "domain": "EDTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["TensorFlow", "Redis"]
+  },
+  "architecture": "AI recommendation engine backend, Next.js learning dashboard, PostgreSQL student data store.",
+  "features": [
+    "Performance tracking",
+    "Adaptive quiz engine",
+    "Weakness detection",
+    "AI content recommendation",
+    "Progress analytics"
+  ],
+  "skillsRequired": ["Recommendation systems", "Educational analytics"],
+  "learningOutcomes": ["Build adaptive systems", "Deploy AI-driven personalization"],
+  "timeline": [
+    { "week": 1, "title": "Learning Model Design", "description": "Adaptive scoring system" },
+    { "week": 2, "title": "Quiz Engine", "description": "Dynamic question generation" },
+    { "week": 3, "title": "Dashboard", "description": "Student analytics UI" }
+  ]
+},
+{
+  "slug": "real-time-telemedicine-platform",
+  "title": "Real-Time Telemedicine Consultation Platform",
+  "shortDescription": "Secure video consultation platform for remote healthcare",
+  "fullDescription": "Develop a HIPAA-compliant telemedicine platform that enables doctors and patients to connect via secure video calls, share prescriptions, and maintain medical records.",
+  "domain": "HEALTH_TECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Next.js",
+  "techStack": {
+    "frontend": ["Next.js", "TypeScript"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["WebRTC", "Socket.io", "JWT"]
+  },
+  "architecture": "Next.js frontend, Node.js backend, WebRTC video streaming, PostgreSQL patient record storage.",
+  "features": [
+    "Secure video consultation",
+    "Prescription sharing",
+    "Patient history records",
+    "Doctor dashboard",
+    "Appointment scheduling"
+  ],
+  "skillsRequired": ["WebRTC", "Secure authentication"],
+  "learningOutcomes": ["Build real-time systems", "Handle healthcare data"],
+  "timeline": [
+    { "week": 1, "title": "Auth System", "description": "Role-based access" },
+    { "week": 2, "title": "Video Integration", "description": "WebRTC setup" },
+    { "week": 3, "title": "Records Module", "description": "Medical history storage" }
+  ]
+},
+{
+  "slug": "blockchain-digital-identity-system",
+  "title": "Blockchain Based Digital Identity Verification System",
+  "shortDescription": "Decentralized identity management platform using blockchain",
+  "fullDescription": "Build a decentralized digital identity system where users control their identity credentials stored securely on blockchain. The system enables secure KYC verification, credential sharing, and tamper-proof identity validation for fintech and enterprise applications.",
+  "domain": "BLOCKCHAIN",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Solidity",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js"],
+    "database": ["IPFS"],
+    "tools": ["Ethereum", "Hardhat", "MetaMask"]
+  },
+  "architecture": "Smart contracts for identity verification, IPFS storage for encrypted credentials, Next.js frontend for identity management.",
+  "features": [
+    "Self-sovereign identity wallet",
+    "Credential verification",
+    "KYC validation",
+    "Immutable identity ledger",
+    "Access permission control"
+  ],
+  "skillsRequired": ["Smart contracts", "Cryptography basics"],
+  "learningOutcomes": ["Build decentralized identity systems"],
+  "timeline": [
+    { "week": 1, "title": "Smart Contract Design", "description": "Identity schema implementation" },
+    { "week": 2, "title": "Blockchain Deployment", "description": "Deploy to Ethereum testnet" },
+    { "week": 3, "title": "Frontend Integration", "description": "Identity dashboard UI" }
+  ]
+},
+{
+  "slug": "enterprise-knowledge-management-platform",
+  "title": "Enterprise Knowledge Management Platform",
+  "shortDescription": "Internal documentation and collaboration system for enterprises",
+  "fullDescription": "Develop a scalable knowledge management platform that allows teams to create documentation, share internal wikis, manage permissions, and search structured content across departments.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Elasticsearch", "Docker"]
+  },
+  "architecture": "Spring Boot backend with Angular UI, Elasticsearch for search indexing, PostgreSQL storage.",
+  "features": [
+    "Wiki documentation system",
+    "Role-based access",
+    "Advanced search engine",
+    "Version history",
+    "Department-based organization"
+  ],
+  "skillsRequired": ["Spring Boot", "Search indexing"],
+  "learningOutcomes": ["Design enterprise collaboration systems"],
+  "timeline": [
+    { "week": 1, "title": "Schema Design", "description": "Content database structure" },
+    { "week": 2, "title": "Search Integration", "description": "Elasticsearch setup" },
+    { "week": 3, "title": "Permission Module", "description": "Role-based access control" }
+  ]
+},
+{
+  "slug": "ai-powered-stock-market-prediction",
+  "title": "AI Powered Stock Market Prediction System",
+  "shortDescription": "Predict stock price movements using time-series models",
+  "fullDescription": "Develop a predictive analytics platform that uses historical stock market data, technical indicators, and machine learning models such as LSTM to forecast stock trends.",
+  "domain": "DATA_SCIENCE",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["TensorFlow", "Pandas", "Matplotlib"]
+  },
+  "architecture": "LSTM-based forecasting backend with FastAPI, React visualization dashboard.",
+  "features": [
+    "Time-series forecasting",
+    "Technical indicator analysis",
+    "Trend prediction",
+    "Interactive stock charts",
+    "Model performance metrics"
+  ],
+  "skillsRequired": ["Time-series analysis", "Deep learning"],
+  "learningOutcomes": ["Build financial ML systems"],
+  "timeline": [
+    { "week": 1, "title": "Data Preparation", "description": "Stock dataset preprocessing" },
+    { "week": 2, "title": "Model Training", "description": "LSTM implementation" },
+    { "week": 3, "title": "Dashboard", "description": "Stock visualization UI" }
+  ]
+},
+{
+  "slug": "devops-observability-platform",
+  "title": "DevOps Observability & Monitoring Platform",
+  "shortDescription": "Application performance monitoring system with distributed tracing",
+  "fullDescription": "Build an observability platform that monitors microservices, tracks distributed traces, analyzes logs, and provides real-time performance dashboards.",
+  "domain": "DEVOPS",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["Prometheus", "Grafana"],
+    "tools": ["OpenTelemetry", "Docker", "Kubernetes"]
+  },
+  "architecture": "Go backend with OpenTelemetry tracing, Prometheus metrics, Grafana dashboard visualization.",
+  "features": [
+    "Distributed tracing",
+    "Real-time metrics dashboard",
+    "Error monitoring",
+    "Log aggregation",
+    "Service dependency mapping"
+  ],
+  "skillsRequired": ["Kubernetes", "Monitoring systems"],
+  "learningOutcomes": ["Design observability platforms"],
+  "timeline": [
+    { "week": 1, "title": "Metrics Pipeline", "description": "Prometheus integration" },
+    { "week": 2, "title": "Tracing Engine", "description": "OpenTelemetry setup" },
+    { "week": 3, "title": "Dashboard", "description": "Grafana visualization" }
+  ]
+},
+{
+  "slug": "mobile-digital-wallet-platform",
+  "title": "Secure Mobile Digital Wallet Platform",
+  "shortDescription": "Mobile payment wallet with QR payments and transaction security",
+  "fullDescription": "Develop a secure mobile wallet application that allows peer-to-peer payments, QR code scanning, transaction history tracking, and fraud prevention mechanisms.",
+  "domain": "MOBILE",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "React Native",
+  "techStack": {
+    "frontend": ["React Native"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["JWT", "Stripe API"]
+  },
+  "architecture": "React Native mobile app with Node.js backend and secure transaction processing.",
+  "features": [
+    "QR code payments",
+    "P2P transfers",
+    "Transaction history",
+    "Fraud alerts",
+    "Secure authentication"
+  ],
+  "skillsRequired": ["Mobile development", "Payment systems"],
+  "learningOutcomes": ["Build fintech mobile apps"],
+  "timeline": [
+    { "week": 1, "title": "Auth System", "description": "Secure login implementation" },
+    { "week": 2, "title": "Payment Module", "description": "Transaction processing API" },
+    { "week": 3, "title": "QR Integration", "description": "QR scanning feature" }
+  ]
+}
+,
+{
+  "slug": "ai-cybersecurity-anomaly-detection",
+  "title": "AI Driven Cybersecurity Anomaly Detection System",
+  "shortDescription": "Detect abnormal network behavior using machine learning models",
+  "fullDescription": "Develop an AI-powered cybersecurity system that monitors network traffic, identifies anomalies using unsupervised learning, and alerts administrators about potential security breaches in real time.",
+  "domain": "CYBERSECURITY",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["Elasticsearch"],
+    "tools": ["Kafka", "Scikit-learn", "Docker"]
+  },
+  "architecture": "Kafka streaming for network logs, ML anomaly detection service, Elasticsearch indexing, React monitoring dashboard.",
+  "features": [
+    "Network log ingestion",
+    "Anomaly detection engine",
+    "Risk scoring dashboard",
+    "Real-time alert notifications",
+    "Incident tracking system"
+  ],
+  "skillsRequired": ["Unsupervised learning", "Log analysis", "Security concepts"],
+  "learningOutcomes": ["Deploy ML security systems"],
+  "timeline": [
+    { "week": 1, "title": "Data Pipeline Setup", "description": "Log streaming integration" },
+    { "week": 2, "title": "Model Training", "description": "Anomaly detection model" },
+    { "week": 3, "title": "Dashboard", "description": "Security monitoring UI" }
+  ]
+},
+{
+  "slug": "edtech-online-assessment-platform",
+  "title": "Online Assessment & Proctoring Platform",
+  "shortDescription": "Secure online exam platform with AI-based monitoring",
+  "fullDescription": "Build an online examination system that supports quiz management, auto grading, and AI-based remote proctoring using computer vision to monitor exam integrity.",
+  "domain": "EDTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["OpenCV", "TensorFlow", "WebRTC"]
+  },
+  "architecture": "FastAPI backend with AI proctoring service, Next.js frontend, PostgreSQL exam data storage.",
+  "features": [
+    "Question bank system",
+    "Auto grading",
+    "Face detection monitoring",
+    "Tab switch detection",
+    "Exam analytics dashboard"
+  ],
+  "skillsRequired": ["Computer vision", "Real-time systems"],
+  "learningOutcomes": ["Build AI proctoring systems"],
+  "timeline": [
+    { "week": 1, "title": "Exam Module", "description": "Question and exam engine" },
+    { "week": 2, "title": "Proctoring Model", "description": "Face detection logic" },
+    { "week": 3, "title": "Analytics", "description": "Exam performance dashboard" }
+  ]
+},
+{
+  "slug": "cloud-distributed-file-storage",
+  "title": "Distributed Cloud File Storage System",
+  "shortDescription": "Scalable distributed storage platform with redundancy",
+  "fullDescription": "Develop a distributed file storage system that stores files across multiple nodes, ensures redundancy, and supports large-scale data distribution using consistent hashing and replication strategies.",
+  "domain": "CLOUD_COMPUTING",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["Docker", "Kubernetes", "gRPC"]
+  },
+  "architecture": "Go-based distributed storage nodes, gRPC communication layer, Kubernetes orchestration.",
+  "features": [
+    "Distributed file storage",
+    "Node replication",
+    "Load balancing",
+    "Failure recovery",
+    "Admin monitoring dashboard"
+  ],
+  "skillsRequired": ["Distributed systems", "gRPC", "Kubernetes"],
+  "learningOutcomes": ["Design distributed storage systems"],
+  "timeline": [
+    { "week": 1, "title": "System Design", "description": "Distributed architecture planning" },
+    { "week": 2, "title": "Node Implementation", "description": "Storage node logic" },
+    { "week": 3, "title": "Replication Engine", "description": "Redundancy mechanism" }
+  ]
+},
+{
+  "slug": "fintech-loan-risk-evaluation-system",
+  "title": "AI Loan Risk Evaluation & Credit Scoring System",
+  "shortDescription": "Assess borrower risk using predictive analytics",
+  "fullDescription": "Develop a credit scoring platform that evaluates borrower data, predicts loan default probability using classification models, and provides financial institutions with risk insights.",
+  "domain": "FINTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Scikit-learn", "Pandas"]
+  },
+  "architecture": "ML scoring backend with FastAPI, Next.js risk analytics dashboard.",
+  "features": [
+    "Credit scoring engine",
+    "Risk classification model",
+    "Loan approval dashboard",
+    "Model performance tracking",
+    "Borrower analytics"
+  ],
+  "skillsRequired": ["Predictive modeling", "Financial data processing"],
+  "learningOutcomes": ["Build fintech risk systems"],
+  "timeline": [
+    { "week": 1, "title": "Data Preparation", "description": "Loan dataset processing" },
+    { "week": 2, "title": "Model Training", "description": "Default prediction model" },
+    { "week": 3, "title": "Dashboard", "description": "Risk scoring UI" }
+  ]
+},
+{
+  "slug": "enterprise-project-management-suite",
+  "title": "Enterprise Project & Resource Management Suite",
+  "shortDescription": "Comprehensive enterprise project planning and resource tracking platform",
+  "fullDescription": "Build a scalable enterprise project management system that handles task tracking, resource allocation, budgeting, and performance reporting across multiple departments.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Redis", "Docker"]
+  },
+  "architecture": "Spring Boot backend microservices, Angular enterprise dashboard, PostgreSQL centralized database.",
+  "features": [
+    "Project planning board",
+    "Resource allocation tracking",
+    "Budget monitoring",
+    "Performance reporting",
+    "Role-based access"
+  ],
+  "skillsRequired": ["Enterprise system design", "Spring Boot"],
+  "learningOutcomes": ["Design enterprise SaaS systems"],
+  "timeline": [
+    { "week": 1, "title": "Module Design", "description": "Project and resource schema" },
+    { "week": 2, "title": "Task Engine", "description": "Project workflow implementation" },
+    { "week": 3, "title": "Analytics", "description": "Performance reporting dashboard" }
+  ]
+}
+,
+{
+  "slug": "ai-smart-contract-audit-platform",
+  "title": "AI Smart Contract Security Audit Platform",
+  "shortDescription": "Automated vulnerability detection for blockchain smart contracts",
+  "fullDescription": "Develop an AI-assisted auditing platform that scans Solidity smart contracts, detects vulnerabilities such as reentrancy and overflow attacks, and generates detailed security reports for blockchain developers.",
+  "domain": "BLOCKCHAIN",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Solidity",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js", "Python"],
+    "database": ["PostgreSQL"],
+    "tools": ["Hardhat", "OpenAI API", "Docker"]
+  },
+  "architecture": "Node.js scanning service with AI vulnerability detection, Next.js UI, PostgreSQL report storage.",
+  "features": [
+    "Smart contract vulnerability detection",
+    "Automated security scoring",
+    "Audit report generation",
+    "Contract version comparison",
+    "Developer dashboard"
+  ],
+  "skillsRequired": ["Smart contracts", "Security auditing"],
+  "learningOutcomes": ["Build blockchain security tools"],
+  "timeline": [
+    { "week": 1, "title": "Scanner Engine", "description": "Static analysis tool setup" },
+    { "week": 2, "title": "AI Analysis", "description": "Vulnerability detection model" },
+    { "week": 3, "title": "Report System", "description": "Security report generator" }
+  ]
+},
+{
+  "slug": "healthcare-electronic-medical-record-system",
+  "title": "Electronic Medical Record Management System",
+  "shortDescription": "Secure digital medical record storage platform",
+  "fullDescription": "Build a healthcare-grade electronic medical record system that securely stores patient records, prescriptions, and diagnostic reports with encryption and role-based access.",
+  "domain": "HEALTH_TECH",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "Next.js",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["JWT", "Cloud Storage"]
+  },
+  "architecture": "Next.js frontend, Node.js backend, encrypted storage, PostgreSQL medical database.",
+  "features": [
+    "Patient record management",
+    "Doctor access control",
+    "Prescription storage",
+    "Secure authentication",
+    "Medical report uploads"
+  ],
+  "skillsRequired": ["Data encryption", "Healthcare compliance"],
+  "learningOutcomes": ["Build secure health systems"],
+  "timeline": [
+    { "week": 1, "title": "Schema Design", "description": "Medical database structure" },
+    { "week": 2, "title": "Access Control", "description": "Role-based permissions" },
+    { "week": 3, "title": "Secure Storage", "description": "Encrypted record handling" }
+  ]
+},
+{
+  "slug": "ai-logistics-route-optimization-system",
+  "title": "AI Logistics & Route Optimization System",
+  "shortDescription": "Optimize delivery routes using AI and graph algorithms",
+  "fullDescription": "Develop a logistics optimization platform that calculates the shortest and most cost-efficient delivery routes using graph algorithms and AI predictive traffic models.",
+  "domain": "AI_ML",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Google Maps API", "NetworkX"]
+  },
+  "architecture": "Graph-based optimization backend with AI traffic predictions, React logistics dashboard.",
+  "features": [
+    "Route optimization engine",
+    "Traffic prediction integration",
+    "Delivery cost analysis",
+    "Fleet monitoring dashboard"
+  ],
+  "skillsRequired": ["Graph algorithms", "Optimization techniques"],
+  "learningOutcomes": ["Design logistics AI systems"],
+  "timeline": [
+    { "week": 1, "title": "Algorithm Setup", "description": "Graph route optimization" },
+    { "week": 2, "title": "Traffic Model", "description": "Predictive traffic analysis" },
+    { "week": 3, "title": "Dashboard", "description": "Logistics UI implementation" }
+  ]
+},
+{
+  "slug": "devops-kubernetes-cluster-manager",
+  "title": "Kubernetes Cluster Management Platform",
+  "shortDescription": "Manage and monitor Kubernetes clusters with centralized control",
+  "fullDescription": "Build a DevOps tool that allows centralized monitoring, scaling, and deployment management of Kubernetes clusters across environments.",
+  "domain": "DEVOPS",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["Kubernetes API", "Prometheus", "Docker"]
+  },
+  "architecture": "Go backend interfacing with Kubernetes API, Prometheus metrics pipeline, React admin dashboard.",
+  "features": [
+    "Cluster health monitoring",
+    "Deployment management",
+    "Pod scaling automation",
+    "Resource usage visualization"
+  ],
+  "skillsRequired": ["Kubernetes", "Container orchestration"],
+  "learningOutcomes": ["Build DevOps control panels"],
+  "timeline": [
+    { "week": 1, "title": "API Integration", "description": "Kubernetes API integration" },
+    { "week": 2, "title": "Monitoring", "description": "Metrics aggregation" },
+    { "week": 3, "title": "Dashboard", "description": "Cluster UI implementation" }
+  ]
+},
+{
+  "slug": "mobile-ai-language-learning-app",
+  "title": "AI Based Language Learning Mobile App",
+  "shortDescription": "Personalized language learning app using AI feedback",
+  "fullDescription": "Develop a mobile language learning app that uses AI speech recognition to evaluate pronunciation, track progress, and personalize lessons.",
+  "domain": "MOBILE",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "React Native",
+  "techStack": {
+    "frontend": ["React Native"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["Speech Recognition API", "TensorFlow Lite"]
+  },
+  "architecture": "React Native mobile frontend, Node.js backend, AI speech evaluation engine.",
+  "features": [
+    "Speech recognition feedback",
+    "Lesson progression tracking",
+    "Pronunciation scoring",
+    "Gamified learning modules"
+  ],
+  "skillsRequired": ["Mobile development", "Speech AI"],
+  "learningOutcomes": ["Build AI-powered mobile apps"],
+  "timeline": [
+    { "week": 1, "title": "Lesson Module", "description": "Language content structure" },
+    { "week": 2, "title": "Speech Integration", "description": "Pronunciation evaluation engine" },
+    { "week": 3, "title": "Gamification", "description": "Progress tracking system" }
+  ]
+}
+,
+{
+  "slug": "fintech-real-time-payment-gateway",
+  "title": "Real-Time Payment Gateway Processing System",
+  "shortDescription": "High-performance payment gateway for secure real-time transactions",
+  "fullDescription": "Build a scalable payment gateway system capable of processing high-volume financial transactions securely with fraud detection, transaction validation, and settlement management.",
+  "domain": "FINTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Kafka", "Redis", "Docker"]
+  },
+  "architecture": "Event-driven Spring Boot microservices with Kafka messaging, Redis caching layer, and React admin dashboard.",
+  "features": [
+    "Transaction processing engine",
+    "Fraud detection integration",
+    "Settlement management",
+    "Transaction logging",
+    "Admin monitoring dashboard"
+  ],
+  "skillsRequired": ["Microservices", "Financial systems", "Event streaming"],
+  "learningOutcomes": ["Build high-throughput fintech systems"],
+  "timeline": [
+    { "week": 1, "title": "Architecture Planning", "description": "Payment flow design" },
+    { "week": 2, "title": "Transaction Engine", "description": "Processing logic" },
+    { "week": 3, "title": "Kafka Integration", "description": "Event messaging setup" }
+  ]
+},
+{
+  "slug": "ai-predictive-maintenance-system",
+  "title": "AI Predictive Maintenance Platform",
+  "shortDescription": "Predict machine failures using sensor data analytics",
+  "fullDescription": "Develop a predictive maintenance system that collects IoT sensor data from industrial machines and predicts potential failures using time-series ML models.",
+  "domain": "AI_ML",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["TensorFlow", "Pandas", "MQTT"]
+  },
+  "architecture": "IoT data ingestion via MQTT, ML model backend, Next.js monitoring dashboard.",
+  "features": [
+    "Sensor data ingestion",
+    "Failure prediction model",
+    "Machine health dashboard",
+    "Alert notifications"
+  ],
+  "skillsRequired": ["Time-series ML", "IoT integration"],
+  "learningOutcomes": ["Build industrial AI systems"],
+  "timeline": [
+    { "week": 1, "title": "Data Pipeline", "description": "Sensor ingestion setup" },
+    { "week": 2, "title": "Model Training", "description": "Failure prediction model" },
+    { "week": 3, "title": "Dashboard", "description": "Monitoring UI" }
+  ]
+},
+{
+  "slug": "enterprise-crm-system",
+  "title": "Enterprise Customer Relationship Management System",
+  "shortDescription": "Scalable CRM platform for managing sales and customer data",
+  "fullDescription": "Develop a CRM system that manages customer interactions, tracks sales pipelines, automates follow-ups, and provides performance analytics for enterprises.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "Next.js",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["Redis", "Docker"]
+  },
+  "architecture": "Next.js frontend, Node.js backend, PostgreSQL relational database.",
+  "features": [
+    "Lead management",
+    "Sales pipeline tracking",
+    "Customer interaction history",
+    "Automated reminders",
+    "Analytics dashboard"
+  ],
+  "skillsRequired": ["Full-stack development", "Relational modeling"],
+  "learningOutcomes": ["Build enterprise SaaS platforms"],
+  "timeline": [
+    { "week": 1, "title": "Schema Design", "description": "CRM data modeling" },
+    { "week": 2, "title": "Sales Module", "description": "Pipeline tracking system" },
+    { "week": 3, "title": "Analytics", "description": "Performance dashboard" }
+  ]
+},
+{
+  "slug": "cybersecurity-zero-trust-access-platform",
+  "title": "Zero Trust Access Management Platform",
+  "shortDescription": "Implement role-based zero-trust security framework",
+  "fullDescription": "Build a zero-trust security platform that enforces strict identity verification, access policies, device validation, and continuous monitoring for enterprise systems.",
+  "domain": "CYBERSECURITY",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["OAuth2", "JWT", "Docker"]
+  },
+  "architecture": "Go-based authentication service with policy enforcement engine and React admin dashboard.",
+  "features": [
+    "Identity verification",
+    "Access policy management",
+    "Device validation",
+    "Continuous session monitoring",
+    "Security logs"
+  ],
+  "skillsRequired": ["Authentication protocols", "Security architecture"],
+  "learningOutcomes": ["Design zero-trust systems"],
+  "timeline": [
+    { "week": 1, "title": "Auth Engine", "description": "OAuth2 implementation" },
+    { "week": 2, "title": "Policy Module", "description": "Access control system" },
+    { "week": 3, "title": "Monitoring", "description": "Session tracking dashboard" }
+  ]
+},
+{
+  "slug": "edtech-course-marketplace-platform",
+  "title": "Online Course Marketplace Platform",
+  "shortDescription": "Marketplace for instructors to sell digital courses",
+  "fullDescription": "Develop a scalable course marketplace platform where instructors can upload courses, manage content, sell subscriptions, and track student engagement.",
+  "domain": "EDTECH",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "Next.js",
+  "techStack": {
+    "frontend": ["Next.js", "TypeScript"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["Stripe API", "Cloud Storage"]
+  },
+  "architecture": "Next.js frontend, Node.js backend, PostgreSQL database, Stripe subscription management.",
+  "features": [
+    "Course upload system",
+    "Subscription payments",
+    "Student analytics",
+    "Instructor dashboard",
+    "Review and rating system"
+  ],
+  "skillsRequired": ["Payment integration", "Content management"],
+  "learningOutcomes": ["Build scalable content platforms"],
+  "timeline": [
+    { "week": 1, "title": "User Roles", "description": "Instructor and student system" },
+    { "week": 2, "title": "Course Module", "description": "Video and content upload" },
+    { "week": 3, "title": "Payment System", "description": "Subscription integration" }
+  ]
+}
+,
+{
+  "slug": "ai-real-estate-price-prediction-platform",
+  "title": "AI Based Real Estate Price Prediction Platform",
+  "shortDescription": "Predict property prices using location and market trends",
+  "fullDescription": "Develop a predictive analytics system that estimates property prices using historical sales data, neighborhood features, economic indicators, and machine learning regression models.",
+  "domain": "DATA_SCIENCE",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Scikit-learn", "Pandas", "Matplotlib"]
+  },
+  "architecture": "ML regression backend with FastAPI, Next.js frontend dashboard for predictions and visualizations.",
+  "features": [
+    "Price prediction engine",
+    "Location-based analytics",
+    "Historical trend visualization",
+    "Model accuracy evaluation",
+    "Admin analytics panel"
+  ],
+  "skillsRequired": ["Regression models", "Data preprocessing"],
+  "learningOutcomes": ["Build predictive ML platforms"],
+  "timeline": [
+    { "week": 1, "title": "Data Cleaning", "description": "Real estate dataset processing" },
+    { "week": 2, "title": "Model Training", "description": "Regression model implementation" },
+    { "week": 3, "title": "Dashboard", "description": "Visualization and UI" }
+  ]
+},
+{
+  "slug": "enterprise-human-resource-management-system",
+  "title": "Enterprise Human Resource Management System",
+  "shortDescription": "Comprehensive HR management platform for large organizations",
+  "fullDescription": "Build a scalable HRMS that manages employee records, payroll, attendance, performance reviews, and recruitment workflows in a centralized enterprise system.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Redis", "Docker"]
+  },
+  "architecture": "Spring Boot microservices with Angular frontend and PostgreSQL database.",
+  "features": [
+    "Employee record management",
+    "Payroll processing",
+    "Attendance tracking",
+    "Performance evaluation",
+    "Recruitment workflow"
+  ],
+  "skillsRequired": ["Enterprise architecture", "Database modeling"],
+  "learningOutcomes": ["Build enterprise HR systems"],
+  "timeline": [
+    { "week": 1, "title": "Schema Planning", "description": "Employee and payroll modeling" },
+    { "week": 2, "title": "Payroll Engine", "description": "Salary calculation logic" },
+    { "week": 3, "title": "Dashboard", "description": "HR analytics UI" }
+  ]
+},
+{
+  "slug": "ai-healthcare-chatbot-assistant",
+  "title": "AI Healthcare Chatbot Assistant",
+  "shortDescription": "Intelligent chatbot for preliminary medical guidance",
+  "fullDescription": "Develop an AI-driven healthcare chatbot that interacts with patients, analyzes symptoms, suggests possible conditions, and recommends next steps based on NLP models.",
+  "domain": "HEALTH_TECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Transformers", "NLTK"]
+  },
+  "architecture": "NLP chatbot backend integrated with React chat UI.",
+  "features": [
+    "Symptom-based conversation",
+    "NLP intent recognition",
+    "Medical guidance suggestions",
+    "Conversation history tracking"
+  ],
+  "skillsRequired": ["NLP", "Conversational AI"],
+  "learningOutcomes": ["Build healthcare AI assistants"],
+  "timeline": [
+    { "week": 1, "title": "Intent Model", "description": "Train NLP classifier" },
+    { "week": 2, "title": "Backend API", "description": "Chatbot API implementation" },
+    { "week": 3, "title": "Frontend Chat UI", "description": "User interface integration" }
+  ]
+},
+{
+  "slug": "devops-infrastructure-as-code-platform",
+  "title": "Infrastructure as Code Automation Platform",
+  "shortDescription": "Automate cloud infrastructure provisioning using IaC",
+  "fullDescription": "Develop a DevOps tool that automates infrastructure provisioning using Terraform scripts, manages environments, and tracks deployment versions across multiple cloud providers.",
+  "domain": "DEVOPS",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["Terraform", "Docker", "AWS SDK"]
+  },
+  "architecture": "Go-based orchestration service executing Terraform scripts, React dashboard for deployment control.",
+  "features": [
+    "Infrastructure provisioning",
+    "Environment management",
+    "Deployment version tracking",
+    "Audit logs"
+  ],
+  "skillsRequired": ["Terraform", "Cloud automation"],
+  "learningOutcomes": ["Build IaC platforms"],
+  "timeline": [
+    { "week": 1, "title": "Terraform Integration", "description": "IaC script execution" },
+    { "week": 2, "title": "Environment Manager", "description": "Deployment tracking" },
+    { "week": 3, "title": "Dashboard", "description": "Infrastructure UI" }
+  ]
+},
+{
+  "slug": "mobile-ai-fitness-trainer-app",
+  "title": "AI Powered Fitness Trainer Mobile App",
+  "shortDescription": "Personalized workout guidance with AI pose detection",
+  "fullDescription": "Develop a mobile fitness app that uses AI pose detection to analyze workout movements, provide feedback, and personalize training plans.",
+  "domain": "MOBILE",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "React Native",
+  "techStack": {
+    "frontend": ["React Native"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["TensorFlow Lite", "Camera API"]
+  },
+  "architecture": "React Native app with AI pose detection integration and backend progress tracking.",
+  "features": [
+    "Pose detection analysis",
+    "Workout plan personalization",
+    "Progress tracking",
+    "AI performance feedback"
+  ],
+  "skillsRequired": ["Mobile AI integration", "Computer vision"],
+  "learningOutcomes": ["Build AI-driven fitness apps"],
+  "timeline": [
+    { "week": 1, "title": "Pose Model Integration", "description": "TensorFlow Lite setup" },
+    { "week": 2, "title": "Workout Module", "description": "Exercise detection logic" },
+    { "week": 3, "title": "Progress System", "description": "User analytics" }
+  ]
+}
+,
+{
+  "slug": "cloud-serverless-event-processing-platform",
+  "title": "Cloud Serverless Event Processing Platform",
+  "shortDescription": "Serverless event-driven architecture for scalable data processing",
+  "fullDescription": "Build a cloud-native serverless platform that processes real-time events using AWS Lambda or equivalent, supports event routing, data transformation, and monitoring with full scalability.",
+  "domain": "CLOUD_COMPUTING",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Node.js",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js"],
+    "database": ["DynamoDB"],
+    "tools": ["AWS Lambda", "API Gateway", "CloudWatch"]
+  },
+  "architecture": "Serverless backend with AWS Lambda functions, DynamoDB storage, Next.js dashboard.",
+  "features": [
+    "Event routing engine",
+    "Serverless compute processing",
+    "Monitoring dashboard",
+    "Log analysis",
+    "Scalable architecture"
+  ],
+  "skillsRequired": ["Serverless architecture", "Cloud services"],
+  "learningOutcomes": ["Design event-driven cloud systems"],
+  "timeline": [
+    { "week": 1, "title": "Lambda Setup", "description": "Serverless function creation" },
+    { "week": 2, "title": "Event Routing", "description": "Event handling logic" },
+    { "week": 3, "title": "Dashboard", "description": "Monitoring UI" }
+  ]
+},
+{
+  "slug": "fintech-cryptocurrency-exchange-platform",
+  "title": "Cryptocurrency Exchange Trading Platform",
+  "shortDescription": "Real-time crypto trading platform with order matching engine",
+  "fullDescription": "Develop a cryptocurrency exchange platform with secure wallet management, order matching engine, trading charts, and transaction monitoring.",
+  "domain": "FINTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["WebSocket", "Redis", "Docker"]
+  },
+  "architecture": "Go-based order matching engine, WebSocket real-time trading updates, React dashboard.",
+  "features": [
+    "Order matching engine",
+    "Wallet integration",
+    "Real-time trading charts",
+    "Transaction history",
+    "Security controls"
+  ],
+  "skillsRequired": ["Concurrency handling", "Financial systems"],
+  "learningOutcomes": ["Build trading platforms"],
+  "timeline": [
+    { "week": 1, "title": "Matching Engine", "description": "Order processing logic" },
+    { "week": 2, "title": "Wallet System", "description": "Secure crypto wallet" },
+    { "week": 3, "title": "Trading UI", "description": "Chart integration" }
+  ]
+},
+{
+  "slug": "ai-document-intelligence-system",
+  "title": "AI Document Intelligence & OCR Platform",
+  "shortDescription": "Extract structured data from documents using AI",
+  "fullDescription": "Develop a document intelligence system that extracts structured data from invoices, contracts, and forms using OCR and NLP models.",
+  "domain": "AI_ML",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Tesseract OCR", "Transformers"]
+  },
+  "architecture": "OCR engine with NLP parsing backend and React document dashboard.",
+  "features": [
+    "OCR extraction",
+    "Structured data parsing",
+    "Document classification",
+    "Searchable document storage"
+  ],
+  "skillsRequired": ["OCR processing", "NLP"],
+  "learningOutcomes": ["Build document AI systems"],
+  "timeline": [
+    { "week": 1, "title": "OCR Integration", "description": "Text extraction pipeline" },
+    { "week": 2, "title": "NLP Parsing", "description": "Structured data extraction" },
+    { "week": 3, "title": "Dashboard", "description": "Document UI implementation" }
+  ]
+},
+{
+  "slug": "enterprise-supply-chain-visibility-platform",
+  "title": "Enterprise Supply Chain Visibility Platform",
+  "shortDescription": "Track and optimize enterprise supply chain processes",
+  "fullDescription": "Build a supply chain visibility system that tracks shipments, manages inventory, and provides analytics for operational efficiency across enterprise logistics networks.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Kafka", "Redis"]
+  },
+  "architecture": "Spring Boot microservices with Kafka event streaming and Angular dashboard.",
+  "features": [
+    "Inventory tracking",
+    "Shipment monitoring",
+    "Analytics reporting",
+    "Supplier management"
+  ],
+  "skillsRequired": ["Enterprise systems", "Event-driven architecture"],
+  "learningOutcomes": ["Design scalable logistics platforms"],
+  "timeline": [
+    { "week": 1, "title": "Schema Modeling", "description": "Inventory and shipment design" },
+    { "week": 2, "title": "Event Integration", "description": "Kafka messaging" },
+    { "week": 3, "title": "Analytics Dashboard", "description": "Supply chain insights" }
+  ]
+},
+{
+  "slug": "cybersecurity-incident-response-platform",
+  "title": "Cybersecurity Incident Response Management Platform",
+  "shortDescription": "Centralized incident detection and response coordination system",
+  "fullDescription": "Develop a cybersecurity incident response platform that logs threats, tracks investigation workflows, assigns response teams, and generates compliance reports.",
+  "domain": "CYBERSECURITY",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["ELK Stack", "Docker"]
+  },
+  "architecture": "FastAPI backend with ELK integration for log analysis and Next.js incident dashboard.",
+  "features": [
+    "Threat logging system",
+    "Incident workflow tracking",
+    "Compliance reporting",
+    "Team coordination dashboard"
+  ],
+  "skillsRequired": ["Security operations", "Log analysis"],
+  "learningOutcomes": ["Build incident management systems"],
+  "timeline": [
+    { "week": 1, "title": "Threat Log Module", "description": "Incident logging system" },
+    { "week": 2, "title": "Workflow Engine", "description": "Response assignment logic" },
+    { "week": 3, "title": "Reporting Module", "description": "Compliance report generator" }
+  ]
+}
+,
+{
+  "slug": "ai-autonomous-drone-surveillance-system",
+  "title": "AI Autonomous Drone Surveillance System",
+  "shortDescription": "Computer vision powered drone monitoring platform",
+  "fullDescription": "Develop an AI-based surveillance system that integrates with drones to detect objects, identify anomalies, and stream real-time video analytics for security monitoring.",
+  "domain": "AI_ML",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["OpenCV", "TensorFlow", "Drone SDK"]
+  },
+  "architecture": "Computer vision detection engine integrated with drone video feed and monitoring dashboard.",
+  "features": [
+    "Object detection",
+    "Real-time video streaming",
+    "Threat identification",
+    "Drone telemetry dashboard"
+  ],
+  "skillsRequired": ["Computer vision", "Real-time systems"],
+  "learningOutcomes": ["Build AI surveillance platforms"],
+  "timeline": [
+    { "week": 1, "title": "Vision Model", "description": "Object detection model" },
+    { "week": 2, "title": "Drone Integration", "description": "Live stream processing" },
+    { "week": 3, "title": "Dashboard", "description": "Monitoring UI" }
+  ]
+},
+{
+  "slug": "cloud-cost-optimization-platform",
+  "title": "Cloud Cost Optimization & Monitoring Platform",
+  "shortDescription": "Analyze and optimize cloud infrastructure expenses",
+  "fullDescription": "Build a platform that analyzes cloud resource usage, detects cost inefficiencies, and recommends optimization strategies using analytics models.",
+  "domain": "CLOUD_COMPUTING",
+  "difficulty": "INTERMEDIATE",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Third Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["AWS SDK", "Docker"]
+  },
+  "architecture": "Go backend analyzing cloud billing APIs with Next.js visualization dashboard.",
+  "features": [
+    "Cloud usage tracking",
+    "Cost anomaly detection",
+    "Optimization recommendations",
+    "Usage analytics"
+  ],
+  "skillsRequired": ["Cloud billing APIs", "Cost analytics"],
+  "learningOutcomes": ["Build cloud monitoring tools"],
+  "timeline": [
+    { "week": 1, "title": "API Integration", "description": "Cloud billing API setup" },
+    { "week": 2, "title": "Analytics Engine", "description": "Cost analysis logic" },
+    { "week": 3, "title": "Dashboard", "description": "Visualization UI" }
+  ]
+},
+{
+  "slug": "fintech-insurance-claim-automation-system",
+  "title": "AI Insurance Claim Automation Platform",
+  "shortDescription": "Automate claim verification using AI document analysis",
+  "fullDescription": "Develop an insurance claim automation system that verifies documents, detects fraudulent claims, and speeds up approval processes using AI models.",
+  "domain": "FINTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["OCR Engine", "Scikit-learn"]
+  },
+  "architecture": "OCR and ML fraud detection backend with React claim dashboard.",
+  "features": [
+    "Document verification",
+    "Fraud detection model",
+    "Claim status tracking",
+    "Admin review panel"
+  ],
+  "skillsRequired": ["ML classification", "OCR processing"],
+  "learningOutcomes": ["Build fintech automation systems"],
+  "timeline": [
+    { "week": 1, "title": "OCR Setup", "description": "Document parsing pipeline" },
+    { "week": 2, "title": "Fraud Model", "description": "Classification model training" },
+    { "week": 3, "title": "Claim Dashboard", "description": "Workflow UI" }
+  ]
+},
+{
+  "slug": "enterprise-contract-lifecycle-management-system",
+  "title": "Enterprise Contract Lifecycle Management System",
+  "shortDescription": "Track and manage enterprise contracts efficiently",
+  "fullDescription": "Develop a contract lifecycle platform that manages contract drafting, approval workflows, renewals, and compliance tracking for enterprises.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "10-12 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Java",
+  "techStack": {
+    "frontend": ["Angular"],
+    "backend": ["Java", "Spring Boot"],
+    "database": ["PostgreSQL"],
+    "tools": ["Elasticsearch"]
+  },
+  "architecture": "Spring Boot backend with Angular UI and contract search indexing.",
+  "features": [
+    "Contract drafting workflow",
+    "Approval system",
+    "Renewal reminders",
+    "Compliance reporting"
+  ],
+  "skillsRequired": ["Enterprise workflow systems", "Search indexing"],
+  "learningOutcomes": ["Build enterprise contract platforms"],
+  "timeline": [
+    { "week": 1, "title": "Workflow Design", "description": "Approval system setup" },
+    { "week": 2, "title": "Search Integration", "description": "Contract indexing" },
+    { "week": 3, "title": "Reporting", "description": "Compliance analytics" }
+  ]
+},
+{
+  "slug": "cybersecurity-passwordless-authentication-platform",
+  "title": "Passwordless Authentication Security Platform",
+  "shortDescription": "Implement biometric and token-based passwordless login",
+  "fullDescription": "Develop a passwordless authentication system using biometric verification, OTP, and token-based authentication with secure identity management.",
+  "domain": "CYBERSECURITY",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["WebAuthn", "JWT"]
+  },
+  "architecture": "Go-based auth server implementing WebAuthn protocol with Next.js frontend.",
+  "features": [
+    "Biometric login",
+    "Token-based authentication",
+    "Secure session handling",
+    "Audit logging"
+  ],
+  "skillsRequired": ["Authentication protocols", "Security architecture"],
+  "learningOutcomes": ["Build modern auth systems"],
+  "timeline": [
+    { "week": 1, "title": "WebAuthn Setup", "description": "Biometric integration" },
+    { "week": 2, "title": "Token Management", "description": "JWT implementation" },
+    { "week": 3, "title": "Security Dashboard", "description": "Auth monitoring UI" }
+  ]
+},
+{
+  "slug": "ai-personalized-learning-recommendation-engine",
+  "title": "AI Personalized Learning Recommendation Engine",
+  "shortDescription": "Recommend courses based on learning patterns",
+  "fullDescription": "Develop a recommendation engine that analyzes student behavior, learning progress, and interests to suggest personalized courses using collaborative filtering.",
+  "domain": "EDTECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["Scikit-learn", "Pandas"]
+  },
+  "architecture": "Recommendation model backend integrated with course platform UI.",
+  "features": [
+    "Collaborative filtering engine",
+    "Behavior analysis",
+    "Personalized dashboard",
+    "Performance tracking"
+  ],
+  "skillsRequired": ["Recommendation systems", "Data analytics"],
+  "learningOutcomes": ["Build AI recommender systems"],
+  "timeline": [
+    { "week": 1, "title": "Data Collection", "description": "User behavior tracking" },
+    { "week": 2, "title": "Model Training", "description": "Recommendation engine" },
+    { "week": 3, "title": "Integration", "description": "Frontend personalization" }
+  ]
+},
+{
+  "slug": "devops-ci-cd-pipeline-automation-platform",
+  "title": "CI/CD Pipeline Automation Platform",
+  "shortDescription": "Automated continuous integration and deployment tool",
+  "fullDescription": "Build a DevOps automation tool that integrates with Git repositories, runs automated tests, builds containers, and deploys applications to cloud environments.",
+  "domain": "DEVOPS",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Go",
+  "techStack": {
+    "frontend": ["React"],
+    "backend": ["Go"],
+    "database": ["PostgreSQL"],
+    "tools": ["Docker", "Kubernetes", "GitHub API"]
+  },
+  "architecture": "Go-based automation service orchestrating build and deploy pipelines with React admin dashboard.",
+  "features": [
+    "Automated test runner",
+    "Container build system",
+    "Deployment automation",
+    "Pipeline monitoring dashboard"
+  ],
+  "skillsRequired": ["CI/CD concepts", "Container orchestration"],
+  "learningOutcomes": ["Build DevOps automation tools"],
+  "timeline": [
+    { "week": 1, "title": "Pipeline Setup", "description": "Git integration" },
+    { "week": 2, "title": "Build Automation", "description": "Container pipeline" },
+    { "week": 3, "title": "Deployment", "description": "Kubernetes integration" }
+  ]
+},
+{
+  "slug": "healthtech-remote-patient-monitoring-system",
+  "title": "Remote Patient Monitoring System",
+  "shortDescription": "Monitor patient vitals remotely using IoT sensors",
+  "fullDescription": "Develop a healthcare IoT platform that collects patient vitals remotely, analyzes anomalies, and alerts doctors in real time.",
+  "domain": "HEALTH_TECH",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Python",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Python", "FastAPI"],
+    "database": ["PostgreSQL"],
+    "tools": ["MQTT", "TensorFlow"]
+  },
+  "architecture": "IoT sensor ingestion backend with health analytics dashboard.",
+  "features": [
+    "Vital monitoring",
+    "Anomaly detection",
+    "Alert notifications",
+    "Doctor dashboard"
+  ],
+  "skillsRequired": ["IoT integration", "Healthcare analytics"],
+  "learningOutcomes": ["Build remote healthcare platforms"],
+  "timeline": [
+    { "week": 1, "title": "Sensor Integration", "description": "Data ingestion" },
+    { "week": 2, "title": "Analytics Engine", "description": "Health anomaly detection" },
+    { "week": 3, "title": "Monitoring Dashboard", "description": "Doctor UI" }
+  ]
+},
+{
+  "slug": "enterprise-api-gateway-management-system",
+  "title": "Enterprise API Gateway & Management Platform",
+  "shortDescription": "Centralized API routing and monitoring system",
+  "fullDescription": "Develop an enterprise API gateway that manages authentication, rate limiting, routing, and monitoring across microservices.",
+  "domain": "ENTERPRISE_SYSTEM",
+  "difficulty": "ADVANCED",
+  "estimatedDuration": "8-10 weeks",
+  "recommendedYear": "Final Year",
+  "primaryTechnology": "Node.js",
+  "techStack": {
+    "frontend": ["Next.js"],
+    "backend": ["Node.js"],
+    "database": ["PostgreSQL"],
+    "tools": ["Nginx", "Redis"]
+  },
+  "architecture": "Node.js API gateway service with routing rules and monitoring dashboard.",
+  "features": [
+    "API routing",
+    "Authentication middleware",
+    "Rate limiting",
+    "Request logging"
+  ],
+  "skillsRequired": ["Microservices", "API security"],
+  "learningOutcomes": ["Build enterprise API gateways"],
+  "timeline": [
+    { "week": 1, "title": "Gateway Setup", "description": "Routing engine implementation" },
+    { "week": 2, "title": "Security Middleware", "description": "Auth and rate limiting" },
+    { "week": 3, "title": "Monitoring Dashboard", "description": "API analytics UI" }
+  ]
+}
+
+
+]

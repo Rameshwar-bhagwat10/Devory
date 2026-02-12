@@ -29,6 +29,13 @@ enum ProjectDomain {
   GAME_DEVELOPMENT
   CYBERSECURITY
   CLOUD_COMPUTING
+  FINTECH
+  DEVOPS
+  HEALTH_TECH
+  ENTERPRISE_SYSTEM
+  AI_ML
+  EDTECH
+  MOBILE
   OTHER
 }
 
@@ -151,23 +158,28 @@ model UserProfile {
 
 model Project {
   id              String            @id @default(cuid())
-  title           String
   slug            String            @unique
-  description     String
-  longDescription String?
-  difficulty      ProjectDifficulty
-  domain          ProjectDomain
-  tags            String[]
+  title           String
+  shortDescription String
+  fullDescription String            @db.Text
   
-  // Project details
-  techStack       String[]
-  features        String[]
-  learningOutcomes String[]
-  prerequisites   String[]
-  estimatedHours  Int?
+  // Classification
+  domain          ProjectDomain
+  difficulty      ProjectDifficulty
+  estimatedDuration String
+  recommendedYear String
+  primaryTechnology String
+  
+  // Structured content (JSON)
+  techStack       Json              // { frontend: [], backend: [], database: [], tools: [] }
+  architecture    String            @db.Text
+  features        Json              // Array of feature strings
+  skillsRequired  Json              // Array of skill strings
+  learningOutcomes Json             // Array of outcome strings
+  timeline        Json              // Array of { week, title, description }
   
   // Metadata
-  isPublished     Boolean           @default(false)
+  isPublished     Boolean           @default(true)
   isEditorPick    Boolean           @default(false)
   viewCount       Int               @default(0)
   saveCount       Int               @default(0)
@@ -179,11 +191,27 @@ model Project {
   downloads       Download[]
   editorPick      EditorPick?
 
+  // Single column indexes
   @@index([slug])
   @@index([domain])
   @@index([difficulty])
+  @@index([recommendedYear])
+  @@index([primaryTechnology])
   @@index([isPublished])
   @@index([isEditorPick])
+  @@index([createdAt])
+  
+  // Composite indexes for common query patterns (PERFORMANCE OPTIMIZATION)
+  @@index([isPublished, domain, difficulty]) // Filter by domain + difficulty
+  @@index([isPublished, primaryTechnology]) // Filter by tech stack
+  @@index([isPublished, recommendedYear]) // Filter by year
+  @@index([isPublished, estimatedDuration]) // Filter by duration
+  @@index([isPublished, isEditorPick, createdAt]) // Default listing with editor picks first
+  @@index([isPublished, domain, isEditorPick, createdAt]) // Domain filtering with sorting
+  @@index([domain, difficulty, primaryTechnology]) // Multi-filter queries
+  @@index([title]) // Search optimization
+  @@index([shortDescription]) // Search optimization
+  
   @@map("projects")
 }
 

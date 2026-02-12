@@ -13,8 +13,8 @@
   --accent-deep-orange: #ff7300;     /* Deep orange */
   
   /* 🌈 GRADIENT DEFINITIONS */
-  --gradient-primary: linear-gradient(135deg, #ff6b00 0%, #ff1aab 50%, #ff0040 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff4500 0%, #ff6b00 100%);
+  --gradient-primary: linear-gradient(135deg, #ff6b00 0%, #ff2bb1 50%, #ff1a53 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff4500 0%, #ff7e21 100%);
   --gradient-glow: linear-gradient(135deg, rgba(255, 107, 0, 0.3) 0%, rgba(255, 0, 110, 0.3) 50%, rgba(255, 0, 64, 0.3) 100%);
   
   /* 🔤 TEXT COLORS (White with opacity) */
