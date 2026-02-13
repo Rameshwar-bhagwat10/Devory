@@ -1,14 +1,40 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function PublicNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container mx-auto px-4 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Glassmorphism background - only visible when scrolled */}
+      <div 
+        className={`absolute inset-0 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-dark-base/80 backdrop-blur-xl opacity-100' 
+            : 'bg-transparent backdrop-blur-none opacity-0'
+        }`}
+      ></div>
+      
+      {/* Gradient overlay for depth - only visible when scrolled */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none transition-opacity duration-300 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      ></div>
+
+      <div className="relative container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
@@ -43,7 +69,7 @@ export default function PublicNavbar() {
             </Link>
             <Link
               href="/auth"
-              className="px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 focus:outline-none"
+              className="px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 focus:outline-none shadow-lg shadow-accent-orange/20"
             >
               Get Started
             </Link>
@@ -70,7 +96,7 @@ export default function PublicNavbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-border-10 pt-4">
+          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-white/10 pt-4">
             <Link
               href="/projects"
               className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
@@ -94,7 +120,7 @@ export default function PublicNavbar() {
             </Link>
             <Link
               href="/auth"
-              className="block px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 text-center focus:outline-none"
+              className="block px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 text-center focus:outline-none shadow-lg shadow-accent-orange/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Get Started

@@ -1,105 +1,232 @@
 import { requireAuth } from '@/lib/auth-helpers';
-import { prisma } from '@/lib/prisma';
-import DashboardClient from '@/components/dashboard/DashboardClient';
+import { Suspense } from 'react';
+import { DashboardService } from '@/features/dashboard/dashboard.service';
+import StatsCards from '@/components/dashboard/StatsCards';
+import RecommendationsGrid from '@/components/dashboard/RecommendationsGrid';
+import RecentProjects from '@/components/dashboard/RecentProjects';
+import QuickActions from '@/components/dashboard/QuickActions';
+import SavedPreview from '@/components/dashboard/SavedPreview';
+import { Skeleton } from '@/components/ui/skeleton';
 
-// Map database values to display labels
-const DEGREE_LABELS: Record<string, string> = {
-  BTECH: 'B.Tech',
-  BE: 'B.E',
-  BCA: 'BCA',
-  MCA: 'MCA',
-  OTHER: 'Other',
-};
+// Enable aggressive caching for dashboard
+export const revalidate = 60; // Revalidate every 60 seconds
 
-const BRANCH_LABELS: Record<string, string> = {
-  COMPUTER_ENGINEERING: 'Computer Engineering',
-  INFORMATION_TECHNOLOGY: 'Information Technology',
-  AI_ML: 'AI & ML',
-  DATA_SCIENCE: 'Data Science',
-  ELECTRONICS: 'Electronics',
-  OTHER: 'Other',
-};
+// Enhanced skeleton components that match actual content
+function StatsCardsSkeleton() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="bg-[#0f0f0f] rounded-2xl p-8 animate-pulse">
+          <div className="flex flex-col items-center">
+            {/* Ring skeleton */}
+            <div className="relative w-32 h-32 mb-6">
+              <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Skeleton className="h-12 w-16 bg-white/5" />
+              </div>
+            </div>
+            {/* Label skeleton */}
+            <Skeleton className="h-5 w-32 bg-white/5" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-const YEAR_LABELS: Record<string, string> = {
-  FIRST_YEAR: 'First Year',
-  SECOND_YEAR: 'Second Year',
-  THIRD_YEAR: 'Third Year',
-  FINAL_YEAR: 'Final Year',
-};
+function RecommendationsSkeleton() {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <Skeleton className="h-8 w-64 mb-2 bg-white/5" />
+          <Skeleton className="h-4 w-48 bg-white/5" />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="bg-[#0f0f0f] border border-white/5 rounded-2xl p-6 animate-pulse">
+            <Skeleton className="h-6 w-3/4 mb-3 bg-white/5" />
+            <Skeleton className="h-4 w-full mb-2 bg-white/5" />
+            <Skeleton className="h-4 w-5/6 mb-4 bg-white/5" />
+            <div className="flex gap-2 mb-4">
+              <Skeleton className="h-6 w-20 rounded-full bg-white/5" />
+              <Skeleton className="h-6 w-24 rounded-full bg-white/5" />
+            </div>
+            <div className="flex gap-2 mb-6">
+              <Skeleton className="h-5 w-16 rounded-md bg-white/5" />
+              <Skeleton className="h-5 w-16 rounded-md bg-white/5" />
+              <Skeleton className="h-5 w-16 rounded-md bg-white/5" />
+            </div>
+            <Skeleton className="h-10 w-full rounded-lg bg-white/5" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-const INTEREST_LABELS: Record<string, string> = {
-  WEB_DEVELOPMENT: 'Web Development',
-  MOBILE_DEVELOPMENT: 'Mobile Development',
-  MACHINE_LEARNING: 'AI & ML',
-  DATA_SCIENCE: 'Data Science',
-  BACKEND: 'Backend Development',
-  OPEN_TO_EXPLORE: 'Open to Explore',
-};
+function RecentProjectsSkeleton() {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <Skeleton className="h-8 w-48 bg-white/5" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="bg-[#0f0f0f] rounded-2xl p-6 animate-pulse">
+            <Skeleton className="h-6 w-3/4 mb-3 bg-white/5" />
+            <Skeleton className="h-5 w-24 mb-2 bg-white/5" />
+            <Skeleton className="h-4 w-32 bg-white/5" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-const SKILL_LABELS: Record<string, string> = {
-  BEGINNER: 'Beginner',
-  INTERMEDIATE: 'Intermediate',
-  ADVANCED: 'Advanced',
-};
+function SavedPreviewSkeleton() {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <Skeleton className="h-8 w-48 bg-white/5" />
+        <Skeleton className="h-10 w-32 rounded-lg bg-white/5" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="bg-[#0f0f0f] border border-white/5 rounded-2xl p-6 animate-pulse">
+            <Skeleton className="h-6 w-3/4 mb-3 bg-white/5" />
+            <Skeleton className="h-4 w-full mb-2 bg-white/5" />
+            <Skeleton className="h-4 w-5/6 mb-4 bg-white/5" />
+            <div className="flex gap-2">
+              <Skeleton className="h-5 w-20 rounded-md bg-white/5" />
+              <Skeleton className="h-5 w-24 rounded-md bg-white/5" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Server components that fetch data
+async function DashboardStats({ userId }: { userId: string }) {
+  const stats = await DashboardService.getDashboardStats(userId);
+  return <StatsCards {...stats} />;
+}
+
+async function PersonalizedRecommendations({ userId }: { userId: string }) {
+  const [recommendations, userInterest] = await Promise.all([
+    DashboardService.getPersonalizedRecommendations(userId, 3),
+    DashboardService.getUserInterest(userId),
+  ]);
+  return <RecommendationsGrid projects={recommendations} userInterest={userInterest} />;
+}
+
+async function RecentlyViewed({ userId }: { userId: string }) {
+  const projects = await DashboardService.getRecentlyViewed(userId, 4);
+  if (projects.length === 0) return null;
+  return <RecentProjects projects={projects} />;
+}
+
+async function SavedProjectsPreview({ userId }: { userId: string }) {
+  const [projects, totalSaved] = await Promise.all([
+    DashboardService.getSavedProjectsPreview(userId, 3),
+    DashboardService.getSavedCount(userId),
+  ]);
+  return <SavedPreview projects={projects} totalSaved={totalSaved} />;
+}
 
 export default async function DashboardPage() {
   const session = await requireAuth();
-  
-  // Fetch user profile data
-  const userProfile = await prisma.userProfile.findUnique({
-    where: { userId: session.user.id },
-  });
-
-  // Extract onboarding data from audit logs if profile doesn't have it
-  const onboardingLog = await prisma.auditLog.findFirst({
-    where: {
-      userId: session.user.id,
-      action: 'onboarding_completed',
-    },
-    orderBy: { createdAt: 'desc' },
-  });
-
-  let onboardingData = {
-    degree: 'Not Set',
-    branch: 'Not Set',
-    year: 'Not Set',
-    interest: 'Not Set',
-    skillLevel: 'Not Set',
-  };
-
-  if (onboardingLog?.metadata) {
-    try {
-      const metadata = JSON.parse(onboardingLog.metadata);
-      onboardingData = {
-        degree: DEGREE_LABELS[metadata.degree] || metadata.degree || 'Not Set',
-        branch: BRANCH_LABELS[metadata.branch] || metadata.branch || 'Not Set',
-        year: YEAR_LABELS[metadata.academicYear] || metadata.academicYear || 'Not Set',
-        interest: INTEREST_LABELS[metadata.primaryInterest] || metadata.primaryInterest || 'Not Set',
-        skillLevel: SKILL_LABELS[metadata.skillLevel] || metadata.skillLevel || 'Not Set',
-      };
-    } catch (error) {
-      console.error('Error parsing onboarding metadata:', error);
-    }
-  } else if (userProfile) {
-    // Fallback to profile data
-    onboardingData = {
-      degree: 'Not Set',
-      branch: 'Not Set',
-      year: YEAR_LABELS[userProfile.academicYear || ''] || userProfile.academicYear || 'Not Set',
-      interest: userProfile.preferredDomains?.[0] 
-        ? INTEREST_LABELS[userProfile.preferredDomains[0]] || userProfile.preferredDomains[0]
-        : 'Not Set',
-      skillLevel: SKILL_LABELS[userProfile.skillLevel || ''] || userProfile.skillLevel || 'Not Set',
-    };
-  }
-
   const userName = session.user.name || session.user.email?.split('@')[0] || 'there';
 
   return (
-    <DashboardClient
-      userName={userName}
-      userInterest={onboardingData.interest}
-      profileData={onboardingData}
-    />
+    <div className="min-h-screen bg-dark-base">
+      {/* Welcome Header - Renders immediately */}
+      <div className="relative overflow-hidden border-b border-border-10">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-48 h-48 md:w-96 md:h-96 bg-accent-orange/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-0 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-accent-pink/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-12 sm:pb-16">
+          <div className="text-center space-y-4 sm:space-y-6 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
+            <div className="inline-block">
+              <div className="text-xs sm:text-sm font-medium text-text-60 mb-2 tracking-wider uppercase">Welcome Back</div>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-text-90 mb-3 sm:mb-4 px-2">
+                Hey,{' '}
+                <span className="relative inline-block">
+                  <span className="bg-gradient-primary bg-clip-text text-transparent">
+                    {userName}
+                  </span>
+                  <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
+                    <path
+                      d="M1 5.5C50 2.5 150 2.5 199 5.5"
+                      stroke="url(#gradient)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      className="transition-all duration-1000 opacity-100"
+                      style={{ strokeDasharray: 200, strokeDashoffset: 0 }}
+                    />
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#ff6b00" />
+                        <stop offset="50%" stopColor="#ff006e" />
+                        <stop offset="100%" stopColor="#ff0040" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+                <span className="inline-block ml-2 sm:ml-4">👋</span>
+              </h1>
+            </div>
+            <p className="text-base sm:text-lg md:text-xl text-text-60 max-w-3xl mx-auto leading-relaxed px-4">
+              Ready to build something amazing today?
+              <br className="hidden sm:block" />
+              Let&apos;s turn your ideas into reality.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content with Suspense boundaries */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+        
+        {/* Stats Cards */}
+        <section>
+          <Suspense fallback={<StatsCardsSkeleton />}>
+            <DashboardStats userId={session.user.id} />
+          </Suspense>
+        </section>
+
+        {/* Personalized Recommendations */}
+        <section>
+          <Suspense fallback={<RecommendationsSkeleton />}>
+            <PersonalizedRecommendations userId={session.user.id} />
+          </Suspense>
+        </section>
+
+        {/* Continue Exploring */}
+        <section>
+          <Suspense fallback={<RecentProjectsSkeleton />}>
+            <RecentlyViewed userId={session.user.id} />
+          </Suspense>
+        </section>
+
+        {/* Quick Actions - No data fetching needed */}
+        <section>
+          <QuickActions />
+        </section>
+
+        {/* Saved Projects Preview */}
+        <section>
+          <Suspense fallback={<SavedPreviewSkeleton />}>
+            <SavedProjectsPreview userId={session.user.id} />
+          </Suspense>
+        </section>
+
+      </div>
+    </div>
   );
 }

@@ -10,7 +10,7 @@ import SaveButton from '@/components/projects/SaveButton';
 import ShareButton from '@/components/projects/ShareButton';
 import CopySummaryButton from '@/components/projects/CopySummaryButton';
 import BackButton from '@/components/projects/BackButton';
-import StickyActionPanel from '@/components/projects/StickyActionPanel';
+import DownloadPDFButton from '@/components/projects/DownloadPDFButton';
 import { getTechIcon, TechBadge } from '@/components/projects/TechIcon';
 
 // OPTIMAL ISR STRATEGY FOR FAST FIRST LOAD:
@@ -234,11 +234,16 @@ export default async function ProjectDetailPage({
                   )}
                 </div>
                 
-                {/* Save and Share buttons */}
+                {/* Save, Download, and Share buttons */}
                 <div className="flex items-center gap-2">
                   <SaveButton
                     projectId={project.id}
                     initialSaved={isSaved}
+                    variant="compact"
+                  />
+                  <DownloadPDFButton
+                    projectId={project.id}
+                    projectSlug={project.slug}
                     variant="compact"
                   />
                   <ShareButton
@@ -297,11 +302,9 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      {/* Main Content - Two Column Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Left Column - Main Content */}
-          <div className="lg:col-span-3 space-y-16">
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="space-y-16">
         
         {/* Overview Section */}
         {project.longDescription && (
@@ -494,22 +497,10 @@ export default async function ProjectDetailPage({
           </section>
         )}
 
-          </div>
-
-          {/* Right Column - Sticky Action Panel */}
-          <div className="lg:col-span-1">
-            <StickyActionPanel
-              projectId={project.id}
-              projectSlug={project.slug}
-              difficulty={project.difficulty}
-              isSaved={isSaved}
-            />
-          </div>
         </div>
 
-        {/* Full Width Sections Below */}
+        {/* Related Projects Section */}
         <div className="space-y-16 mt-16">
-          {/* Related Projects Section */}
           {relatedProjects.length > 0 && (
             <section className="opacity-0 animate-fade-in" style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}>
               <div className="flex items-center gap-4 mb-6">

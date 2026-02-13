@@ -9,7 +9,18 @@ export default function AuthNavbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -66,8 +77,24 @@ export default function AuthNavbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container mx-auto px-4 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Glassmorphism background - only visible when scrolled */}
+      <div 
+        className={`absolute inset-0 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-dark-base/80 backdrop-blur-xl opacity-100' 
+            : 'bg-transparent backdrop-blur-none opacity-0'
+        }`}
+      ></div>
+      
+      {/* Gradient overlay for depth - only visible when scrolled */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none transition-opacity duration-300 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      ></div>
+
+      <div className="relative container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
@@ -81,6 +108,7 @@ export default function AuthNavbar() {
           <div className="hidden md:flex items-center gap-8">
             <Link
               href="/dashboard"
+              prefetch={true}
               className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
             >
               Dashboard
@@ -105,7 +133,7 @@ export default function AuthNavbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-10 h-10 rounded-full bg-gradient-primary text-white font-semibold flex items-center justify-center hover:scale-110 transition-all focus:outline-none"
+                className="w-10 h-10 rounded-full bg-gradient-primary text-white font-semibold flex items-center justify-center hover:scale-110 transition-all focus:outline-none shadow-lg shadow-accent-orange/30"
                 aria-label="Profile menu"
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
@@ -113,48 +141,54 @@ export default function AuthNavbar() {
                 {getInitials(session?.user?.email)}
               </button>
 
-              {/* Dropdown Menu */}
+              {/* Dropdown Menu with Glassmorphism */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-glass-10 border border-border-10 rounded-lg overflow-hidden backdrop-blur-sm">
-                  <div className="px-4 py-3 border-b border-border-10">
-                    <p className="text-sm text-text-60">Signed in as</p>
-                    <p className="text-sm text-text-90 font-medium truncate">
-                      {session?.user?.email}
-                    </p>
-                  </div>
+                <div className="absolute right-0 mt-2 w-56 rounded-xl overflow-hidden shadow-2xl">
+                  {/* Glassmorphism background */}
+                  <div className="absolute inset-0 bg-[#0f0f0f]/95 backdrop-blur-xl border border-white/10"></div>
                   
-                  <div className="py-2">
-                    <Link
-                      href="/profile"
-                      className="block px-4 py-2 text-text-60 hover:bg-glass-5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-glass-5 focus:text-accent-orange"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Profile
-                    </Link>
-                    <Link
-                      href="/saved"
-                      className="block px-4 py-2 text-text-60 hover:bg-glass-5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-glass-5 focus:text-accent-orange"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Saved Projects
-                    </Link>
-                    <Link
-                      href="/community/new"
-                      className="block px-4 py-2 text-text-60 hover:bg-glass-5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-glass-5 focus:text-accent-orange"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Post Idea
-                    </Link>
-                  </div>
+                  {/* Content */}
+                  <div className="relative">
+                    <div className="px-4 py-3 border-b border-white/10">
+                      <p className="text-sm text-text-60">Signed in as</p>
+                      <p className="text-sm text-text-90 font-medium truncate">
+                        {session?.user?.email}
+                      </p>
+                    </div>
+                    
+                    <div className="py-2">
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        href="/saved"
+                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Saved Projects
+                      </Link>
+                      <Link
+                        href="/community/new"
+                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Post Idea
+                      </Link>
+                    </div>
 
-                  <div className="border-t border-border-10 py-2">
-                    <button
-                      onClick={handleLogout}
-                      disabled={isLoggingOut}
-                      className="w-full text-left px-4 py-2 text-error hover:bg-glass-5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:bg-glass-5"
-                    >
-                      {isLoggingOut ? 'Signing out...' : 'Sign Out'}
-                    </button>
+                    <div className="border-t border-white/10 py-2">
+                      <button
+                        onClick={handleLogout}
+                        disabled={isLoggingOut}
+                        className="w-full text-left px-4 py-2 text-error hover:bg-white/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:bg-white/5"
+                      >
+                        {isLoggingOut ? 'Signing out...' : 'Sign Out'}
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -182,8 +216,8 @@ export default function AuthNavbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-border-10 pt-4">
-            <div className="px-4 py-2 border-b border-border-10 mb-3">
+          <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-white/10 pt-4">
+            <div className="px-4 py-2 border-b border-white/10 mb-3">
               <p className="text-sm text-text-60">Signed in as</p>
               <p className="text-sm text-text-90 font-medium truncate">
                 {session?.user?.email}
@@ -233,7 +267,7 @@ export default function AuthNavbar() {
               Post Idea
             </Link>
             
-            <div className="pt-3 border-t border-border-10">
+            <div className="pt-3 border-t border-white/10">
               <button
                 onClick={handleLogout}
                 disabled={isLoggingOut}

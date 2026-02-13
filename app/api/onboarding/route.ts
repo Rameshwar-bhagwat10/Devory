@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 import { withAuth, apiError, apiSuccess } from '@/lib/api-guards';
 import { prisma } from '@/lib/prisma';
+import { DashboardService } from '@/features/dashboard/dashboard.service';
 
 export async function POST(request: NextRequest) {
   return withAuth(async (session) => {
@@ -64,6 +65,17 @@ export async function POST(request: NextRequest) {
             goal,
           }),
         },
+      });
+      
+      // Prefetch dashboard data to warm up cache for instant first visit
+      // This runs in background and doesn't block the response
+      Promise.all([
+        DashboardService.getDashboardStats(session.user!.id),
+        DashboardService.getPersonalizedRecommendations(session.user!.id, 3),
+        DashboardService.getUserInterest(session.user!.id),
+      ]).catch(err => {
+        console.error('Dashboard prefetch error:', err);
+        // Silently fail - not critical
       });
       
       return apiSuccess({ message: 'Onboarding completed successfully' });
