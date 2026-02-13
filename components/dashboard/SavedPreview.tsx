@@ -22,9 +22,9 @@ interface SavedPreviewProps {
 
 const DIFFICULTY_COLORS = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
-  INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
-  ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
-  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  INTERMEDIATE: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  ADVANCED: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  EXPERT: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400',
 };
 
 function getTimeAgo(date: Date): string {
@@ -64,7 +64,7 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
           <p className="text-text-60 mb-6">Start exploring and save projects that interest you</p>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-white font-medium rounded-xl hover:scale-105 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-white font-medium rounded-xl hover:scale-105 transition-all shadow-lg shadow-purple-600/20"
           >
             <span>Explore Projects</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
         </div>
         <Link
           href="/saved"
-          className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#0f0f0f] rounded-lg text-text-90 hover:bg-[#141414] hover:text-accent-orange transition-all group"
+          className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#0f0f0f] rounded-lg text-text-90 hover:bg-[#141414] hover:text-purple-400 transition-all group"
         >
           <span className="text-sm font-medium">View All ({totalSaved})</span>
           <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
                   <span className={`text-xs px-2.5 py-1 rounded-full border font-bold uppercase tracking-wide ${DIFFICULTY_COLORS[project.difficulty as keyof typeof DIFFICULTY_COLORS]}`}>
                     {project.difficulty}
                   </span>
-                  <div className="flex items-center gap-1 text-xs text-accent-orange">
+                  <div className="flex items-center gap-1 text-xs text-purple-400">
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                       <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                     </svg>
@@ -128,12 +128,12 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
                 </div>
 
                 {/* Tech Icon */}
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-orange/10 to-accent-pink/10 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/10 to-violet-500/10 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300 shadow-sm shadow-purple-600/10">
                   <TechIcon style={{ color: iconColor }} className="w-7 h-7" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-text-90 mb-3 group-hover:text-accent-orange transition-colors line-clamp-2 min-h-[3.5rem]">
+                <h3 className="text-lg font-bold text-text-90 mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-violet-400 group-hover:to-purple-300 group-hover:bg-clip-text group-hover:text-transparent transition-colors line-clamp-2 min-h-[3.5rem]">
                   {project.title}
                 </h3>
 
@@ -158,7 +158,7 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
                     <span>Saved {getTimeAgo(project.savedAt)}</span>
                   </div>
                   
-                  <div className="flex items-center gap-1 text-sm font-medium text-text-60 group-hover:text-accent-orange transition-colors">
+                  <div className="flex items-center gap-1 text-sm font-medium text-text-60 group-hover:text-purple-400 transition-colors">
                     <span>View</span>
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -175,7 +175,7 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
       <div className="md:hidden mt-6 text-center">
         <Link
           href="/saved"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-primary text-white font-medium rounded-xl hover:scale-105 transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium rounded-xl hover:scale-105 transition-all shadow-lg shadow-purple-600/20"
         >
           <span>View All Saved ({totalSaved})</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,3 +186,4 @@ export default function SavedPreview({ projects, totalSaved }: SavedPreviewProps
     </div>
   );
 }
+

@@ -13,8 +13,8 @@ export default function QuickActions() {
         </svg>
       ),
       href: '/projects',
-      iconColor: 'text-accent-orange',
-      iconBg: 'bg-accent-orange/10',
+      iconColor: 'text-purple-400',
+      iconBg: 'bg-purple-500/10',
     },
     {
       title: 'Community Ideas',
@@ -95,3 +95,4 @@ export default function QuickActions() {
     </div>
   );
 }
+

@@ -13,11 +13,18 @@ module.exports = {
         'glass-5': 'var(--bg-glass-5)',
         'glass-10': 'var(--bg-glass-10)',
         
-        // Accent colors
-        'accent-orange': 'var(--accent-orange)',
-        'accent-pink': 'var(--accent-pink)',
-        'accent-red': 'var(--accent-red)',
-        'accent-deep-orange': 'var(--accent-deep-orange)',
+        // New accent colors (purple primary)
+        'accent-purple': 'var(--accent-purple)',
+        'accent-violet': 'var(--accent-violet)',
+        'accent-cyan': 'var(--accent-cyan)',
+        'accent-indigo': 'var(--accent-indigo)',
+        
+        // Legacy accent colors (kept for backward compatibility, mapped to new colors)
+        'accent-orange': 'var(--accent-purple)',
+        'accent-pink': 'var(--accent-violet)',
+        'accent-red': 'var(--accent-cyan)',
+        'accent-deep-orange': 'var(--accent-indigo)',
+        'accent-blue': 'var(--accent-violet)',
         
         // Text colors
         'text-white': 'var(--text-white)',
@@ -37,6 +44,8 @@ module.exports = {
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-secondary': 'var(--gradient-secondary)',
+        'gradient-tertiary': 'var(--gradient-tertiary)',
+        'gradient-text': 'var(--gradient-text)',
         'gradient-glow': 'var(--gradient-glow)',
       },
       boxShadow: {

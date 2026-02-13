@@ -186,12 +186,18 @@ export default function ProjectCard({
           sessionStorage.setItem('projectListUrl', window.location.href);
           sessionStorage.setItem('projectListScrollY', window.scrollY.toString());
         }}
-        className="block h-full bg-glass-10 border border-border-10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-orange/50 hover:shadow-lg hover:shadow-accent-orange/10 active:scale-[0.98] cursor-pointer"
+        className="group block h-full relative overflow-hidden bg-dark-base/60 border border-border-10 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-600/10 active:scale-[0.98] cursor-pointer backdrop-blur-sm"
       >
+        {/* Subtle gradient overlay for default state */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.04] via-transparent to-cyan-500/[0.03] pointer-events-none"></div>
+        
+        {/* Bottom right corner gradient on hover - cyan to blue to purple */}
+        <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gradient-to-tl from-cyan-500/0 via-blue-500/0 to-purple-500/0 group-hover:from-cyan-500/15 group-hover:via-blue-500/12 group-hover:to-purple-500/15 transition-all duration-500 pointer-events-none rounded-full blur-2xl"></div>
+        
       {/* Content - Flex container to manage spacing */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Title with gradient on hover */}
-        <h3 className="text-xl font-bold text-text-90 mb-3 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-accent-orange group-hover:via-accent-pink group-hover:to-accent-red group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 min-h-[3.5rem]">
+        <h3 className="text-xl font-bold text-text-90 mb-3 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-violet-400 group-hover:to-purple-300 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300 min-h-[3.5rem]">
           {title}
         </h3>
 
@@ -246,7 +252,7 @@ export default function ProjectCard({
             {techStack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
-                className="text-xs px-2.5 py-1 rounded bg-glass-5 border border-border-10 text-text-60 hover:border-accent-orange/30 hover:text-text-90 transition-all"
+                className="text-xs px-2.5 py-1 rounded bg-glass-5 border border-border-10 text-text-60 hover:border-purple-500/30 hover:text-text-90 transition-all"
               >
                 {tech}
               </span>

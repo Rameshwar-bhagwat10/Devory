@@ -71,12 +71,12 @@ export default function RecentProjects({ projects }: RecentProjectsProps) {
                 >
                   <div className="p-5">
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-orange/10 to-accent-pink/10 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/10 to-violet-500/10 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300 shadow-sm shadow-purple-600/10">
                       <TechIcon style={{ color: iconColor }} className="w-6 h-6" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-base font-bold text-text-90 mb-3 line-clamp-2 group-hover:text-accent-orange transition-colors min-h-[3rem]">
+                    <h3 className="text-base font-bold text-text-90 mb-3 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-violet-400 group-hover:to-purple-300 group-hover:bg-clip-text group-hover:text-transparent transition-colors min-h-[3rem]">
                       {project.title}
                     </h3>
 
@@ -90,10 +90,10 @@ export default function RecentProjects({ projects }: RecentProjectsProps) {
 
                     {/* Resume button */}
                     <div className="flex items-center justify-between pt-4 border-t border-border-10">
-                      <span className="text-xs font-bold text-accent-orange uppercase tracking-wide">
+                      <span className="text-xs font-bold text-purple-400 uppercase tracking-wide">
                         Resume
                       </span>
-                      <svg className="w-5 h-5 text-accent-orange group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </div>
@@ -117,3 +117,4 @@ export default function RecentProjects({ projects }: RecentProjectsProps) {
     </div>
   );
 }
+

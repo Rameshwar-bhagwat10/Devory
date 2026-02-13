@@ -39,9 +39,11 @@ export default function PublicNavbar() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:opacity-80 transition-opacity focus:outline-none focus:opacity-80"
+            className="group"
           >
-            Devory
+            <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity" style={{ fontFamily: 'cursive' }}>
+              Devory
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -69,7 +71,7 @@ export default function PublicNavbar() {
             </Link>
             <Link
               href="/auth"
-              className="px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 focus:outline-none shadow-lg shadow-accent-orange/20"
+              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium rounded-lg transition-all hover:scale-105 focus:outline-none shadow-lg shadow-purple-600/20"
             >
               Get Started
             </Link>
@@ -120,7 +122,7 @@ export default function PublicNavbar() {
             </Link>
             <Link
               href="/auth"
-              className="block px-4 py-2 bg-gradient-primary text-white font-medium rounded-lg transition-all hover:scale-105 text-center focus:outline-none shadow-lg shadow-accent-orange/20"
+              className="block px-4 py-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium rounded-lg transition-all hover:scale-105 text-center focus:outline-none shadow-lg shadow-purple-600/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Get Started

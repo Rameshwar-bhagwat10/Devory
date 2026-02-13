@@ -124,7 +124,7 @@ export default function SkillMatchCard({ projectId }: SkillMatchCardProps) {
     <div className="bg-glass-5 border border-border-10 rounded-2xl p-6 space-y-5 backdrop-blur-sm shadow-lg">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-bold text-text-60 uppercase tracking-wider">Skill Match</h3>
-        <div className="w-2 h-2 rounded-full bg-accent-orange animate-pulse"></div>
+        <div className="w-2 h-2 rounded-full bg-gradient-to-br from-purple-500 to-violet-500 animate-pulse"></div>
       </div>
       
       <div className="flex items-center justify-center">

@@ -96,9 +96,9 @@ export async function generateMetadata({
 
 const DIFFICULTY_STYLES = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
-  INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
-  ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
-  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  INTERMEDIATE: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  ADVANCED: 'bg-violet-500/10 border-violet-500/30 text-violet-400',
+  EXPERT: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400',
 };
 
 const DOMAIN_LABELS: Record<string, string> = {
@@ -210,7 +210,8 @@ export default async function ProjectDetailPage({
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         {/* Subtle glow */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl"></div>
         
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -220,7 +221,7 @@ export default async function ProjectDetailPage({
                 <div className="flex-1">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-90 leading-tight">
                     {project.title}
-                    <div className="h-1 w-0 bg-gradient-to-r from-accent-orange via-accent-pink to-accent-red rounded-full mt-3 animate-expand-width" style={{ animationFillMode: 'forwards' }}></div>
+                    <div className="h-1 w-0 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 rounded-full mt-3 animate-expand-width" style={{ animationFillMode: 'forwards' }}></div>
                   </h1>
                   
                   {/* Primary Technology Badge */}
@@ -281,7 +282,7 @@ export default async function ProjectDetailPage({
                     <div>
                       <div className="text-xs text-text-60 uppercase tracking-wider mb-2">Duration</div>
                       <div className="flex items-center gap-2 text-sm text-text-90">
-                        <svg className="w-4 h-4 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span className="font-medium">{project.estimatedHours} hours</span>
@@ -311,7 +312,7 @@ export default async function ProjectDetailPage({
           <section className="opacity-0 animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-1 h-8 bg-gradient-to-b from-accent-orange via-accent-pink to-accent-red rounded-full"></div>
+                <div className="w-1 h-8 bg-gradient-to-b from-purple-600 via-violet-600 to-indigo-600 rounded-full"></div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Overview</h2>
               </div>
               <CopySummaryButton
@@ -344,8 +345,8 @@ export default async function ProjectDetailPage({
                   className="bg-glass-5 border border-border-10 rounded-lg p-5 hover:-translate-y-1 transition-all duration-200"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-accent-orange/10 border border-accent-orange/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg className="w-3.5 h-3.5 text-accent-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <div className="w-6 h-6 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3.5 h-3.5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </div>
@@ -360,7 +361,7 @@ export default async function ProjectDetailPage({
         {/* Tech Stack Section */}
         <section className="opacity-0 animate-fade-in" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-1 h-8 bg-gradient-to-b from-accent-orange via-accent-pink to-accent-red rounded-full"></div>
+            <div className="w-1 h-8 bg-gradient-to-b from-purple-600 via-violet-600 to-indigo-600 rounded-full"></div>
             <h2 className="text-2xl sm:text-3xl font-bold text-text-90">Tech Stack</h2>
           </div>
           <div className="space-y-6">
@@ -433,7 +434,7 @@ export default async function ProjectDetailPage({
             <div className="space-y-3">
               {project.prerequisites.map((skill, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-accent-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <p className="text-text-60 leading-relaxed">{skill}</p>
@@ -482,8 +483,8 @@ export default async function ProjectDetailPage({
                 {project.timeline.map((item, index) => (
                   <div key={index} className="relative pl-12">
                     {/* Dot */}
-                    <div className="absolute left-0 w-8 h-8 rounded-full bg-accent-orange/10 border-2 border-accent-orange flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-accent-orange"></div>
+                    <div className="absolute left-0 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500/20 to-violet-500/20 border-2 border-purple-500 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-br from-purple-500 to-violet-500"></div>
                     </div>
                     
                     <div>

@@ -22,9 +22,9 @@ interface RecommendationsGridProps {
 
 const DIFFICULTY_COLORS = {
   BEGINNER: 'bg-green-500/10 border-green-500/30 text-green-400',
-  INTERMEDIATE: 'bg-accent-orange/10 border-accent-orange/30 text-accent-orange',
-  ADVANCED: 'bg-red-500/10 border-red-500/30 text-red-400',
-  EXPERT: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  INTERMEDIATE: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  ADVANCED: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+  EXPERT: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400',
 };
 
 export default function RecommendationsGrid({ projects, userInterest }: RecommendationsGridProps) {
@@ -44,7 +44,7 @@ export default function RecommendationsGrid({ projects, userInterest }: Recommen
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-3">
-          <svg className="w-5 h-5 text-accent-orange" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
           <h2 className="text-2xl md:text-3xl font-bold text-text-90">
@@ -52,7 +52,7 @@ export default function RecommendationsGrid({ projects, userInterest }: Recommen
           </h2>
         </div>
         <p className="text-text-60">
-          Based on your interest in <span className="text-accent-orange font-medium">{userInterest}</span>
+          Based on your interest in <span className="text-purple-400 font-medium">{userInterest}</span>
         </p>
       </div>
 
@@ -77,12 +77,12 @@ export default function RecommendationsGrid({ projects, userInterest }: Recommen
                 </div>
 
                 {/* Tech Icon */}
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-orange/10 to-accent-pink/10 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/10 to-violet-500/10 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300 shadow-sm shadow-purple-600/10">
                   <TechIcon style={{ color: iconColor }} className="w-7 h-7" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-text-90 mb-3 group-hover:text-accent-orange transition-colors line-clamp-2 min-h-[3.5rem]">
+                <h3 className="text-xl font-bold text-text-90 mb-3 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-violet-400 group-hover:to-purple-300 group-hover:bg-clip-text group-hover:text-transparent transition-colors line-clamp-2 min-h-[3.5rem]">
                   {project.title}
                 </h3>
 
@@ -130,13 +130,13 @@ export default function RecommendationsGrid({ projects, userInterest }: Recommen
                         />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-xs font-bold text-accent-orange">{project.matchScore}%</span>
+                        <span className="text-xs font-bold text-purple-400">{project.matchScore}%</span>
                       </div>
                     </div>
                     <span className="text-sm font-medium text-text-60">Match</span>
                   </div>
                   
-                  <div className="flex items-center gap-1.5 text-sm font-medium text-text-60 group-hover:text-accent-orange transition-colors">
+                  <div className="flex items-center gap-1.5 text-sm font-medium text-text-60 group-hover:text-purple-400 transition-colors">
                     <span>View</span>
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -162,3 +162,4 @@ export default function RecommendationsGrid({ projects, userInterest }: Recommen
     </div>
   );
 }
+

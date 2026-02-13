@@ -20,7 +20,7 @@ const ACTIVITIES: Activity[] = [
     ),
     text: 'Saved',
     highlight: 'E-Commerce Platform',
-    highlightColor: 'text-accent-orange',
+    highlightColor: 'text-purple-400',
     time: '2 hours ago',
     iconBg: 'bg-purple-500/20',
     iconBorder: 'border-purple-500/30',
@@ -111,3 +111,4 @@ export default function ActivityFeed() {
     </div>
   );
 }
+

@@ -59,7 +59,7 @@ export default function FilterDropdown({
         {icon && <span className="w-4 h-4">{icon}</span>}
         <span className="font-medium text-sm">{title}</span>
         {selectedCount > 0 && (
-          <span className="w-5 h-5 rounded-full bg-accent-orange text-white text-xs flex items-center justify-center font-bold">
+          <span className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-600 to-violet-600 text-white text-xs flex items-center justify-center font-bold">
             {selectedCount}
           </span>
         )}

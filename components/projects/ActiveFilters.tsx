@@ -65,7 +65,7 @@ export default function ActiveFilters({ filters, onRemoveFilter, onClearAll }: A
         <button
           key={`${filter.type}-${filter.value}-${index}`}
           onClick={() => onRemoveFilter(filter.type, filter.value)}
-          className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent-orange/10 border border-accent-orange rounded-full text-sm text-text-90 hover:bg-accent-orange/20 transition-all focus:outline-none focus:ring-2 focus:ring-accent-orange/30"
+          className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-500/10 to-violet-500/10 border border-purple-500 rounded-full text-sm text-text-90 hover:from-purple-500/20 hover:to-violet-500/20 transition-all focus:outline-none focus:ring-2 focus:ring-purple-500/30"
         >
           <span>{FILTER_LABELS[filter.value] || filter.value}</span>
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

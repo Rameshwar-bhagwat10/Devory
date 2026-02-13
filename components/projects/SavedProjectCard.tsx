@@ -84,9 +84,15 @@ export default function SavedProjectCard({
   });
 
   return (
-    <div className="group relative h-full bg-glass-10 border border-border-10 rounded-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-orange hover:shadow-lg hover:shadow-accent-orange/10">
+    <div className="group relative h-full overflow-hidden bg-dark-base/60 border border-border-10 rounded-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-600/10 backdrop-blur-sm">
+      {/* Subtle gradient overlay for default state */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.04] via-transparent to-cyan-500/[0.03] pointer-events-none"></div>
+      
+      {/* Bottom right corner gradient on hover - cyan to blue to purple */}
+      <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gradient-to-tl from-cyan-500/0 via-blue-500/0 to-purple-500/0 group-hover:from-cyan-500/15 group-hover:via-blue-500/12 group-hover:to-purple-500/15 transition-all duration-500 pointer-events-none rounded-full blur-2xl"></div>
+      
       <Link href={`/projects/${slug}`} className="block h-full">
-        <div className="h-full flex flex-col">
+        <div className="relative z-10 h-full flex flex-col">
           {/* Saved Date */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs text-text-60">Saved {savedDate}</span>
@@ -116,7 +122,7 @@ export default function SavedProjectCard({
           </div>
 
           {/* Title - Fixed height */}
-          <h3 className="text-xl font-bold text-text-90 mb-3 line-clamp-2 group-hover:text-accent-orange transition-colors min-h-[3.5rem]">
+          <h3 className="text-xl font-bold text-text-90 mb-3 line-clamp-2 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-violet-400 group-hover:to-purple-300 group-hover:bg-clip-text group-hover:text-transparent transition-colors min-h-[3.5rem]">
             {title}
           </h3>
 

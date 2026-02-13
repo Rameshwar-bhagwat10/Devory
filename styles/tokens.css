@@ -1,21 +1,23 @@
-/* DEVORY — DARK HIGH-INTENSITY ORANGE WITH PINK/RED GRADIENTS */
+/* DEVORY — DARK PREMIUM PURPLE PRIMARY WITH CYAN ACCENT */
 
 :root {
   /* 🖤 BACKGROUND COLORS */
   --dark-base: #0a0a0a;              /* Primary background */
-  --bg-glass-5: rgba(255, 255, 255, 0);   /* Glassmorphism surface */
-  --bg-glass-10: rgba(255, 255, 255, 0.032);  /* Hover states, elevated surfaces */
+  --bg-glass-5: rgba(255, 255, 255, 0.05);   /* Glassmorphism surface */
+  --bg-glass-10: rgba(255, 255, 255, 0.10);  /* Hover states, elevated surfaces */
   
-  /* 🔥 HIGH-INTENSITY ORANGE & GRADIENT COLORS */
-  --accent-orange: #ff6600;          /* Dark high-intensity orange */
-  --accent-pink: #ff0080;            /* Hot pink accent */
-  --accent-red: #ff0011;             /* Red accent */
-  --accent-deep-orange: #ff7300;     /* Deep orange */
+  /* 💎 PREMIUM PURPLE PRIMARY COLORS */
+  --accent-purple: #9333ea;          /* Primary purple */
+  --accent-violet: #7c3aed;          /* Violet shade */
+  --accent-cyan: #06b6d4;            /* Secondary cyan */
+  --accent-indigo: #6366f1;          /* Indigo accent */
   
   /* 🌈 GRADIENT DEFINITIONS */
-  --gradient-primary: linear-gradient(135deg, #ff6b00 0%, #ff2bb1 50%, #ff1a53 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff4500 0%, #ff7e21 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(255, 107, 0, 0.3) 0%, rgba(255, 0, 110, 0.3) 50%, rgba(255, 0, 64, 0.3) 100%);
+  --gradient-primary: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+  --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  --gradient-tertiary: linear-gradient(135deg, #9333ea 0%, #6366f1 100%);
+  --gradient-text: linear-gradient(to right, #ffffff 0%, #e9d5ff 50%, #c4b5fd 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(124, 58, 237, 0.3) 50%, rgba(6, 182, 212, 0.3) 100%);
   
   /* 🔤 TEXT COLORS (White with opacity) */
   --text-white: #ffffff;             /* Pure white */
@@ -27,11 +29,11 @@
   --border-10: rgba(255, 255, 255, 0.10);  /* Default borders */
   --border-20: rgba(255, 255, 255, 0.20);  /* Hover/active borders */
   
-  /* ✨ GLOW SHADOWS WITH GRADIENT COLORS */
-  --glow-sm: 0 0 12px rgba(255, 107, 0, 0.4);   /* Subtle hover */
-  --glow-md: 0 0 20px rgba(255, 107, 0, 0.5), 0 0 30px rgba(255, 0, 110, 0.3);  /* Active/focused */
-  --glow-lg: 0 0 30px rgba(255, 107, 0, 0.6), 0 0 50px rgba(255, 0, 110, 0.4), 0 0 70px rgba(255, 0, 64, 0.3);  /* Primary CTAs */
-  --glow-xl: 0 0 50px rgba(255, 107, 0, 0.5), 0 0 100px rgba(255, 0, 110, 0.4), 0 0 150px rgba(255, 0, 64, 0.3);  /* Hero glow */
+  /* ✨ GLOW SHADOWS WITH PURPLE PRIMARY */
+  --glow-sm: 0 0 12px rgba(147, 51, 234, 0.4);   /* Subtle hover */
+  --glow-md: 0 0 20px rgba(147, 51, 234, 0.5), 0 0 30px rgba(124, 58, 237, 0.3);  /* Active/focused */
+  --glow-lg: 0 0 30px rgba(147, 51, 234, 0.6), 0 0 50px rgba(124, 58, 237, 0.4), 0 0 70px rgba(6, 182, 212, 0.3);  /* Primary CTAs */
+  --glow-xl: 0 0 50px rgba(147, 51, 234, 0.5), 0 0 100px rgba(124, 58, 237, 0.4), 0 0 150px rgba(6, 182, 212, 0.3);  /* Hero glow */
   
   /* 🔴 STATUS COLORS */
   --error: #ef4444;

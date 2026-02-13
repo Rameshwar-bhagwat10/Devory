@@ -157,7 +157,7 @@ export default async function DashboardPage() {
               <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-text-90 mb-3 sm:mb-4 px-2">
                 Hey,{' '}
                 <span className="relative inline-block">
-                  <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     {userName}
                   </span>
                   <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
@@ -171,9 +171,9 @@ export default async function DashboardPage() {
                     />
                     <defs>
                       <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#ff6b00" />
-                        <stop offset="50%" stopColor="#ff006e" />
-                        <stop offset="100%" stopColor="#ff0040" />
+                        <stop offset="0%" stopColor="#a855f7" />
+                        <stop offset="50%" stopColor="#3b82f6" />
+                        <stop offset="100%" stopColor="#06b6d4" />
                       </linearGradient>
                     </defs>
                   </svg>

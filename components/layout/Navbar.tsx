@@ -39,7 +39,7 @@ export default function Navbar() {
         ></div>
 
         <div className="relative container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">Devory</div>
+          <div className="text-xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">Devory</div>
           <div className="w-20 h-10 bg-white/10 rounded animate-pulse"></div>
         </div>
       </nav>

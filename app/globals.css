@@ -82,12 +82,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background-color: var(--accent-orange);
+  background-color: var(--accent-purple);
   color: var(--dark-base);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-orange);
+  outline: 2px solid var(--accent-purple);
   outline-offset: 2px;
 }
 
