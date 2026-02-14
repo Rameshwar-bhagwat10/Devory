@@ -29,7 +29,7 @@ export async function generateStaticParams() {
   try {
     // Pre-render ALL published projects at build time
     // This makes first load fast for all projects (~50ms)
-    const projects = await prisma.project.findMany({
+    const projects = await prisma.projects.findMany({
       where: { isPublished: true },
       select: { slug: true },
       // No take limit - pre-render ALL projects

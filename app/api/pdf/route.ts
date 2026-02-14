@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
 
       // Check rate limit
       const oneHourAgo = new Date(Date.now() - RATE_LIMIT_WINDOW);
-      const recentDownloads = await prisma.download.count({
+      const recentDownloads = await prisma.downloads.count({
         where: {
           userId: session.user!.id,
           createdAt: { gte: oneHourAgo },
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Fetch project details
-      const project = await prisma.project.findUnique({
+      const project = await prisma.projects.findUnique({
         where: { id: projectId },
       });
 
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Log download
-      await prisma.download.create({
+      await prisma.downloads.create({
         data: {
           userId: session.user!.id,
           projectId,

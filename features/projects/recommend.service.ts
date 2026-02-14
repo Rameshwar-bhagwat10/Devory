@@ -26,7 +26,7 @@ export class RecommendService {
   ): Promise<RecommendedProject[]> {
     try {
       // Fetch user profile
-      const userProfile = await prisma.userProfile.findUnique({
+      const userProfile = await prisma.user_profiles.findUnique({
         where: { userId },
         select: {
           preferredDomains: true,
@@ -35,7 +35,7 @@ export class RecommendService {
       });
 
       // Fetch current project
-      const currentProject = await prisma.project.findUnique({
+      const currentProject = await prisma.projects.findUnique({
         where: { id: currentProjectId },
         select: {
           domain: true,
@@ -49,7 +49,7 @@ export class RecommendService {
       }
 
       // Fetch candidate projects
-      const candidates = await prisma.project.findMany({
+      const candidates = await prisma.projects.findMany({
         where: {
           isPublished: true,
           id: { not: currentProjectId },

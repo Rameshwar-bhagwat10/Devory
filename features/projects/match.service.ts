@@ -18,7 +18,7 @@ export class MatchService {
   ): Promise<MatchResult> {
     try {
       // Fetch user profile with onboarding data
-      const userProfile = await prisma.userProfile.findUnique({
+      const userProfile = await prisma.user_profiles.findUnique({
         where: { userId },
         select: {
           preferredDomains: true,
@@ -28,7 +28,7 @@ export class MatchService {
       });
 
       // Fetch project details
-      const project = await prisma.project.findUnique({
+      const project = await prisma.projects.findUnique({
         where: { id: projectId },
         select: {
           domain: true,

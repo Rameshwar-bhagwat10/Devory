@@ -29,9 +29,9 @@ export class DashboardService {
         try {
           // Parallel queries with proper connection management
           const [savedCount, downloadsCount, exploredCount] = await Promise.all([
-            prisma.savedProject.count({ where: { userId } }),
-            prisma.download.count({ where: { userId } }),
-            prisma.auditLog.count({
+            prisma.saved_projects.count({ where: { userId } }),
+            prisma.downloads.count({ where: { userId } }),
+            prisma.audit_logs.count({
               where: {
                 userId,
                 action: 'project_viewed',
@@ -65,7 +65,7 @@ export class DashboardService {
       async () => {
         try {
           // Fast query with minimal fields
-          const recentLogs = await prisma.auditLog.findMany({
+          const recentLogs = await prisma.audit_logs.findMany({
             where: {
               userId,
               action: 'project_viewed',
@@ -88,7 +88,7 @@ export class DashboardService {
           const projectIds = uniqueProjectIds.slice(0, limit);
 
           // Fetch minimal project details
-          const projects = await prisma.project.findMany({
+          const projects = await prisma.projects.findMany({
             where: {
               id: { in: projectIds },
               isPublished: true,
@@ -144,7 +144,7 @@ export class DashboardService {
       async () => {
         try {
           // Get user profile with minimal fields
-          const userProfile = await prisma.userProfile.findUnique({
+          const userProfile = await prisma.user_profiles.findUnique({
             where: { userId },
             select: {
               preferredDomains: true,
@@ -158,7 +158,7 @@ export class DashboardService {
           }
 
           // Ultra-fast query with minimal fields and limit
-          const projects = await prisma.project.findMany({
+          const projects = await prisma.projects.findMany({
             where: {
               isPublished: true,
               domain: { in: userProfile.preferredDomains as ProjectDomain[] },
@@ -219,7 +219,7 @@ export class DashboardService {
    */
   private static async getPopularProjects(limit: number = 4) {
     try {
-      const projects = await prisma.project.findMany({
+      const projects = await prisma.projects.findMany({
         where: { isPublished: true },
         select: {
           id: true,
@@ -279,11 +279,11 @@ export class DashboardService {
   static async getSavedProjectsPreview(userId: string, limit: number = 3) {
     try {
       // Ultra-fast query with minimal fields
-      const savedProjects = await prisma.savedProject.findMany({
+      const savedProjects = await prisma.saved_projects.findMany({
         where: { userId },
         select: {
           createdAt: true,
-          project: {
+          projects: {
             select: {
               id: true,
               title: true,
@@ -299,14 +299,14 @@ export class DashboardService {
       });
 
       return savedProjects.map(sp => ({
-        id: sp.project.id,
-        title: sp.project.title,
-        slug: sp.project.slug,
+        id: sp.projects.id,
+        title: sp.projects.title,
+        slug: sp.projects.slug,
         description: '',
-        difficulty: sp.project.difficulty,
-        domain: sp.project.domain,
-        primaryTechnology: sp.project.primaryTechnology,
-        techStack: [sp.project.primaryTechnology],
+        difficulty: sp.projects.difficulty,
+        domain: sp.projects.domain,
+        primaryTechnology: sp.projects.primaryTechnology,
+        techStack: [sp.projects.primaryTechnology],
         savedAt: sp.createdAt,
       }));
     } catch (error) {
@@ -320,7 +320,7 @@ export class DashboardService {
    */
   static async getUserInterest(userId: string): Promise<string> {
     try {
-      const userProfile = await prisma.userProfile.findUnique({
+      const userProfile = await prisma.user_profiles.findUnique({
         where: { userId },
         select: { preferredDomains: true },
       });
@@ -336,7 +336,7 @@ export class DashboardService {
    */
   static async getSavedCount(userId: string): Promise<number> {
     try {
-      return await prisma.savedProject.count({ where: { userId } });
+      return await prisma.saved_projects.count({ where: { userId } });
     } catch (error) {
       console.error('Error fetching saved count:', error);
       return 0;

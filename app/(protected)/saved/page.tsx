@@ -27,7 +27,7 @@ export default async function SavedProjectsPage() {
         {/* Content */}
         {savedProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {savedProjects.map((project, index) => (
+            {savedProjects.map((project: any, index: number) => (
               <div
                 key={project.id}
                 className="opacity-0 animate-fade-in"

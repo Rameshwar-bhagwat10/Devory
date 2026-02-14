@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
+// Prisma client with community models support
+const globalForPrisma = global as unknown as { prisma: PrismaClient | undefined };
 
 export const prisma =
   globalForPrisma.prisma ||
@@ -8,11 +9,6 @@ export const prisma =
     log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
   });
 
-// Configure connection pool settings
-if (!globalForPrisma.prisma) {
-  prisma.$connect().catch((err) => {
-    console.error('Failed to connect to database:', err);
-  });
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma;
 }
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;

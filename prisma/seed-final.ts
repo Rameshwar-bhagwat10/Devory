@@ -9,7 +9,7 @@ async function main() {
   console.log('Starting FINAL database seed with ALL projects...');
 
   // Clear existing projects
-  await prisma.project.deleteMany({});
+  await prisma.projects.deleteMany({});
   console.log('Cleared existing projects');
 
   // Combine all projects
@@ -23,7 +23,7 @@ async function main() {
   let count = 0;
   for (const project of allProjects) {
     try {
-      await prisma.project.create({
+      await prisma.projects.create({
         data: {
           slug: project.slug,
           title: project.title,

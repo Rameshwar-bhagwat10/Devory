@@ -21,7 +21,7 @@ async function main() {
   for (const project of newProjects) {
     try {
       // Check if project already exists
-      const existing = await prisma.project.findUnique({
+      const existing = await prisma.projects.findUnique({
         where: { slug: project.slug }
       });
 
@@ -31,7 +31,7 @@ async function main() {
         continue;
       }
 
-      await prisma.project.create({
+      await prisma.projects.create({
         data: {
           slug: project.slug,
           title: project.title,

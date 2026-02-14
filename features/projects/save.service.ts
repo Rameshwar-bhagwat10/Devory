@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 export class SaveService {
   static async saveProject(userId: string, projectId: string): Promise<{ success: boolean }> {
     try {
-      await prisma.savedProject.create({
+      await prisma.saved_projects.create({
         data: {
           userId,
           projectId,
@@ -11,7 +11,7 @@ export class SaveService {
       });
 
       // Track activity
-      await prisma.auditLog.create({
+      await prisma.audit_logs.create({
         data: {
           userId,
           action: 'project_saved',
@@ -29,7 +29,7 @@ export class SaveService {
 
   static async unsaveProject(userId: string, projectId: string): Promise<{ success: boolean }> {
     try {
-      await prisma.savedProject.deleteMany({
+      await prisma.saved_projects.deleteMany({
         where: {
           userId,
           projectId,
@@ -44,7 +44,7 @@ export class SaveService {
   }
 
   static async isProjectSaved(userId: string, projectId: string): Promise<boolean> {
-    const saved = await prisma.savedProject.findUnique({
+    const saved = await prisma.saved_projects.findUnique({
       where: {
         userId_projectId: {
           userId,
@@ -57,10 +57,10 @@ export class SaveService {
   }
 
   static async getSavedProjects(userId: string) {
-    const savedProjects = await prisma.savedProject.findMany({
+    const savedProjects = await prisma.saved_projects.findMany({
       where: { userId },
       include: {
-        project: {
+        projects: {
           select: {
             id: true,
             title: true,
@@ -78,10 +78,10 @@ export class SaveService {
     });
 
     return savedProjects.map(sp => ({
-      ...sp.project,
-      description: sp.project.shortDescription,
-      techStack: [sp.project.primaryTechnology],
-      estimatedHours: parseInt(sp.project.estimatedDuration.split('-')[0]) * 40 || undefined,
+      ...sp.projects,
+      description: sp.projects.shortDescription,
+      techStack: [sp.projects.primaryTechnology],
+      estimatedHours: parseInt(sp.projects.estimatedDuration.split('-')[0]) * 40 || undefined,
       savedAt: sp.createdAt,
     }));
   }

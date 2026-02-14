@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Check if already saved
-      const existingSave = await prisma.savedProject.findUnique({
+      const existingSave = await prisma.saved_projects.findUnique({
         where: {
           userId_projectId: {
             userId: session.user!.id,
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Get total saves count
-      const totalSaves = await prisma.savedProject.count({
+      const totalSaves = await prisma.saved_projects.count({
         where: { projectId },
       });
 

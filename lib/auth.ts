@@ -1,18 +1,21 @@
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { prisma } from './prisma';
+import { PrismaClient } from '@prisma/client';
 import { authConfig } from './auth.config';
+
+// Create a dedicated Prisma client for auth
+const prismaForAuth = new PrismaClient();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prismaForAuth),
   callbacks: {
     ...authConfig.callbacks,
     async signIn({ user }) {
       // Fetch user data from database to populate the user object
       if (user.id) {
         try {
-          const dbUser = await prisma.user.findUnique({
+          const dbUser = await prismaForAuth.user.findUnique({
             where: { id: user.id },
             select: {
               id: true,
@@ -37,13 +40,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       // Create user profile on first login
       if (user.id && user.email) {
         try {
-          await prisma.userProfile.create({
+          await prismaForAuth.user_profiles.create({
             data: {
               userId: user.id,
             },
           });
 
-          await prisma.subscription.create({
+          await prismaForAuth.subscriptions.create({
             data: {
               userId: user.id,
               tier: 'FREE',
@@ -51,7 +54,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             },
           });
 
-          await prisma.auditLog.create({
+          await prismaForAuth.audit_logs.create({
             data: {
               userId: user.id,
               action: 'user_created',

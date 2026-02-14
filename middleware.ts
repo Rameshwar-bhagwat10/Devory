@@ -3,22 +3,27 @@ import type { NextRequest } from 'next/server';
 import { getSession } from './lib/auth-middleware';
 
 // Public routes that don't require authentication
-const publicRoutes = ['/', '/auth', '/projects', '/community'];
+const publicRoutes = ['/', '/auth', '/projects'];
 
 // Routes that require authentication
-const protectedRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
+const protectedRoutes = ['/dashboard', '/profile', '/saved', '/community'];
 
 // Routes that require admin role
 const adminRoutes = ['/admin'];
 
 // Routes that require onboarding completion
-const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community/new'];
+const onboardingRequiredRoutes = ['/dashboard', '/profile', '/saved', '/community'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Allow API routes
+  // Allow API routes and auth callbacks
   if (pathname.startsWith('/api')) {
+    return NextResponse.next();
+  }
+  
+  // Allow NextAuth callback routes
+  if (pathname.startsWith('/auth/') || pathname === '/auth') {
     return NextResponse.next();
   }
   

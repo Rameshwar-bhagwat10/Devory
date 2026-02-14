@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🗑️  Clearing all projects...');
   
-  const result = await prisma.project.deleteMany({});
+  const result = await prisma.projects.deleteMany({});
   
   console.log(`✅ Deleted ${result.count} projects`);
 }

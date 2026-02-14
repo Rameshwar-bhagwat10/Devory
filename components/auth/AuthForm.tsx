@@ -13,10 +13,17 @@ export default function AuthForm({ callbackUrl }: { callbackUrl?: string }) {
     try {
       setIsLoading(true);
       setError('');
+      
       await signIn('google', {
         callbackUrl: callbackUrl || '/dashboard',
+        redirect: true,
       });
-    } catch {
+      
+      // If we reach here, redirect didn't happen (error occurred)
+      setError('Failed to sign in with Google. Please try again.');
+      setIsLoading(false);
+    } catch (err) {
+      console.error('Sign in exception:', err);
       setError('Something went wrong. Please try again.');
       setIsLoading(false);
     }

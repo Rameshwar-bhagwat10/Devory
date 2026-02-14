@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useRef, useEffect } from 'react';
+import { NotificationDropdown } from './NotificationDropdown';
 
 export default function AuthNavbar() {
   const { data: session } = useSession();
@@ -125,11 +126,14 @@ export default function AuthNavbar() {
             </Link>
             <Link
               href="/community"
-              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange mr-4"
+              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
             >
               Community
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
+
+            {/* Notification Dropdown */}
+            <NotificationDropdown />
 
             {/* Profile Dropdown */}
             <div className="relative" ref={dropdownRef}>

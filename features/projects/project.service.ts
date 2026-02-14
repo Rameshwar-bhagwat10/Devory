@@ -63,7 +63,7 @@ export class ProjectService {
 
       // Use transaction for better performance
       const [projectsData, total] = await prisma.$transaction([
-        prisma.project.findMany({
+        prisma.projects.findMany({
           where,
           select: {
             id: true,
@@ -83,7 +83,7 @@ export class ProjectService {
           skip,
           take: limit,
         }),
-        prisma.project.count({ where }),
+        prisma.projects.count({ where }),
       ]);
 
       const totalPages = Math.ceil(total / limit);
@@ -150,7 +150,7 @@ export class ProjectService {
     return unstable_cache(
       async () => {
         try {
-          const project = await prisma.project.findUnique({
+          const project = await prisma.projects.findUnique({
             where: { 
               slug,
               isPublished: true,
@@ -225,7 +225,7 @@ export class ProjectService {
     return unstable_cache(
       async () => {
         try {
-          const projects = await prisma.project.findMany({
+          const projects = await prisma.projects.findMany({
             where: {
               isPublished: true,
               domain: domain as ProjectDomain,

@@ -11,9 +11,8 @@ export class AuditService {
    */
   static logProjectView(userId: string, projectId: string): void {
     // Fire and forget - don't await
-    prisma.auditLog.create({
-      data: {
-        userId,
+    prisma.audit_logs.create({
+      data: {        userId,
         action: 'project_viewed',
         resource: 'project',
         resourceId: projectId,
@@ -33,7 +32,7 @@ export class AuditService {
     resource: string;
     resourceId: string;
   }>): void {
-    prisma.auditLog.createMany({
+    prisma.audit_logs.createMany({
       data: logs,
       skipDuplicates: true,
     }).catch((error) => {

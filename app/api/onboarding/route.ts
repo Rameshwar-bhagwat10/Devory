@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       }
       
       // Update or create user profile
-      await prisma.userProfile.upsert({
+      await prisma.user_profiles.upsert({
         where: { userId: session.user!.id },
         update: {
           preferredDomains: [primaryInterest],
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       });
       
       // Log onboarding completion
-      await prisma.auditLog.create({
+      await prisma.audit_logs.create({
         data: {
           userId: session.user!.id,
           action: 'onboarding_completed',

@@ -9,10 +9,19 @@ export const authConfig: NextAuthConfig = {
     GitHub({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      allowDangerousEmailAccountLinking: true,
     }),
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      allowDangerousEmailAccountLinking: true,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     }),
     Credentials({
       credentials: {
@@ -61,4 +70,5 @@ export const authConfig: NextAuthConfig = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   secret: process.env.AUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
 };
