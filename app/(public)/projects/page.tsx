@@ -112,7 +112,7 @@ async function ProjectsContent({ searchParams }: ProjectsPageProps) {
 
 function ProjectsLoading() {
   return (
-    <div className="min-h-screen bg-dark-base">
+    <div className="min-h-screen bg-gradient-to-b from-[#050810] via-[#080b14] to-[#050810]">
       <div className="relative overflow-hidden border-b border-border-10">
         <div className="absolute top-10 right-10 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl"></div>
         

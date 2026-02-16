@@ -102,14 +102,15 @@ export class CollaborationService {
 
   /**
    * Accept a collaboration request
-   * Uses transaction with row-level locking to prevent race conditions
+   * Uses transaction to ensure data consistency
    */
   static async acceptRequest(requestId: string, ownerId: string) {
     return await prisma.$transaction(async (tx) => {
-      // Fetch request with post - USE SELECT FOR UPDATE to lock the row
+      // Fetch request with post
       const request = await tx.community_collaboration_requests.findUnique({
         where: { id: requestId },
-        include: { community_posts: true,
+        include: { 
+          community_posts: true,
           user: {
             include: {
               user_profiles: true,
@@ -122,25 +123,7 @@ export class CollaborationService {
         throw new Error('Request not found');
       }
 
-      // Lock the post row to prevent race conditions
-      const lockedPost = await tx.$queryRaw<Array<{
-        id: string;
-        currentCollaborators: number;
-        requiredCollaborators: number | null;
-        status: string;
-        userId: string;
-      }>>`
-        SELECT id, "currentCollaborators", "requiredCollaborators", status, "userId"
-        FROM community_posts
-        WHERE id = ${request.postId}
-        FOR UPDATE
-      `;
-
-      if (!lockedPost || lockedPost.length === 0) {
-        throw new Error('Post not found');
-      }
-
-      const post = lockedPost[0];
+      const post = request.community_posts;
 
       // Verify owner owns the post
       if (post.userId !== ownerId) {
@@ -157,7 +140,7 @@ export class CollaborationService {
         throw new Error('Collaboration is closed');
       }
 
-      // Verify post is not full (with locked data)
+      // Verify post is not full
       if (
         post.requiredCollaborators &&
         post.currentCollaborators >= post.requiredCollaborators
@@ -192,10 +175,22 @@ export class CollaborationService {
         });
       }
 
-      // Update requester profile stats
-      const requesterProfile = await tx.user_profiles.upsert({
+      // Update requester profile stats and calculate reputation in one go
+      const existingProfile = await tx.user_profiles.findUnique({
         where: { userId: request.requesterId },
-        create: {          userId: request.requesterId,
+      });
+
+      const totalPosts = existingProfile?.totalPosts || 0;
+      const totalLikesReceived = existingProfile?.totalLikesReceived || 0;
+      const totalCollaborations = (existingProfile?.totalCollaborations || 0) + 1;
+      
+      // Calculate reputation: (posts * 5) + (likes * 2) + (collaborations * 10)
+      const newReputation = (totalPosts * 5) + (totalLikesReceived * 2) + (totalCollaborations * 10);
+
+      await tx.user_profiles.upsert({
+        where: { userId: request.requesterId },
+        create: {
+          userId: request.requesterId,
           totalCollaborations: 1,
           totalPosts: 0,
           totalLikesReceived: 0,
@@ -206,28 +201,20 @@ export class CollaborationService {
           totalCollaborations: {
             increment: 1,
           },
+          reputationScore: newReputation,
+          updatedAt: new Date(),
         },
       });
 
-      // Recalculate reputation
-      const newReputation = this.calculateReputation(
-        requesterProfile.totalPosts,
-        requesterProfile.totalLikesReceived,
-        requesterProfile.totalCollaborations + 1
-      );
-
-      await tx.user_profiles.update({
-        where: { userId: request.requesterId },
-        data: { reputationScore: newReputation },
+      // Create notification for requester (using transaction client)
+      await tx.notifications.create({
+        data: {
+          userId: request.requesterId,
+          type: 'COLLAB_ACCEPT',
+          actorId: ownerId,
+          postId: request.postId,
+        },
       });
-
-      // Create notification for requester
-      await NotificationService.createNotification(
-        request.requesterId,
-        'COLLAB_ACCEPT',
-        ownerId,
-        request.postId
-      );
 
       return {
         request,
@@ -260,20 +247,34 @@ export class CollaborationService {
       throw new Error('Request is not pending');
     }
 
-    // Update request status
-    const updatedRequest = await prisma.community_collaboration_requests.update({
-      where: { id: requestId },
-      data: { status: 'REJECTED' },
-      include: { user: {
-          include: {
-            user_profiles: true,
+    // Update request status and create notification in a transaction
+    const result = await prisma.$transaction(async (tx) => {
+      const updatedRequest = await tx.community_collaboration_requests.update({
+        where: { id: requestId },
+        data: { status: 'REJECTED' },
+        include: { user: {
+            include: {
+              user_profiles: true,
+            },
           },
+          community_posts: true,
         },
-        community_posts: true,
-      },
+      });
+
+      // Create notification for requester
+      await tx.notifications.create({
+        data: {
+          userId: request.requesterId,
+          type: 'COLLAB_ACCEPT',
+          actorId: ownerId,
+          postId: request.postId,
+        },
+      });
+
+      return updatedRequest;
     });
 
-    return updatedRequest;
+    return result;
   }
 
   /**

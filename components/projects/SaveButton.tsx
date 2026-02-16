@@ -67,31 +67,43 @@ export default function SaveButton({
       onClick={handleToggleSave}
       disabled={isLoading}
       className={`
-        group relative flex items-center gap-2.5 rounded-xl transition-all duration-300
-        ${isCompact ? 'w-10 h-10 justify-center' : 'w-full px-5 py-3'}
-        ${isSaved
+        group relative flex items-center gap-2.5 transition-all duration-300
+        ${isCompact 
+          ? 'w-10 h-10 justify-center rounded-full hover:bg-white/10' 
+          : 'w-full px-5 py-3 rounded-xl bg-glass-5 border-2 border-border-10 hover:border-accent-orange/50 hover:bg-glass-10'
+        }
+        ${isSaved && !isCompact
           ? 'bg-gradient-to-r from-accent-orange to-accent-pink text-white shadow-lg shadow-accent-orange/25 border-2 border-transparent'
-          : 'bg-glass-5 border-2 border-border-10 text-text-90 hover:border-accent-orange/50 hover:bg-glass-10'
+          : ''
         }
         hover:scale-[1.02] active:scale-[0.98]
         disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
-        focus:outline-none focus:ring-2 focus:ring-accent-orange/30 focus:ring-offset-2 focus:ring-offset-dark-base
+        focus:outline-none focus:ring-2 focus:ring-purple-500/30
       `}
       title={isSaved ? 'Remove from saved' : 'Save project'}
     >
       {/* Animated gradient overlay on hover for unsaved state */}
-      {!isSaved && (
+      {!isSaved && !isCompact && (
         <div className="absolute inset-0 bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
       )}
       
       {/* Content */}
       <div className="relative flex items-center gap-2.5">
         {isSaved ? (
-          <svg className={`${isCompact ? 'w-5 h-5' : 'w-5 h-5'} animate-pop`} fill="currentColor" viewBox="0 0 20 20">
+          <svg 
+            className={`${isCompact ? 'w-5 h-5' : 'w-5 h-5'} ${isCompact ? 'text-purple-400' : ''} animate-pop`} 
+            fill="currentColor" 
+            viewBox="0 0 20 20"
+          >
             <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
           </svg>
         ) : (
-          <svg className={`${isCompact ? 'w-5 h-5' : 'w-5 h-5'} group-hover:scale-110 transition-transform`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg 
+            className={`${isCompact ? 'w-5 h-5' : 'w-5 h-5'} ${isCompact ? 'text-text-60 hover:text-purple-400' : ''} group-hover:scale-110 transition-all`} 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
           </svg>
         )}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useState, useRef, useEffect } from 'react';
 import { NotificationDropdown } from './NotificationDropdown';
+import { User, Bookmark, PlusCircle, LogOut } from 'lucide-react';
 
 export default function AuthNavbar() {
   const { data: session } = useSession();
@@ -110,14 +111,6 @@ export default function AuthNavbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="/dashboard"
-              prefetch={true}
-              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
-            >
-              Dashboard
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
               href="/projects"
               className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
             >
@@ -131,6 +124,14 @@ export default function AuthNavbar() {
               Community
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
+            <Link
+              href="/dashboard"
+              prefetch={true}
+              className="text-text-60 hover:text-accent-orange transition-colors relative group focus:outline-none focus:text-accent-orange"
+            >
+              Dashboard
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
 
             {/* Notification Dropdown */}
             <NotificationDropdown />
@@ -139,60 +140,77 @@ export default function AuthNavbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-10 h-10 rounded-full bg-gradient-primary text-white font-semibold flex items-center justify-center hover:scale-110 transition-all focus:outline-none shadow-lg shadow-accent-orange/30"
+                className="w-10 h-10 rounded-full bg-gradient-primary text-white font-semibold flex items-center justify-center hover:scale-110 transition-all focus:outline-none shadow-lg shadow-accent-orange/30 overflow-hidden ring-2 ring-white/10"
                 aria-label="Profile menu"
                 aria-expanded={isDropdownOpen}
                 aria-haspopup="true"
               >
-                {getInitials(session?.user?.email)}
+                {session?.user?.image ? (
+                  <img 
+                    src={session.user.image} 
+                    alt={session.user.name || 'Profile'} 
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  getInitials(session?.user?.email)
+                )}
               </button>
 
               {/* Dropdown Menu with Glassmorphism */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl overflow-hidden shadow-2xl">
-                  {/* Glassmorphism background */}
-                  <div className="absolute inset-0 bg-[#0f0f0f]/95 backdrop-blur-xl border border-white/10"></div>
+                <div className="absolute right-0 mt-2 w-64 rounded-2xl overflow-hidden shadow-2xl z-50">
+                  {/* Glassmorphism background matching projects dropdown */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#050810]/80 via-[#080b14]/80 to-[#050810]/80 backdrop-blur-xl border border-white/10"></div>
                   
                   {/* Content */}
                   <div className="relative">
-                    <div className="px-4 py-3 border-b border-white/10">
-                      <p className="text-sm text-text-60">Signed in as</p>
-                      <p className="text-sm text-text-90 font-medium truncate">
+                    {/* User Info Header */}
+                    <div className="px-4 py-4 border-b border-white/10">
+                      <p className="text-xs text-white/50 uppercase tracking-wider font-bold mb-1">Signed in as</p>
+                      <p className="text-sm text-white/90 font-medium truncate">
                         {session?.user?.email}
                       </p>
                     </div>
                     
-                    <div className="py-2">
+                    {/* Menu Items */}
+                    <div className="py-2 max-h-[400px] overflow-y-auto scrollbar-hide">
                       <Link
                         href="/profile"
-                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        className="flex items-center gap-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white/90 transition-all group"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        Profile
+                        <User className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Profile</span>
                       </Link>
+                      
                       <Link
                         href="/saved"
-                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        className="flex items-center gap-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white/90 transition-all group"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        Saved Projects
+                        <Bookmark className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Saved Projects</span>
                       </Link>
+                      
                       <Link
                         href="/community/new"
-                        className="block px-4 py-2 text-text-60 hover:bg-white/5 hover:text-accent-orange transition-colors focus:outline-none focus:bg-white/5 focus:text-accent-orange"
+                        className="flex items-center gap-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white/90 transition-all group"
                         onClick={() => setIsDropdownOpen(false)}
                       >
-                        Post Idea
+                        <PlusCircle className="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Post Idea</span>
                       </Link>
                     </div>
 
+                    {/* Sign Out */}
                     <div className="border-t border-white/10 py-2">
                       <button
                         onClick={handleLogout}
                         disabled={isLoggingOut}
-                        className="w-full text-left px-4 py-2 text-error hover:bg-white/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:bg-white/5"
+                        className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-white/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                       >
-                        {isLoggingOut ? 'Signing out...' : 'Sign Out'}
+                        <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">{isLoggingOut ? 'Signing out...' : 'Sign Out'}</span>
                       </button>
                     </div>
                   </div>
@@ -231,13 +249,6 @@ export default function AuthNavbar() {
             </div>
 
             <Link
-              href="/dashboard"
-              className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Dashboard
-            </Link>
-            <Link
               href="/projects"
               className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -250,6 +261,13 @@ export default function AuthNavbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Community
+            </Link>
+            <Link
+              href="/dashboard"
+              className="block text-text-60 hover:text-accent-orange transition-colors focus:outline-none focus:text-accent-orange"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Dashboard
             </Link>
             <Link
               href="/profile"

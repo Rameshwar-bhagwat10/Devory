@@ -48,16 +48,27 @@ export class ProfileService {
     }
 
     // Get additional stats
-    const [postsCount, collaborationsCount, likesReceived, followersCount] = await Promise.all([
+    const [postsCount, requestedCollabs, ownedCollabs, likesReceived, followersCount] = await Promise.all([
       prisma.community_posts.count({
         where: { userId, isApproved: true },
       }),
+      // Collaborations where user joined others' projects
       prisma.community_collaboration_requests.count({
         where: {
-          OR: [
-            { requesterId: userId, status: 'ACCEPTED' },
-            { community_posts: { userId }, status: 'ACCEPTED' },
-          ],
+          requesterId: userId,
+          status: 'ACCEPTED',
+        },
+      }),
+      // Collaborations where user's project has accepted members
+      prisma.community_posts.count({
+        where: {
+          userId,
+          type: 'COLLABORATION',
+          community_collaboration_requests: {
+            some: {
+              status: 'ACCEPTED',
+            },
+          },
         },
       }),
       prisma.community_reactions.count({
@@ -70,6 +81,8 @@ export class ProfileService {
         where: { followingId: userId },
       }),
     ]);
+
+    const collaborationsCount = requestedCollabs + ownedCollabs;
 
     return {
       id: user.id,
@@ -170,6 +183,9 @@ export class ProfileService {
 
   /**
    * Get user's collaborations with pagination
+   * Includes both:
+   * 1. Collaborations where user joined others' projects (as requester)
+   * 2. Collaborations where user's project accepted team members (as owner)
    */
   static async getUserCollaborations(
     userId: string,
@@ -178,14 +194,17 @@ export class ProfileService {
   ) {
     const skip = (page - 1) * limit;
 
-    const [collaborations, total] = await Promise.all([
+    // Get collaborations where user is the requester (joined others' projects)
+    const [requestedCollaborations, ownedCollaborations] = await Promise.all([
       prisma.community_collaboration_requests.findMany({
         where: {
           requesterId: userId,
           status: 'ACCEPTED',
         },
-        include: { community_posts: {
-            include: { user: {
+        include: {
+          community_posts: {
+            include: {
+              user: {
                 select: {
                   id: true,
                   name: true,
@@ -198,19 +217,57 @@ export class ProfileService {
         orderBy: {
           createdAt: 'desc',
         },
-        skip,
-        take: limit,
       }),
-      prisma.community_collaboration_requests.count({
+      // Get collaborations where user owns the project and accepted team members
+      prisma.community_posts.findMany({
         where: {
-          requesterId: userId,
-          status: 'ACCEPTED',
+          userId,
+          type: 'COLLABORATION',
+          community_collaboration_requests: {
+            some: {
+              status: 'ACCEPTED',
+            },
+          },
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              name: true,
+              image: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
         },
       }),
     ]);
 
+    // Combine and format both types of collaborations
+    const requestedFormatted = requestedCollaborations.map(collab => ({
+      id: collab.id,
+      community_posts: collab.community_posts,
+      role: 'member' as const,
+      joinedAt: collab.createdAt,
+    }));
+
+    const ownedFormatted = ownedCollaborations.map(post => ({
+      id: post.id,
+      community_posts: post,
+      role: 'owner' as const,
+      joinedAt: post.createdAt,
+    }));
+
+    // Combine and sort by date
+    const allCollaborations = [...requestedFormatted, ...ownedFormatted]
+      .sort((a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime());
+
+    const total = allCollaborations.length;
+    const paginatedCollaborations = allCollaborations.slice(skip, skip + limit);
+
     return {
-      collaborations,
+      collaborations: paginatedCollaborations,
       pagination: {
         page,
         limit,
@@ -279,14 +336,27 @@ export class ProfileService {
    * Sync profile stats (for maintenance/migration)
    */
   static async syncProfileStats(userId: string) {
-    const [postsCount, collaborationsCount, likesReceived] = await Promise.all([
+    const [postsCount, requestedCollabs, ownedCollabs, likesReceived] = await Promise.all([
       prisma.community_posts.count({
         where: { userId },
       }),
+      // Collaborations where user joined others' projects
       prisma.community_collaboration_requests.count({
         where: {
           requesterId: userId,
           status: 'ACCEPTED',
+        },
+      }),
+      // Collaborations where user's project has accepted members
+      prisma.community_posts.count({
+        where: {
+          userId,
+          type: 'COLLABORATION',
+          community_collaboration_requests: {
+            some: {
+              status: 'ACCEPTED',
+            },
+          },
         },
       }),
       prisma.community_posts.aggregate({
@@ -297,6 +367,7 @@ export class ProfileService {
       }),
     ]);
 
+    const collaborationsCount = requestedCollabs + ownedCollabs;
     const totalLikesReceived = likesReceived._sum.likesCount || 0;
 
     // Calculate reputation

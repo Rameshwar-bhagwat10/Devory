@@ -107,9 +107,15 @@ export function NotificationDropdown() {
   };
 
   const getNotificationLink = (notification: Notification) => {
+    // For collaboration requests, redirect to community notifications page
+    if (notification.type === 'COLLAB_REQUEST') {
+      return '/community/notifications';
+    }
+    // For follow notifications, redirect to user profile
     if (notification.type === 'FOLLOW') {
       return `/profile/${notification.actor.id}`;
     }
+    // For all other community notifications (LIKE, COMMENT, COLLAB_ACCEPT), redirect to the post
     return notification.post ? `/community/${notification.post.slug}` : '#';
   };
 

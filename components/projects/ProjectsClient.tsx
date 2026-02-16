@@ -371,7 +371,7 @@ export default function ProjectsClient({
   const hasActiveFilters = filters.domains.length > 0 || filters.difficulties.length > 0 || filters.techStack.length > 0 || filters.years.length > 0 || filters.durations.length > 0;
 
   return (
-    <div className="min-h-screen bg-dark-base">
+    <div className="min-h-screen bg-gradient-to-b from-[#050810] via-[#080b14] to-[#050810]">
       {/* Header Section */}
       <div className="relative overflow-hidden border-b border-border-10">
         <div className="absolute top-10 right-10 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl"></div>

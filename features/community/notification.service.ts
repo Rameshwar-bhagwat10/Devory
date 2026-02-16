@@ -71,7 +71,32 @@ export class NotificationService {
       take: limit,
     });
 
-    return notifications;
+    // For COLLAB_REQUEST notifications, fetch the requestId
+    const notificationsWithMetadata = await Promise.all(
+      notifications.map(async (notification) => {
+        if (notification.type === 'COLLAB_REQUEST' && notification.postId) {
+          // Find the pending request for this post from this actor
+          const request = await prisma.community_collaboration_requests.findFirst({
+            where: {
+              postId: notification.postId,
+              requesterId: notification.actorId,
+              status: 'PENDING',
+            },
+            select: {
+              id: true,
+            },
+          });
+
+          return {
+            ...notification,
+            metadata: request ? { requestId: request.id } : undefined,
+          };
+        }
+        return notification;
+      })
+    );
+
+    return notificationsWithMetadata;
   }
 
   /**

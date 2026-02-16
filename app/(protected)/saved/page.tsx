@@ -8,15 +8,15 @@ export default async function SavedProjectsPage() {
   const savedProjects = await SaveService.getSavedProjects(session.user.id);
 
   return (
-    <div className="min-h-screen bg-dark-base pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-[#050810] via-[#080b14] to-[#050810] pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-text-90 mb-4">
             Saved{' '}
             <span className="relative inline-block">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-primary rounded-full"></div>
+              <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 rounded-full"></div>
             </span>
           </h1>
           <p className="text-lg text-text-60">
@@ -47,7 +47,7 @@ export default async function SavedProjectsPage() {
               <p className="text-text-60 mb-6">Start exploring and save projects that interest you</p>
               <Link
                 href="/projects"
-                className="inline-block px-6 py-3 bg-gradient-primary text-white font-medium rounded-lg hover:scale-105 transition-all"
+                className="inline-block px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:scale-105 transition-all shadow-lg shadow-purple-600/25"
               >
                 Explore Projects
               </Link>

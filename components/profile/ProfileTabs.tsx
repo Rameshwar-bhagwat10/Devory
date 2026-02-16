@@ -6,6 +6,13 @@ import PostCard from '@/components/community/PostCard';
 import CollaborationCard from '@/components/community/collaborations/CollaborationCard';
 import type { PostWithAuthor } from '@/features/community/community.types';
 
+interface CollaborationData {
+  id: string;
+  community_posts: PostWithAuthor;
+  role: 'member' | 'owner';
+  joinedAt: string;
+}
+
 interface ProfileTabsProps {
   isOwnProfile: boolean;
   userId: string;
@@ -14,7 +21,7 @@ interface ProfileTabsProps {
 export default function ProfileTabs({ isOwnProfile, userId }: ProfileTabsProps) {
   const [activeTab, setActiveTab] = useState('posts');
   const [posts, setPosts] = useState<PostWithAuthor[]>([]);
-  const [collaborations, setCollaborations] = useState<any[]>([]);
+  const [collaborations, setCollaborations] = useState<CollaborationData[]>([]);
   const [loading, setLoading] = useState(false);
 
   const tabs = [
@@ -28,6 +35,7 @@ export default function ProfileTabs({ isOwnProfile, userId }: ProfileTabsProps) 
 
   useEffect(() => {
     fetchTabData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   const fetchTabData = async () => {
