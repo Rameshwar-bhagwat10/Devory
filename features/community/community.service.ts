@@ -1,5 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { ReactionType } from '@prisma/client';
+import { unstable_cache } from 'next/cache';
+import { cache } from 'react';
 import type {
   CreatePostInput,
   FeedFilters,
@@ -90,187 +92,273 @@ export class CommunityService {
   }
   
   /**
-   * Get feed with filters and pagination
+   * Get feed with filters and pagination - ULTRA OPTIMIZED
+   * Uses React cache + Next.js cache + optimized queries
    */
-  static async getFeed(
+  static getFeed = cache(async (
     filters: FeedFilters,
     currentUserId?: string
-  ): Promise<{ posts: PostWithAuthor[]; total: number; page: number; totalPages: number }> {
-    try {
-      const page = filters.page || 1;
-      const limit = filters.limit || 20;
-      const skip = (page - 1) * limit;
-      
-      // Build where clause
-      const where = {
-        isApproved: true,
-        ...(filters.type && { type: filters.type }),
-        ...(filters.domain && { domain: filters.domain }),
-        ...(filters.difficulty && { difficulty: filters.difficulty }),
-        ...(filters.status && { status: filters.status }),
-      };
-      
-      // Build orderBy clause
-      let orderBy: { trendingScore?: 'desc'; likesCount?: 'desc'; createdAt?: 'desc' } = {};
-      switch (filters.sortBy) {
-        case 'trending':
-          orderBy = { trendingScore: 'desc' };
-          break;
-        case 'popular':
-          orderBy = { likesCount: 'desc' };
-          break;
-        case 'latest':
-        default:
-          orderBy = { createdAt: 'desc' };
+  ): Promise<{ posts: PostWithAuthor[]; total: number; page: number; totalPages: number }> => {
+    // Create cache key based on filters
+    const cacheKey = `feed-${filters.sortBy || 'latest'}-${filters.type || 'all'}-${filters.domain || 'all'}-${filters.difficulty || 'all'}-${filters.page || 1}-${currentUserId || 'anon'}`;
+    
+    return unstable_cache(
+      async () => {
+        try {
+          const page = filters.page || 1;
+          const limit = Math.min(filters.limit || 20, 50);
+          const skip = (page - 1) * limit;
+          
+          // Build optimized where clause
+          const where = {
+            isApproved: true,
+            ...(filters.type && { type: filters.type }),
+            ...(filters.domain && { domain: filters.domain }),
+            ...(filters.difficulty && { difficulty: filters.difficulty }),
+            ...(filters.status && { status: filters.status }),
+          };
+          
+          // Optimized orderBy
+          let orderBy: Record<string, 'desc' | 'asc'> = {};
+          switch (filters.sortBy) {
+            case 'trending':
+              orderBy = { trendingScore: 'desc' };
+              break;
+            case 'popular':
+              orderBy = { likesCount: 'desc' };
+              break;
+            case 'latest':
+            default:
+              orderBy = { createdAt: 'desc' };
+          }
+          
+          // Ultra-optimized parallel queries with minimal fields
+          const [posts, total] = await Promise.all([
+            prisma.community_posts.findMany({
+              where,
+              orderBy,
+              skip,
+              take: limit,
+              select: {
+                id: true,
+                userId: true,
+                type: true,
+                title: true,
+                slug: true,
+                shortDescription: true,
+                domain: true,
+                difficulty: true,
+                techStack: true,
+                tags: true,
+                viewsCount: true,
+                likesCount: true,
+                dislikesCount: true,
+                commentsCount: true,
+                status: true,
+                requiredCollaborators: true,
+                currentCollaborators: true,
+                requiredSkills: true,
+                createdAt: true,
+                updatedAt: true,
+                user: {
+                  select: {
+                    id: true,
+                    name: true,
+                    image: true,
+                  },
+                },
+                ...(currentUserId && {
+                  community_reactions: {
+                    where: { userId: currentUserId },
+                    select: { type: true },
+                    take: 1,
+                  },
+                  community_saved_posts: {
+                    where: { userId: currentUserId },
+                    select: { id: true },
+                    take: 1,
+                  },
+                }),
+              },
+            }),
+            prisma.community_posts.count({ where }),
+          ]);
+          
+          return {
+            posts: posts.map((post) => this.formatPost(post, currentUserId)),
+            total,
+            page,
+            totalPages: Math.ceil(total / limit),
+          };
+        } catch (error) {
+          console.error('CommunityService.getFeed error:', error);
+          return {
+            posts: [],
+            total: 0,
+            page: filters.page || 1,
+            totalPages: 0,
+          };
+        }
+      },
+      [cacheKey],
+      {
+        revalidate: 15, // Aggressive 15s cache
+        tags: ['community-feed', `feed-${filters.sortBy || 'latest'}`],
       }
-      
-      // Get posts
-      const [posts, total] = await Promise.all([
-        prisma.community_posts.findMany({
-          where,
-          orderBy,
-          skip,
-          take: limit,
-          include: { user: {
+    )();
+  });
+  
+  /**
+   * Get trending posts - ULTRA OPTIMIZED
+   */
+  static getTrending = cache(async (limit: number = 5): Promise<TrendingPost[]> => {
+    return unstable_cache(
+      async () => {
+        try {
+          const posts = await prisma.community_posts.findMany({
+            where: { isApproved: true },
+            orderBy: { trendingScore: 'desc' },
+            take: limit,
+            select: {
+              id: true,
+              title: true,
+              slug: true,
+              type: true,
+              domain: true,
+              viewsCount: true,
+              likesCount: true,
+              commentsCount: true,
+              trendingScore: true,
+              createdAt: true,
+            },
+          });
+          
+          return posts;
+        } catch (error) {
+          console.error('CommunityService.getTrending error:', error);
+          return [];
+        }
+      },
+      ['trending', `limit-${limit}`],
+      {
+        revalidate: 30, // Aggressive 30s cache
+        tags: ['community-trending'],
+      }
+    )();
+  });
+  
+  /**
+   * Get latest open collaborations - ULTRA OPTIMIZED
+   */
+  static getLatestCollaborations = cache(async (limit: number = 5): Promise<CollaborationPost[]> => {
+    return unstable_cache(
+      async () => {
+        try {
+          const posts = await prisma.community_posts.findMany({
+            where: {
+              type: 'COLLABORATION',
+              status: 'OPEN',
+              isApproved: true,
+            },
+            orderBy: { createdAt: 'desc' },
+            take: limit,
+            select: {
+              id: true,
+              title: true,
+              slug: true,
+              shortDescription: true,
+              status: true,
+              requiredCollaborators: true,
+              currentCollaborators: true,
+              requiredSkills: true,
+              createdAt: true,
+            },
+          });
+          
+          return posts.map((post) => ({
+            ...post,
+            requiredSkills: post.requiredSkills as string[],
+          }));
+        } catch (error) {
+          console.error('CommunityService.getLatestCollaborations error:', error);
+          return [];
+        }
+      },
+      ['collaborations-latest', `limit-${limit}`],
+      {
+        revalidate: 30, // Aggressive 30s cache
+        tags: ['community-collaborations'],
+      }
+    )();
+  });
+  
+  /**
+   * Get post by slug - ULTRA OPTIMIZED
+   */
+  static getPostBySlug = cache(async (slug: string, currentUserId?: string): Promise<PostWithAuthor | null> => {
+    return unstable_cache(
+      async () => {
+        const post = await prisma.community_posts.findUnique({
+          where: { slug },
+          select: {
+            id: true,
+            userId: true,
+            type: true,
+            title: true,
+            slug: true,
+            shortDescription: true,
+            fullDescription: true,
+            domain: true,
+            difficulty: true,
+            techStack: true,
+            tags: true,
+            estimatedDuration: true,
+            viewsCount: true,
+            likesCount: true,
+            dislikesCount: true,
+            commentsCount: true,
+            trendingScore: true,
+            status: true,
+            requiredCollaborators: true,
+            currentCollaborators: true,
+            requiredSkills: true,
+            isAnonymous: true,
+            isApproved: true,
+            createdAt: true,
+            updatedAt: true,
+            user: {
               select: {
                 id: true,
                 name: true,
                 image: true,
               },
             },
-            community_reactions: currentUserId
-              ? {
-                  where: { userId: currentUserId },
-                  select: { type: true },
-                }
-              : false,
-            community_saved_posts: currentUserId
-              ? {
-                  where: { userId: currentUserId },
-                  select: { id: true },
-                }
-              : false,
+            ...(currentUserId && {
+              community_reactions: {
+                where: { userId: currentUserId },
+                select: { type: true },
+                take: 1,
+              },
+              community_saved_posts: {
+                where: { userId: currentUserId },
+                select: { id: true },
+                take: 1,
+              },
+            }),
           },
-        }),
-        prisma.community_posts.count({ where }),
-      ]);
-      
-      return {
-        posts: posts.map((post) => this.formatPost(post, currentUserId)),
-        total,
-        page,
-        totalPages: Math.ceil(total / limit),
-      };
-    } catch (error) {
-      console.error('CommunityService.getFeed error:', error);
-      // Return empty feed instead of throwing
-      return {
-        posts: [],
-        total: 0,
-        page: filters.page || 1,
-        totalPages: 0,
-      };
-    }
-  }
-  
-  /**
-   * Get trending posts
-   */
-  static async getTrending(limit: number = 5): Promise<TrendingPost[]> {
-    try {
-      const posts = await prisma.community_posts.findMany({
-        where: { isApproved: true },
-        orderBy: { trendingScore: 'desc' },
-        take: limit,
-        select: {
-          id: true,
-          title: true,
-          slug: true,
-          type: true,
-          domain: true,
-          viewsCount: true,
-          likesCount: true,
-          commentsCount: true,
-          trendingScore: true,
-          createdAt: true,
-        },
-      });
-      
-      return posts;
-    } catch (error) {
-      console.error('CommunityService.getTrending error:', error);
-      return [];
-    }
-  }
-  
-  /**
-   * Get latest open collaborations
-   */
-  static async getLatestCollaborations(limit: number = 5): Promise<CollaborationPost[]> {
-    try {
-      const posts = await prisma.community_posts.findMany({
-        where: {
-          type: 'COLLABORATION',
-          status: 'OPEN',
-          isApproved: true,
-        },
-        orderBy: { createdAt: 'desc' },
-        take: limit,
-        select: {
-          id: true,
-          title: true,
-          slug: true,
-          shortDescription: true,
-          status: true,
-          requiredCollaborators: true,
-          currentCollaborators: true,
-          requiredSkills: true,
-          createdAt: true,
-        },
-      });
-      
-      return posts.map((post) => ({
-        ...post,
-        requiredSkills: post.requiredSkills as string[],
-      }));
-    } catch (error) {
-      console.error('CommunityService.getLatestCollaborations error:', error);
-      return [];
-    }
-  }
-  
-  /**
-   * Get post by slug
-   */
-  static async getPostBySlug(slug: string, currentUserId?: string): Promise<PostWithAuthor | null> {
-    const post = await prisma.community_posts.findUnique({
-      where: { slug },
-      include: { user: {
-          select: {
-            id: true,
-            name: true,
-            image: true,
-          },
-        },
-        community_reactions: currentUserId
-          ? {
-              where: { userId: currentUserId },
-              select: { type: true },
-            }
-          : false,
-        community_saved_posts: currentUserId
-          ? {
-              where: { userId: currentUserId },
-              select: { id: true },
-            }
-          : false,
+        });
+        
+        if (!post) return null;
+        
+        return this.formatPost(post, currentUserId);
       },
-    });
-    
-    if (!post) return null;
-    
-    return this.formatPost(post, currentUserId);
-  }
+      [`post-${slug}-${currentUserId || 'anon'}`],
+      {
+        revalidate: 15, // Aggressive 15s cache
+        tags: ['community-post', `post-${slug}`],
+      }
+    )();
+  });
   
   /**
    * Toggle reaction (like/dislike)
@@ -455,42 +543,70 @@ export class CommunityService {
   }
   
   /**
-   * Get comments for a post
+   * Get comments for a post - ULTRA OPTIMIZED
    */
-  static async getComments(postId: string): Promise<CommentWithAuthor[]> {
-    const comments = await prisma.community_comments.findMany({
-      where: {
-        postId,
-        parentId: null, // Only top-level comments
-      },
-      orderBy: { createdAt: 'desc' },
-      include: { user: {
+  static getComments = cache(async (postId: string): Promise<CommentWithAuthor[]> => {
+    return unstable_cache(
+      async () => {
+        const comments = await prisma.community_comments.findMany({
+          where: {
+            postId,
+            parentId: null,
+          },
+          orderBy: { createdAt: 'desc' },
+          take: 50,
           select: {
             id: true,
-            name: true,
-            image: true,
-          },
-        },
-        other_community_comments: {
-          orderBy: { createdAt: 'asc' },
-          include: { user: {
+            userId: true,
+            postId: true,
+            parentId: true,
+            content: true,
+            createdAt: true,
+            updatedAt: true,
+            likesCount: true,
+            user: {
               select: {
                 id: true,
                 name: true,
                 image: true,
               },
             },
+            other_community_comments: {
+              orderBy: { createdAt: 'asc' },
+              take: 20,
+              select: {
+                id: true,
+                userId: true,
+                postId: true,
+                parentId: true,
+                content: true,
+                createdAt: true,
+                updatedAt: true,
+                likesCount: true,
+                user: {
+                  select: {
+                    id: true,
+                    name: true,
+                    image: true,
+                  },
+                },
+              },
+            },
           },
-        },
+        });
+        
+        return comments.map(comment => ({
+          ...comment,
+          replies: comment.other_community_comments,
+        })) as CommentWithAuthor[];
       },
-    });
-    
-    // Map other_community_comments to replies
-    return comments.map(comment => ({
-      ...comment,
-      replies: comment.other_community_comments,
-    })) as CommentWithAuthor[];
-  }
+      [`comments-${postId}`],
+      {
+        revalidate: 10, // Aggressive 10s cache
+        tags: ['community-comments', `comments-${postId}`],
+      }
+    )();
+  });
   
   /**
    * Increment view count (throttled per user)
@@ -580,41 +696,54 @@ export class CommunityService {
   }
 
   /**
-   * Get top contributors by reputation
+   * Get top contributors by reputation - ULTRA OPTIMIZED
    */
-  static async getTopContributors(limit: number = 5) {
-    try {
-      const profiles = await prisma.user_profiles.findMany({
-        where: {
-          reputationScore: {
-            gt: 0,
-          },
-        },
-        include: { user: {
-            select: {
-              id: true,
-              name: true,
-              image: true,
+  static getTopContributors = cache(async (limit: number = 5) => {
+    return unstable_cache(
+      async () => {
+        try {
+          const profiles = await prisma.user_profiles.findMany({
+            where: {
+              reputationScore: {
+                gt: 0,
+              },
             },
-          },
-        },
-        orderBy: {
-          reputationScore: 'desc',
-        },
-        take: limit,
-      });
+            select: {
+              reputationScore: true,
+              totalPosts: true,
+              totalCollaborations: true,
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  image: true,
+                },
+              },
+            },
+            orderBy: {
+              reputationScore: 'desc',
+            },
+            take: limit,
+          });
 
-      return profiles.map(profile => ({
-        id: profile.user.id,
-        name: profile.user.name,
-        image: profile.user.image,
-        reputationScore: profile.reputationScore,
-        totalPosts: profile.totalPosts,
-        totalCollaborations: profile.totalCollaborations,
-      }));
-    } catch {
-      return [];
-    }
-  }
+          return profiles.map(profile => ({
+            id: profile.user.id,
+            name: profile.user.name,
+            image: profile.user.image,
+            reputationScore: profile.reputationScore,
+            totalPosts: profile.totalPosts,
+            totalCollaborations: profile.totalCollaborations,
+          }));
+        } catch {
+          return [];
+        }
+      },
+      ['contributors', `limit-${limit}`],
+      {
+        revalidate: 120, // 2 minute cache
+        tags: ['community-contributors'],
+      }
+    )();
+  });
 }
 

@@ -1,19 +1,27 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { auth } from '@/lib/auth';
 import { CommunityService } from '@/features/community/community.service';
-import CommunityFeed from '@/components/community/CommunityFeed';
 import CommunityHeader from '@/components/community/CommunityHeader';
 import FeedSkeleton from '@/components/community/FeedSkeleton';
 import { FeedFilters } from '@/features/community/community.types';
+import { ProjectDomain, ProjectDifficulty, PostType } from '@prisma/client';
 import { Home } from 'lucide-react';
+
+// Dynamic import for CommunityFeed (client component)
+const CommunityFeed = dynamic(() => import('@/components/community/CommunityFeed'), {
+  loading: () => <FeedSkeleton />,
+});
 
 export const metadata: Metadata = {
   title: 'Community | Devory - Share Ideas & Collaborate',
   description: 'Join the Devory community to share project ideas, find collaborators, and connect with fellow developers.',
 };
 
-export const revalidate = 60;
+// Ultra-aggressive caching for instant loads
+export const revalidate = 15; // 15 second revalidation
+export const dynamicParams = true;
 
 interface CommunityPageProps {
   searchParams: Promise<{
@@ -27,17 +35,23 @@ interface CommunityPageProps {
 }
 
 export default async function CommunityPage({ searchParams }: CommunityPageProps) {
-  const session = await auth();
-  const params = await searchParams;
+  // Parallel data fetching for maximum speed
+  const [session, params] = await Promise.all([
+    auth(),
+    searchParams,
+  ]);
   
   const filters: FeedFilters = {
-    domain: params.domain as any,
-    difficulty: params.difficulty as any,
-    type: params.type as any,
-    sortBy: (params.sort as any) || 'latest',
+    domain: params.domain as ProjectDomain | undefined,
+    difficulty: params.difficulty as ProjectDifficulty | undefined,
+    type: params.type as PostType | undefined,
+    sortBy: (params.sort as 'latest' | 'trending' | 'popular' | undefined) || 'latest',
     page: parseInt(params.page || '1'),
     limit: 20,
   };
+  
+  // Preload feed data (will be cached by React cache + Next.js cache)
+  const feedDataPromise = CommunityService.getFeed(filters, session?.user?.id);
   
   return (
     <div className="space-y-8">
@@ -61,26 +75,30 @@ export default async function CommunityPage({ searchParams }: CommunityPageProps
         <CommunityHeader />
       </div>
 
-      {/* Feed */}
+      {/* Feed with preloaded data */}
       <Suspense fallback={<FeedSkeleton />}>
-        <CommunityFeedWrapper filters={filters} userId={session?.user?.id} />
+        <CommunityFeedWrapper 
+          feedDataPromise={feedDataPromise}
+          userId={session?.user?.id} 
+        />
       </Suspense>
     </div>
   );
 }
 
 async function CommunityFeedWrapper({ 
-  filters, 
+  feedDataPromise,
   userId 
 }: { 
-  filters: FeedFilters;
+  feedDataPromise: ReturnType<typeof CommunityService.getFeed>;
   userId?: string;
 }) {
   let feedData;
   let error: Error | null = null;
 
   try {
-    feedData = await CommunityService.getFeed(filters, userId);
+    // Await the preloaded promise
+    feedData = await feedDataPromise;
   } catch (e) {
     error = e instanceof Error ? e : new Error(String(e));
     console.error('Community feed error:', error);

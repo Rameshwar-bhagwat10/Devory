@@ -1,19 +1,26 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { auth } from '@/lib/auth';
 import { CommunityService } from '@/features/community/community.service';
-import TrendingFeed from '@/components/community/trending/TrendingFeed';
 import FeedSkeleton from '@/components/community/FeedSkeleton';
 import { FeedFilters } from '@/features/community/community.types';
 import { TrendingUp, Flame, Zap } from 'lucide-react';
+
+// Dynamic import for TrendingFeed
+const TrendingFeed = dynamic(() => import('@/components/community/trending/TrendingFeed'), {
+  loading: () => <FeedSkeleton />,
+});
 
 export const metadata: Metadata = {
   title: 'Trending | Community - Devory',
   description: 'Discover the hottest trending posts and ideas in the Devory community.',
 };
 
-export const revalidate = 30; // Revalidate more frequently for trending
+// Ultra-aggressive caching
+export const revalidate = 15; // 15 second revalidation
+export const dynamicParams = true;
 
 interface TrendingPageProps {
   searchParams: Promise<{
@@ -23,7 +30,6 @@ interface TrendingPageProps {
 }
 
 export default async function TrendingPage({ searchParams }: TrendingPageProps) {
-  const session = await auth();
   const params = await searchParams;
   
   const timeframe = params.timeframe || '24h';
@@ -33,6 +39,12 @@ export default async function TrendingPage({ searchParams }: TrendingPageProps) 
     page: parseInt(params.page || '1'),
     limit: 20,
   };
+  
+  // Parallel data fetching
+  const [session, feedDataPromise] = await Promise.all([
+    auth(),
+    CommunityService.getFeed(filters, undefined), // Fetch without userId for better caching
+  ]);
   
   return (
     <div className="space-y-8">
@@ -129,7 +141,7 @@ export default async function TrendingPage({ searchParams }: TrendingPageProps) 
       {/* Feed */}
       <Suspense fallback={<FeedSkeleton />}>
         <TrendingFeedWrapper 
-          filters={filters} 
+          feedDataPromise={Promise.resolve(feedDataPromise)}
           userId={session?.user?.id}
         />
       </Suspense>
@@ -138,16 +150,16 @@ export default async function TrendingPage({ searchParams }: TrendingPageProps) 
 }
 
 async function TrendingFeedWrapper({ 
-  filters, 
+  feedDataPromise,
   userId
 }: { 
-  filters: FeedFilters;
+  feedDataPromise: ReturnType<typeof CommunityService.getFeed>;
   userId?: string;
 }) {
   let feedData;
 
   try {
-    feedData = await CommunityService.getFeed(filters, userId);
+    feedData = await feedDataPromise;
   } catch (e) {
     console.error('Trending feed error:', e);
     return (

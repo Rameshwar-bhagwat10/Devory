@@ -1,18 +1,26 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { auth } from '@/lib/auth';
 import { CommunityService } from '@/features/community/community.service';
-import CollaborationsFeed from '@/components/community/collaborations/CollaborationsFeed';
 import FeedSkeleton from '@/components/community/FeedSkeleton';
 import { FeedFilters } from '@/features/community/community.types';
 import { Users, UserPlus, CheckCircle } from 'lucide-react';
+
+// Dynamic import for CollaborationsFeed
+const CollaborationsFeed = dynamic(() => import('@/components/community/collaborations/CollaborationsFeed'), {
+  loading: () => <FeedSkeleton />,
+});
 
 export const metadata: Metadata = {
   title: 'Collaborations | Community - Devory',
   description: 'Find and join active collaboration opportunities in the Devory community.',
 };
 
-export const revalidate = 60;
+// Ultra-aggressive caching
+export const revalidate = 15; // 15 second revalidation
+export const dynamicParams = true;
 
 interface CollaborationsPageProps {
   searchParams: Promise<{
@@ -22,7 +30,6 @@ interface CollaborationsPageProps {
 }
 
 export default async function CollaborationsPage({ searchParams }: CollaborationsPageProps) {
-  const session = await auth();
   const params = await searchParams;
   
   const status = params.status || 'OPEN';
@@ -33,6 +40,12 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
     page: parseInt(params.page || '1'),
     limit: 20,
   };
+  
+  // Parallel data fetching
+  const [session, feedDataPromise] = await Promise.all([
+    auth(),
+    CommunityService.getFeed(filters, undefined), // Fetch without userId for better caching
+  ]);
   
   return (
     <div className="space-y-8">
@@ -93,7 +106,7 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
       <div className="flex items-center gap-2">
         <span className="text-sm text-white/60">Filter by status:</span>
         <div className="flex gap-2">
-          <a
+          <Link
             href="/community/collaborations?status=OPEN"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               status === 'OPEN'
@@ -102,8 +115,8 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
             }`}
           >
             Open
-          </a>
-          <a
+          </Link>
+          <Link
             href="/community/collaborations?status=ALL"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               status === 'ALL'
@@ -112,8 +125,8 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
             }`}
           >
             All
-          </a>
-          <a
+          </Link>
+          <Link
             href="/community/collaborations?status=CLOSED"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               status === 'CLOSED'
@@ -122,14 +135,14 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
             }`}
           >
             Closed
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Feed */}
       <Suspense fallback={<FeedSkeleton />}>
         <CollaborationsFeedWrapper 
-          filters={filters} 
+          feedDataPromise={Promise.resolve(feedDataPromise)}
           userId={session?.user?.id}
           status={status}
         />
@@ -139,18 +152,18 @@ export default async function CollaborationsPage({ searchParams }: Collaboration
 }
 
 async function CollaborationsFeedWrapper({ 
-  filters, 
+  feedDataPromise,
   userId,
   status
 }: { 
-  filters: FeedFilters;
+  feedDataPromise: ReturnType<typeof CommunityService.getFeed>;
   userId?: string;
   status: string;
 }) {
   let feedData;
 
   try {
-    feedData = await CommunityService.getFeed(filters, userId);
+    feedData = await feedDataPromise;
   } catch (e) {
     console.error('Collaborations feed error:', e);
     return (
@@ -167,12 +180,12 @@ async function CollaborationsFeedWrapper({
         <h3 className="text-xl font-bold text-white/90 mb-2">No collaborations found</h3>
         <p className="text-white/60 mb-6">Be the first to start a collaboration!</p>
         {userId && (
-          <a
+          <Link
             href="/community/new"
             className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-full hover:scale-105 transition-all"
           >
             Create Collaboration
-          </a>
+          </Link>
         )}
       </div>
     );

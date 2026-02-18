@@ -1,10 +1,15 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import FollowingFeed from '@/components/community/following/FollowingFeed';
 import FeedSkeleton from '@/components/community/FeedSkeleton';
 import { UserPlus, Heart, Users } from 'lucide-react';
+
+// Dynamic import for FollowingFeed
+const FollowingFeed = dynamic(() => import('@/components/community/following/FollowingFeed'), {
+  loading: () => <FeedSkeleton />,
+});
 
 export const metadata: Metadata = {
   title: 'Following | Community - Devory',
@@ -12,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 30;
+export const dynamicParams = true;
 
 interface FollowingPageProps {
   searchParams: Promise<{

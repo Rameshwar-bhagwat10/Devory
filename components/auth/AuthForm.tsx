@@ -14,14 +14,24 @@ export default function AuthForm({ callbackUrl }: { callbackUrl?: string }) {
       setIsLoading(true);
       setError('');
       
-      await signIn('google', {
+      // signIn with redirect: true will redirect the page, so we don't need to handle the response
+      // If it returns, it means there was an error (user cancelled or popup blocked)
+      const result = await signIn('google', {
         callbackUrl: callbackUrl || '/dashboard',
-        redirect: true,
+        redirect: false, // Don't auto-redirect, we'll handle it
       });
       
-      // If we reach here, redirect didn't happen (error occurred)
-      setError('Failed to sign in with Google. Please try again.');
-      setIsLoading(false);
+      if (result?.error) {
+        // Only show error if there's an actual error
+        setError('Failed to sign in with Google. Please try again.');
+        setIsLoading(false);
+      } else if (result?.ok) {
+        // Success - redirect manually
+        window.location.href = result.url || callbackUrl || '/dashboard';
+      } else {
+        // Unexpected state
+        setIsLoading(false);
+      }
     } catch (err) {
       console.error('Sign in exception:', err);
       setError('Something went wrong. Please try again.');
