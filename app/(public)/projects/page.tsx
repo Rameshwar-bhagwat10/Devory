@@ -7,32 +7,63 @@ import ProjectsStructuredData from '@/components/projects/ProjectsStructuredData
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: 'Explore Project Ideas | Devory - Final Year & Innovative Projects',
-  description: 'Discover curated final year and innovative project ideas tailored for students. Browse projects across Web Development, Machine Learning, Blockchain, IoT, and more.',
+  title: 'Explore 300+ Project Ideas | Devory',
+  description: 'Discover 300+ curated project ideas with AI-powered roadmaps, tech stacks, and implementation guides. Browse Web Development, Machine Learning, Blockchain, IoT, and more.',
   keywords: [
-    'final year projects',
     'project ideas',
+    'final year projects',
     'student projects',
+    'developer projects',
     'web development projects',
     'machine learning projects',
     'blockchain projects',
     'iot projects',
+    'mobile app projects',
     'computer science projects',
     'engineering projects',
+    'coding projects',
+    'portfolio projects',
+    'open source projects',
   ],
+  authors: [{ name: 'Devory' }],
+  creator: 'Devory',
+  publisher: 'Devory',
+  alternates: {
+    canonical: '/projects',
+  },
   openGraph: {
-    title: 'Explore Project Ideas | Devory',
-    description: 'Discover curated final year and innovative project ideas tailored for students.',
     type: 'website',
+    locale: 'en_US',
     url: '/projects',
+    title: 'Explore 300+ Project Ideas | Devory',
+    description: 'Discover 300+ curated project ideas with AI-powered roadmaps, tech stacks, and implementation guides.',
+    siteName: 'Devory',
+    images: [
+      {
+        url: '/og-projects-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Devory Projects - 300+ Curated Project Ideas',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Explore Project Ideas | Devory',
-    description: 'Discover curated final year and innovative project ideas tailored for students.',
+    title: 'Explore 300+ Project Ideas | Devory',
+    description: 'Discover 300+ curated project ideas with AI-powered roadmaps and implementation guides.',
+    images: ['/og-projects-image.png'],
+    creator: '@devory',
   },
-  alternates: {
-    canonical: '/projects',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

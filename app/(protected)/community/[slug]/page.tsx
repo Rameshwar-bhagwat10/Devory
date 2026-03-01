@@ -1,11 +1,13 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { auth } from '@/lib/auth';
 import { CommunityService } from '@/features/community/community.service';
 import ViewTracker from '@/components/community/ViewTracker';
 import IdeaDetailPage from '@/components/community/detail/IdeaDetailPage';
 import CollaborationDetailPage from '@/components/community/detail/CollaborationDetailPage';
+import CommunityPostStructuredData from '@/components/seo/CommunityPostStructuredData';
 
 // Dynamic import for CommentSection (heavy component)
 const CommentSection = dynamic(() => import('@/components/community/CommentSection'), {
@@ -24,6 +26,94 @@ export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+// Generate dynamic metadata for community posts
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await CommunityService.getPostBySlug(slug, undefined);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found | Devory Community',
+      description: 'The community post you are looking for could not be found.',
+    };
+  }
+
+  // Create clean description (150-160 chars)
+  const cleanDescription = post.shortDescription.length > 160
+    ? post.shortDescription.substring(0, 157) + '...'
+    : post.shortDescription;
+
+  // Generate keywords
+  const keywords = [
+    post.title,
+    post.domain,
+    post.difficulty,
+    ...post.techStack,
+    ...post.tags,
+    post.type === 'COLLABORATION' ? 'collaboration' : 'project idea',
+    'developer community',
+    'coding project',
+  ];
+
+  const baseUrl = process.env.NEXTAUTH_URL || 'https://devory.com';
+  const postUrl = `${baseUrl}/community/${slug}`;
+
+  return {
+    title: `${post.title} | Devory Community`,
+    description: cleanDescription,
+    keywords,
+    authors: [{ name: post.user?.name || 'Devory Community' }],
+    creator: 'Devory',
+    publisher: 'Devory',
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `/community/${slug}`,
+    },
+    openGraph: {
+      type: 'article',
+      locale: 'en_US',
+      url: postUrl,
+      title: `${post.title} | Devory Community`,
+      description: cleanDescription,
+      siteName: 'Devory',
+      images: [
+        {
+          url: '/og-community-post-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      publishedTime: new Date(post.createdAt).toISOString(),
+      modifiedTime: new Date(post.updatedAt).toISOString(),
+      authors: [post.user?.name || 'Anonymous'],
+      tags: [post.domain, post.difficulty, ...post.techStack, ...post.tags],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | Devory Community`,
+      description: cleanDescription,
+      images: ['/og-community-post-image.png'],
+      creator: '@devory',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
 }
 
 export default async function PostDetailPage({ params }: PageProps) {
@@ -53,6 +143,9 @@ export default async function PostDetailPage({ params }: PageProps) {
   
   return (
     <>
+      {/* Structured Data for SEO */}
+      <CommunityPostStructuredData post={post} />
+      
       <DetailComponent 
         post={serializedPost} 
         isAuthenticated={!!session}

@@ -1,0 +1,47 @@
+# Robots.txt for Devory
+# Allow all crawlers to index public content
+
+User-agent: *
+Allow: /
+
+# Block admin routes
+Disallow: /admin/
+Disallow: /admin
+
+# Block API routes
+Disallow: /api/
+
+# Block authentication pages
+Disallow: /auth
+Disallow: /auth/
+Disallow: /onboarding
+Disallow: /onboarding/
+
+# Block user-specific private pages
+Disallow: /dashboard
+Disallow: /dashboard/
+Disallow: /profile
+Disallow: /profile/
+Disallow: /saved
+Disallow: /saved/
+
+# Block protected community pages
+Disallow: /community/new
+Disallow: /community/notifications
+Disallow: /community/saved
+Disallow: /community/following
+
+# Explicitly allow public pages
+Allow: /
+Allow: /projects
+Allow: /projects/
+Allow: /community
+Allow: /community/trending
+Allow: /community/collaborations
+
+# Sitemap location (update with your production domain)
+Sitemap: https://devory.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+

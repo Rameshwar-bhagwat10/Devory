@@ -16,7 +16,57 @@ const CommunityFeed = dynamic(() => import('@/components/community/CommunityFeed
 
 export const metadata: Metadata = {
   title: 'Community | Devory - Share Ideas & Collaborate',
-  description: 'Join the Devory community to share project ideas, find collaborators, and connect with fellow developers.',
+  description: 'Join the Devory community to share project ideas, find collaborators, and connect with fellow developers. Discover trending posts and collaboration opportunities.',
+  keywords: [
+    'developer community',
+    'project collaboration',
+    'coding community',
+    'developer network',
+    'find collaborators',
+    'project ideas',
+    'tech community',
+    'programming community',
+  ],
+  authors: [{ name: 'Devory' }],
+  creator: 'Devory',
+  publisher: 'Devory',
+  alternates: {
+    canonical: '/community',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/community',
+    title: 'Community | Devory - Share Ideas & Collaborate',
+    description: 'Join the Devory community to share project ideas, find collaborators, and connect with fellow developers.',
+    siteName: 'Devory',
+    images: [
+      {
+        url: '/og-community-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Devory Community - Share Ideas & Collaborate',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Community | Devory - Share Ideas & Collaborate',
+    description: 'Join the Devory community to share project ideas, find collaborators, and connect with fellow developers.',
+    images: ['/og-community-image.png'],
+    creator: '@devory',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 // Ultra-aggressive caching for instant loads

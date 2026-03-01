@@ -63,33 +63,77 @@ export async function generateMetadata({
   if (!project) {
     return {
       title: 'Project Not Found | Devory',
+      description: 'The project you are looking for could not be found.',
     };
   }
 
+  // Create a clean description (150-160 chars for SEO)
+  const cleanDescription = project.description.length > 160 
+    ? project.description.substring(0, 157) + '...'
+    : project.description;
+
+  // Generate keywords from project data
+  const keywords = [
+    project.title,
+    project.domain,
+    project.difficulty,
+    ...project.techStack,
+    'project idea',
+    'project roadmap',
+    'implementation guide',
+    'tech stack',
+    'developer project',
+    'coding project',
+  ];
+
+  const baseUrl = process.env.NEXTAUTH_URL || 'https://devory.com';
+  const projectUrl = `${baseUrl}/projects/${slug}`;
+
   return {
-    title: `${project.title} | Devory - Project Ideas`,
-    description: project.description,
-    keywords: [
-      project.title,
-      project.domain,
-      project.difficulty,
-      ...project.techStack,
-      'project idea',
-      'final year project',
-    ],
+    title: `${project.title} | Devory`,
+    description: cleanDescription,
+    keywords,
+    authors: [{ name: 'Devory' }],
+    creator: 'Devory',
+    publisher: 'Devory',
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
     openGraph: {
-      title: project.title,
-      description: project.description,
       type: 'article',
-      url: `/projects/${slug}`,
+      locale: 'en_US',
+      url: projectUrl,
+      title: `${project.title} | Devory`,
+      description: cleanDescription,
+      siteName: 'Devory',
+      images: [
+        {
+          url: '/og-project-image.png',
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+      publishedTime: typeof project.createdAt === 'string' ? project.createdAt : project.createdAt.toISOString(),
+      tags: [project.domain, project.difficulty, ...project.techStack],
     },
     twitter: {
       card: 'summary_large_image',
-      title: project.title,
-      description: project.description,
+      title: `${project.title} | Devory`,
+      description: cleanDescription,
+      images: ['/og-project-image.png'],
+      creator: '@devory',
     },
-    alternates: {
-      canonical: `/projects/${slug}`,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
@@ -196,6 +240,7 @@ export default async function ProjectDetailPage({
 
   return (
     <>
+      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

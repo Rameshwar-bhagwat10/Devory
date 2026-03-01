@@ -14,27 +14,20 @@ export default function AuthForm({ callbackUrl }: { callbackUrl?: string }) {
       setIsLoading(true);
       setError('');
       
-      // signIn with redirect: true will redirect the page, so we don't need to handle the response
-      // If it returns, it means there was an error (user cancelled or popup blocked)
-      const result = await signIn('google', {
+      // Use redirect: true for seamless Google OAuth flow
+      // This will handle the redirect automatically without showing errors
+      await signIn('google', {
         callbackUrl: callbackUrl || '/dashboard',
-        redirect: false, // Don't auto-redirect, we'll handle it
+        redirect: true, // Let NextAuth handle the redirect
       });
       
-      if (result?.error) {
-        // Only show error if there's an actual error
-        setError('Failed to sign in with Google. Please try again.');
-        setIsLoading(false);
-      } else if (result?.ok) {
-        // Success - redirect manually
-        window.location.href = result.url || callbackUrl || '/dashboard';
-      } else {
-        // Unexpected state
-        setIsLoading(false);
-      }
+      // If we reach here, user likely cancelled or popup was blocked
+      // Don't show error immediately - they might try again
+      setIsLoading(false);
     } catch (err) {
       console.error('Sign in exception:', err);
-      setError('Something went wrong. Please try again.');
+      // Only show error for actual exceptions
+      setError('Unable to open sign-in window. Please check your popup blocker.');
       setIsLoading(false);
     }
   };
