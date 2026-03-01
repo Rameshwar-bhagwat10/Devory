@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 import { auth } from '@/lib/auth';
 import { CommunityService } from '@/features/community/community.service';
 import ViewTracker from '@/components/community/ViewTracker';
@@ -10,7 +10,7 @@ import CollaborationDetailPage from '@/components/community/detail/Collaboration
 import CommunityPostStructuredData from '@/components/seo/CommunityPostStructuredData';
 
 // Dynamic import for CommentSection (heavy component)
-const CommentSection = dynamic(() => import('@/components/community/CommentSection'), {
+const CommentSection = dynamicImport(() => import('@/components/community/CommentSection'), {
   loading: () => (
     <div className="bg-[#0d0d0d] border border-white/10 rounded-2xl p-8">
       <div className="flex items-center justify-center py-12">
