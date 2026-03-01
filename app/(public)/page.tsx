@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 import { Metadata } from 'next';
 import Hero from '@/components/landing/Hero';
 import SectionDivider from '@/components/landing/SectionDivider';
@@ -11,19 +11,19 @@ export const revalidate = 3600; // 1 hour cache
 export const dynamic = 'force-static'; // Force static generation at build time
 
 // Lazy load sections below the fold for better performance
-const ChallengeSection = dynamic(() => import('@/components/landing/ChallengeSection'), {
+const ChallengeSection = dynamicImport(() => import('@/components/landing/ChallengeSection'), {
   loading: () => <div className="py-32" />,
 });
-const CapabilitiesSection = dynamic(() => import('@/components/landing/CapabilitiesSection'), {
+const CapabilitiesSection = dynamicImport(() => import('@/components/landing/CapabilitiesSection'), {
   loading: () => <div className="py-32" />,
 });
-const HowItWorksSection = dynamic(() => import('@/components/landing/HowItWorksSection'), {
+const HowItWorksSection = dynamicImport(() => import('@/components/landing/HowItWorksSection'), {
   loading: () => <div className="py-32" />,
 });
-const TrustSection = dynamic(() => import('@/components/landing/TrustSection'), {
+const TrustSection = dynamicImport(() => import('@/components/landing/TrustSection'), {
   loading: () => <div className="py-32" />,
 });
-const FinalCTASection = dynamic(() => import('@/components/landing/FinalCTASection'), {
+const FinalCTASection = dynamicImport(() => import('@/components/landing/FinalCTASection'), {
   loading: () => <div className="py-32" />,
 });
 
