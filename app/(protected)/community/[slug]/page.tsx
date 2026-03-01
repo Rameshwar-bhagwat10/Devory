@@ -23,6 +23,13 @@ const CommentSection = dynamic(() => import('@/components/community/CommentSecti
 // Ultra-aggressive caching for instant loads
 export const revalidate = 15; // 15 second revalidation
 export const dynamicParams = true;
+export const dynamic = 'force-dynamic'; // Don't pre-render at build time
+
+// Don't pre-render community posts at build time (they're protected routes)
+export async function generateStaticParams() {
+  // Return empty array - community posts are dynamic and protected
+  return [];
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;

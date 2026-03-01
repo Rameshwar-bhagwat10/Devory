@@ -20,13 +20,18 @@ import { getTechIcon, TechBadge } from '@/components/projects/TechIcon';
 // 4. Background revalidation keeps content fresh
 // 5. New projects automatically generated on-demand (dynamicParams = true)
 export const revalidate = 3600; // 1 hour cache
-export const dynamic = 'force-static'; // Force static generation
 export const dynamicParams = true; // Allow on-demand generation for new projects
 
 // Generate static params for ALL projects at build time
 // This ensures FAST first load for all existing projects
 export async function generateStaticParams() {
   try {
+    // Check if DATABASE_URL is available
+    if (!process.env.DATABASE_URL) {
+      console.warn('DATABASE_URL not available during build - skipping static generation');
+      return [];
+    }
+
     // Pre-render ALL published projects at build time
     // This makes first load fast for all projects (~50ms)
     const projects = await prisma.projects.findMany({
