@@ -6,6 +6,10 @@ import SEOContent from '@/components/landing/SEOContent';
 import OrganizationSchema from '@/components/seo/OrganizationSchema';
 import WebsiteSchema from '@/components/seo/WebsiteSchema';
 
+// Static generation configuration for home page
+export const revalidate = 3600; // 1 hour cache
+export const dynamic = 'force-static'; // Force static generation at build time
+
 // Lazy load sections below the fold for better performance
 const ChallengeSection = dynamic(() => import('@/components/landing/ChallengeSection'), {
   loading: () => <div className="py-32" />,

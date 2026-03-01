@@ -106,6 +106,11 @@ const blogPosts: Record<string, {
   },
 };
 
+// Static generation configuration for blog posts
+export const revalidate = 86400; // 24 hours cache for blog posts
+export const dynamic = 'force-static'; // Force static generation at build time
+export const dynamicParams = false; // Only allow pre-defined blog posts
+
 export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
     slug,

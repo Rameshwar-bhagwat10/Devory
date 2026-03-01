@@ -2,6 +2,10 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { FaArrowRight, FaCalendar, FaClock } from 'react-icons/fa';
 
+// Static generation configuration
+export const revalidate = 86400; // 24 hours cache
+export const dynamic = 'force-static'; // Force static generation at build time
+
 export const metadata: Metadata = {
   title: 'Blog - Project Ideas, Guides & Tutorials | Devory',
   description: 'Learn about web development projects, machine learning projects, and coding tutorials. Expert guides for IT students and developers.',
